@@ -11,7 +11,7 @@ public class TestLauncherFire : MonoBehaviour
 
     private void Start()
     {
-        missileCreator = new HomingMissileCreator();
+        //missileCreator = new HomingMissileCreator();
     }
 
     void Update()

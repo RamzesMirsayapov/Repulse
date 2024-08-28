@@ -1,11 +1,10 @@
 using UnityEngine;
+using Zenject;
 
 [RequireComponent(typeof(Rigidbody))]
 public class HomingMissileMove : Missile
 {
     //[SerializeField] private Rigidbody _rigidbody;
-
-    [SerializeField] private PlayerMovement _target;
 
     [Header("MOVEMENT")]
     //[SerializeField] private float _speed = 90;
@@ -21,15 +20,23 @@ public class HomingMissileMove : Missile
     [SerializeField] private float _deviationAmount = 50;
     [SerializeField] private float _deviationSpeed = 2;
 
+    private PlayerMovement _playerTarget;
+
+    [Inject]
+    private void Constuct(PlayerMovement player)
+    {
+        _playerTarget = player;
+    }
+
     public new void Initialize(float speed)
     {
         base.Initialize(speed);
     }
 
-    private void Start()
-    {
-        _target = FindObjectOfType<PlayerMovement>();
-    }
+    //private void Start()
+    //{
+    //    _playerTarget = FindObjectOfType<PlayerMovement>();
+    //}
 
     private void FixedUpdate()
     {
@@ -42,7 +49,7 @@ public class HomingMissileMove : Missile
 
         if(!IsReflected)
         {
-            var leadTimePercentage = Mathf.InverseLerp(_minDistancePredict, _maxDistancePredict, Vector3.Distance(transform.position, _target.transform.position));
+            var leadTimePercentage = Mathf.InverseLerp(_minDistancePredict, _maxDistancePredict, Vector3.Distance(transform.position, _playerTarget.transform.position));
 
             PredictMovement(leadTimePercentage);
 
@@ -57,7 +64,7 @@ public class HomingMissileMove : Missile
         var predictionTime = Mathf.Lerp(0, _maxTimePrediction, leadTimePercentage);
 
         //_standardPrediction = _target.Rb.position + _target.Rb.velocity * predictionTime;
-        _standardPrediction = _target.transform.position + _target.CharacterController.velocity * predictionTime;
+        _standardPrediction = _playerTarget.transform.position + _playerTarget.CharacterController.velocity * predictionTime;
     }
 
     private void AddDeviation(float leadTimePercentage)
