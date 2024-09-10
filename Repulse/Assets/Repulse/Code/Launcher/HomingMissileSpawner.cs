@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class MissileSpawner : MonoBehaviour
+public class HomingMissileSpawner : MonoBehaviour
 {
     [SerializeField] private float _missileSpeed = 40;
 
@@ -26,8 +26,7 @@ public class MissileSpawner : MonoBehaviour
 
     private void Start()
     {
-        _missileCreators = new List<MissileCreator>() {
-        _homingMissileCreator, new DirectMissileCreator()};
+        _missileCreators = new List<MissileCreator>() { _homingMissileCreator, new DirectMissileCreator() };
 
         _probalitySpawnMissiles = new ProbalitySpawnMissiles(_spawnMissileSettings, _missileCreators);
 

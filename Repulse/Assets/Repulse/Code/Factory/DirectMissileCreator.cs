@@ -4,7 +4,7 @@ public class DirectMissileCreator : MissileCreator
 {
     public override Missile CreateMissile(float speed, Transform transform)
     {
-        var prefab = Resources.Load<GameObject>("DefaultDirectMissile");
+        var prefab = Resources.Load<GameObject>("Missiles/DefaultDirectMissile");
 
         var gameObject = GameObject.Instantiate(prefab, transform.position, transform.rotation);
 

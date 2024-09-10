@@ -4,10 +4,6 @@ using Zenject;
 [RequireComponent(typeof(Rigidbody))]
 public class HomingMissileMove : Missile
 {
-    //[SerializeField] private Rigidbody _rigidbody;
-
-    [Header("MOVEMENT")]
-    //[SerializeField] private float _speed = 90;
     [SerializeField] private float _rotateSpeed = 95;
 
     [Header("PREDICTION")]
@@ -32,11 +28,6 @@ public class HomingMissileMove : Missile
     {
         base.Initialize(speed);
     }
-
-    //private void Start()
-    //{
-    //    _playerTarget = FindObjectOfType<PlayerMovement>();
-    //}
 
     private void FixedUpdate()
     {
@@ -63,7 +54,6 @@ public class HomingMissileMove : Missile
     {
         var predictionTime = Mathf.Lerp(0, _maxTimePrediction, leadTimePercentage);
 
-        //_standardPrediction = _target.Rb.position + _target.Rb.velocity * predictionTime;
         _standardPrediction = _playerTarget.transform.position + _playerTarget.CharacterController.velocity * predictionTime;
     }
 
@@ -79,8 +69,8 @@ public class HomingMissileMove : Missile
     private void RotateRocket()
     {
         var heading = _deviatedPrediction - transform.position;
-
         var rotation = Quaternion.LookRotation(heading);
+
         _rigidbody.MoveRotation(Quaternion.RotateTowards(transform.rotation, rotation, _rotateSpeed * Time.deltaTime));
     }
 

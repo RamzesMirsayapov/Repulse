@@ -31,7 +31,6 @@ public class OverlapTargetFinder
 
             if (HasComponent(_overlapSettings.OverlapResults[i], out component))
             {
-                //Debug.Log(component.ToString());
                 return true;
             }
         }

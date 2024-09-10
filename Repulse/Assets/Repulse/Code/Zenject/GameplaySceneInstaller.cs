@@ -7,7 +7,10 @@ public class GameplaySceneInstaller : MonoInstaller
     [SerializeField] private PlayerMovement _playerPrefab;
     [SerializeField] private Transform _playerSpawnPoint;
 
-    [SerializeField] private Missile _homingNissilePrefab;
+    [SerializeField] private FlightCalculationBezier _flightCalculationBezier1;
+    [SerializeField] private FlightCalculationBezier _flightCalculationBezier2;
+
+    [SerializeField] private BallisticMissileSpawner _ballisticMissileSpawner;
 
     private PlayerMovement playerMovement;
 
@@ -18,6 +21,8 @@ public class GameplaySceneInstaller : MonoInstaller
         BindMissile();
 
         BindHomingMissileCreator();
+
+        BindBallisticMissile();
     }
 
     private void CreatePlayer()
@@ -41,5 +46,18 @@ public class GameplaySceneInstaller : MonoInstaller
         Container.
             Bind<HomingMissileCreator>().
             AsSingle();
+    }
+
+    private void BindBallisticMissile()
+    {
+        Container.Bind<BallisticMissileCreator>().AsSingle();
+
+        Container.Bind<FlightCalculationBezier>().FromComponentInParents().AsTransient();
+
+        Container.Bind<BallisticMissileSpawner>().FromInstance(_ballisticMissileSpawner).AsSingle();
+
+        //Container.Bind<FlightCalculationBezier>().AsTransient();
+
+        //Container.Bind<FlightCalculationBezier>().FromInstance(_flightCalculationBezier2).AsTransient();
     }
 }

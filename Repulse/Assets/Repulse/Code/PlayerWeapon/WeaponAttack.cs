@@ -31,11 +31,11 @@ public class WeaponAttack : MonoBehaviour
     {
         Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
 
-        if (_targetFinder.TryFind(out IReflectable damageable))
+        if (_targetFinder.TryFind(out IReflectable reflectable))
         {
             if (Physics.Raycast(ray, out RaycastHit hitInfo, _distance, _rayCastMask))
             {
-                damageable.ReflectionMove(hitInfo.point);
+                reflectable.ReflectionMove(hitInfo.point);
             }
         }
     }
