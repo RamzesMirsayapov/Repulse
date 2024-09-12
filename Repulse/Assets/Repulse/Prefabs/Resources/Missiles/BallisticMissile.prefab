@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -3366855910319873318}
   - component: {fileID: -4610492209744659673}
   - component: {fileID: 2415636964283790184}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BallisticMissile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,7 +32,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.9}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 40
   _rigidbody: {fileID: -4610492209744659673}
-  _speedF: 0.1
+  _speedF: 0.5
 --- !u!114 &-3366855910319873318
 MonoBehaviour:
   m_ObjectHideFlags: 0

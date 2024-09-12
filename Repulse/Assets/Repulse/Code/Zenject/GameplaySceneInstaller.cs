@@ -52,12 +52,12 @@ public class GameplaySceneInstaller : MonoInstaller
     {
         Container.Bind<BallisticMissileCreator>().AsSingle();
 
-        Container.Bind<FlightCalculationBezier>().FromComponentInParents().AsTransient();
+        Container.Bind<FlightCalculationBezier>().FromNew().AsTransient();
 
-        Container.Bind<BallisticMissileSpawner>().FromInstance(_ballisticMissileSpawner).AsSingle();
+        Container.Bind<SettingsCalculationBezier>().FromComponentInParents().AsTransient();
 
-        //Container.Bind<FlightCalculationBezier>().AsTransient();
+        //Container.Bind<FlightCalculationBezier>().FromComponentInParents().AsTransient();
 
-        //Container.Bind<FlightCalculationBezier>().FromInstance(_flightCalculationBezier2).AsTransient();
+        //Container.Bind<BallisticMissileSpawner>().FromInstance(_ballisticMissileSpawner).AsSingle();
     }
 }

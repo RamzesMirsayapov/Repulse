@@ -274,8 +274,6 @@ MonoBehaviour:
   _playerPrefab: {fileID: 6528706413269498800, guid: c3e08e33eb1a42b4688d3d7502829776,
     type: 3}
   _playerSpawnPoint: {fileID: 507425244}
-  _flightCalculationBezier1: {fileID: 694236774}
-  _flightCalculationBezier2: {fileID: 718010905}
   _ballisticMissileSpawner: {fileID: 1552902687}
 --- !u!1 &152938466
 GameObject:
@@ -1136,12 +1134,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 694236772}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d29bfe3305c55e34797d6439843e6fd2, type: 3}
+  m_Script: {fileID: 11500000, guid: 966017acb100b344ba32acda150dbf59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _startPoint: {fileID: 669214600}
   _middlePoint: {fileID: 507569585}
-  _targetPosition: {fileID: 507425244}
 --- !u!1 &718010903
 GameObject:
   m_ObjectHideFlags: 0
@@ -1184,12 +1181,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 718010903}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d29bfe3305c55e34797d6439843e6fd2, type: 3}
+  m_Script: {fileID: 11500000, guid: 966017acb100b344ba32acda150dbf59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _startPoint: {fileID: 152938467}
   _middlePoint: {fileID: 530447585}
-  _targetPosition: {fileID: 507425244}
 --- !u!1 &718768254
 GameObject:
   m_ObjectHideFlags: 0
@@ -1365,7 +1361,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 152938467}
@@ -2189,7 +2185,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 669214600}
