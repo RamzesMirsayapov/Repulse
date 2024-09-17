@@ -29,10 +29,15 @@ public class WeaponAttack : MonoBehaviour
 
     private void PerformAttack()
     {
-        Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
+        if(_targetFinder.TryFind(out IDecoy decoy))
+        {
+            decoy.DecoyExploed();
+        }
 
         if (_targetFinder.TryFind(out IReflectable reflectable))
         {
+            Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
+
             if (Physics.Raycast(ray, out RaycastHit hitInfo, _distance, _rayCastMask))
             {
                 reflectable.ReflectionMove(hitInfo.point);

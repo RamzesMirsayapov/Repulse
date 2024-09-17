@@ -4,17 +4,17 @@ using Zenject;
 [RequireComponent(typeof(Rigidbody))]
 public class HomingMissileMove : Missile
 {
-    [SerializeField] private float _rotateSpeed = 95;
+    [SerializeField] private float _rotateSpeed = 200f;
 
     [Header("PREDICTION")]
-    [SerializeField] private float _maxDistancePredict = 100;
-    [SerializeField] private float _minDistancePredict = 5;
-    [SerializeField] private float _maxTimePrediction = 5;
+    [SerializeField] private float _maxDistancePredict = 100f;
+    [SerializeField] private float _minDistancePredict = 20f;
+    [SerializeField] private float _maxTimePrediction = 0.1f;
     private Vector3 _standardPrediction, _deviatedPrediction;
 
     [Header("DEVIATION")]
-    [SerializeField] private float _deviationAmount = 50;
-    [SerializeField] private float _deviationSpeed = 2;
+    [SerializeField] private float _deviationAmount = 25f;
+    [SerializeField] private float _deviationSpeed = 2f;
 
     private PlayerMovement _playerTarget;
 

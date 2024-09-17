@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
@@ -6,11 +5,6 @@ public class GameplaySceneInstaller : MonoInstaller
 {
     [SerializeField] private PlayerMovement _playerPrefab;
     [SerializeField] private Transform _playerSpawnPoint;
-
-    [SerializeField] private FlightCalculationBezier _flightCalculationBezier1;
-    [SerializeField] private FlightCalculationBezier _flightCalculationBezier2;
-
-    [SerializeField] private BallisticMissileSpawner _ballisticMissileSpawner;
 
     private PlayerMovement playerMovement;
 
@@ -55,9 +49,5 @@ public class GameplaySceneInstaller : MonoInstaller
         Container.Bind<FlightCalculationBezier>().FromNew().AsTransient();
 
         Container.Bind<SettingsCalculationBezier>().FromComponentInParents().AsTransient();
-
-        //Container.Bind<FlightCalculationBezier>().FromComponentInParents().AsTransient();
-
-        //Container.Bind<BallisticMissileSpawner>().FromInstance(_ballisticMissileSpawner).AsSingle();
     }
 }

@@ -14,9 +14,9 @@ public class HomingMissileSpawner : MonoBehaviour
 
     private HomingMissileCreator _homingMissileCreator;
 
-    private MissileCreator missileCreator;
-
     private ProbalitySpawnMissiles _probalitySpawnMissiles;
+
+    private MissileCreator _missileCreator;
 
     [Inject]
     private void Construct(HomingMissileCreator homingMissileCreator)
@@ -43,8 +43,8 @@ public class HomingMissileSpawner : MonoBehaviour
 
     private void SpawnMissile()
     {
-        missileCreator = _spawnMissileSettings[_probalitySpawnMissiles.GetRandomMissileIndex()].MissileCreator;
+        _missileCreator = _spawnMissileSettings[_probalitySpawnMissiles.GetRandomMissileIndex()].MissileCreator;
         
-        var newMissile = missileCreator.CreateMissile(_missileSpeed, _spawnPoints[Random.Range(0,4)]);
+        var newMissile = _missileCreator.CreateMissile(_missileSpeed, _spawnPoints[Random.Range(0,4)]);
     }
 }

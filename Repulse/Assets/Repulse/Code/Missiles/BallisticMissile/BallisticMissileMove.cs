@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using Zenject;
 
@@ -44,12 +43,6 @@ public class BallisticMissileMove : Missile
 
     private void RotateMissile()
     {
-        if (_flightCalculationBezier == null)
-        {
-            Debug.Log("ballisticMove 22 строчка дерьмоооо");
-            return;
-        }
-
         _flightTime += Time.deltaTime * _speedF;
 
         Vector3 rotation = _flightCalculationBezier.GetFirstDerivative(_startPoint, _middlePoint, _lastTargetPosition, _flightTime);

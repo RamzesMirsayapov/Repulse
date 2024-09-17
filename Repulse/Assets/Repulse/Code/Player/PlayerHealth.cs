@@ -13,9 +13,6 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     public void ApplyDamage(float damage)
     {
-        //if(damage <= 0)
-        //    damage = 0;
-
         Debug.Log("нанесло урона:    " + damage);
 
         _currentHealth -= damage;

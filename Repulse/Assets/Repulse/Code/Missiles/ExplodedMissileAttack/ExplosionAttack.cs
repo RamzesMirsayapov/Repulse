@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ExplodeAttack : MonoBehaviour
+public class ExplosionAttack : MonoBehaviour
 {
     [SerializeField, Min(0f)] private float _damage;
 
@@ -23,13 +23,9 @@ public class ExplodeAttack : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        //if (_explosionPrefab) Instantiate(_explosionPrefab, transform.position, Quaternion.identity);
-        //if (collision.transform.TryGetComponent<IExplode>(out var ex)) ex.Explode();
-
         PerformAttack();
 
         Destroy(gameObject);
-        //gameObject.SetActive(false);
     }
 
     private void OnDrawGizmos()
