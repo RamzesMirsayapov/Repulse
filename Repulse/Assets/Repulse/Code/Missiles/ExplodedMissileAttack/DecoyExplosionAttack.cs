@@ -18,6 +18,7 @@ public class DecoyExplosionAttack : MonoBehaviour, IDecoy
         if(_targetFinder.TryFind(out IDamageable damageable))
         {
             damageable.ApplyDamage(_damage);
+            Destroy(gameObject);
         }
     }
 

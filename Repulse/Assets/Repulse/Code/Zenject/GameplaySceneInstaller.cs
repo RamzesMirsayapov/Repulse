@@ -16,6 +16,8 @@ public class GameplaySceneInstaller : MonoInstaller
 
         BindHomingMissileCreator();
 
+        BindDirectMissileCreator();
+
         BindBallisticMissile();
     }
 
@@ -39,6 +41,21 @@ public class GameplaySceneInstaller : MonoInstaller
     {
         Container.
             Bind<HomingMissileCreator>().
+            AsSingle();
+
+        Container.
+            Bind<DecoyHomingMissileCreator>().
+            AsSingle();
+    }
+
+    private void BindDirectMissileCreator()
+    {
+        Container.
+            Bind<DirectMissileCreator>().
+            AsSingle();
+
+        Container.
+            Bind<DecoyDirectMissileCreator>().
             AsSingle();
     }
 

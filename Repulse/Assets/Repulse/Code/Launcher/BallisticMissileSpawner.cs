@@ -5,7 +5,7 @@ using Zenject;
 
 public class BallisticMissileSpawner : MonoBehaviour
 {
-    public event Action OnBallisticMissileSpawn;
+    //public event Action OnBallisticMissileSpawn;
 
     [SerializeField] private float _missileSpeed = 40;
 
@@ -29,7 +29,7 @@ public class BallisticMissileSpawner : MonoBehaviour
 
     private void SpawnMissile()
     {
-        OnBallisticMissileSpawn?.Invoke();
+        //OnBallisticMissileSpawn?.Invoke();
 
         var newMissile = _missileCreator.CreateMissile(_missileSpeed, _spawnPoints[UnityEngine.Random.Range(0, _spawnPoints.Count)]);
     }

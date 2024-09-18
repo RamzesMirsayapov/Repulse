@@ -6,27 +6,29 @@ public class HomingMissileSpawner : MonoBehaviour
 {
     [SerializeField] private float _missileSpeed = 40;
 
-    [SerializeField] private List<Transform> _spawnPoints;
+    [SerializeField] private Transform[] _spawnPoints;
 
     [SerializeField] private List<SpawnMissileSettings> _spawnMissileSettings;
 
-    private List<MissileCreator> _missileCreators;
+    private int _randomSpawnPointValues;
 
+    private List<MissileCreator> _missileCreators;
     private HomingMissileCreator _homingMissileCreator;
+    private DecoyHomingMissileCreator _decoyHomingMissileCreator;
+    private MissileCreator _missileCreator;
 
     private ProbalitySpawnMissiles _probalitySpawnMissiles;
 
-    private MissileCreator _missileCreator;
-
     [Inject]
-    private void Construct(HomingMissileCreator homingMissileCreator)
+    private void Construct(HomingMissileCreator homingMissileCreator, DecoyHomingMissileCreator decoyHomingMissileCreator)
     {
         _homingMissileCreator = homingMissileCreator;
+        _decoyHomingMissileCreator = decoyHomingMissileCreator;
     }
 
     private void Start()
     {
-        _missileCreators = new List<MissileCreator>() { _homingMissileCreator, new DirectMissileCreator() };
+        _missileCreators = new List<MissileCreator>() { _homingMissileCreator, _decoyHomingMissileCreator };
 
         _probalitySpawnMissiles = new ProbalitySpawnMissiles(_spawnMissileSettings, _missileCreators);
 
@@ -43,8 +45,10 @@ public class HomingMissileSpawner : MonoBehaviour
 
     private void SpawnMissile()
     {
+        _randomSpawnPointValues = Random.Range(0, _spawnPoints.Length);
+
         _missileCreator = _spawnMissileSettings[_probalitySpawnMissiles.GetRandomMissileIndex()].MissileCreator;
         
-        var newMissile = _missileCreator.CreateMissile(_missileSpeed, _spawnPoints[Random.Range(0,4)]);
+        var newMissile = _missileCreator.CreateMissile(_missileSpeed, _spawnPoints[_randomSpawnPointValues]);
     }
 }

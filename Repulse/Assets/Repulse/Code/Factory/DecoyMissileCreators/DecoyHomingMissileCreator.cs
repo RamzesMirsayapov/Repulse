@@ -8,7 +8,7 @@ public class DecoyHomingMissileCreator : MissileCreator
 
         var gameObject = _diContainer.InstantiatePrefab(prefab, transform.position, transform.rotation, null);
 
-        var missileComponent = gameObject.AddComponent<HomingMissileMove>();
+        var missileComponent = gameObject.GetComponent<HomingMissileMove>();
 
         missileComponent.Initialize(speed);
 

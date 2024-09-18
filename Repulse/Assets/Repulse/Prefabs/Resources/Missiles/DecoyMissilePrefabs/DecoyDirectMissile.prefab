@@ -4844,6 +4844,7 @@ GameObject:
   - component: {fileID: -8024329934062330808}
   - component: {fileID: 7363334096197347649}
   - component: {fileID: -3649818925207107929}
+  - component: {fileID: -2015427501862088050}
   m_Layer: 7
   m_Name: DecoyDirectMissile
   m_TagString: Untagged
@@ -4984,11 +4985,10 @@ MonoBehaviour:
     _searchMask:
       serializedVersion: 2
       m_Bits: 64
-    _overlapPoint: {fileID: 1583713801625449143, guid: 7f12adae99ec6ed4aae9130a8de83987,
-      type: 3}
+    _overlapPoint: {fileID: 2478058469524456588}
     _overlapType: 1
     _boxSize: {x: 1, y: 1, z: 1}
-    _sphereRadius: 10
+    _sphereRadius: 30
     _positionOffset: {x: 0, y: 0, z: 0}
     _considerObstacles: 1
     _obstacleMask:
@@ -4996,3 +4996,17 @@ MonoBehaviour:
       m_Bits: 1
     _drawGizmos: 1
     _gizmosColor: {r: 0, g: 1, b: 1, a: 1}
+--- !u!114 &-2015427501862088050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6667902201192983030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e81560166bad6af42b0fddf8eb60954c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 40
+  _rigidbody: {fileID: -8024329934062330808}

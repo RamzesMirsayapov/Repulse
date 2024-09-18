@@ -31,6 +31,8 @@ public class WeaponAttack : MonoBehaviour
     {
         if(_targetFinder.TryFind(out IDecoy decoy))
         {
+            Debug.Log("dgsgdsgdsgdgd");
+
             decoy.DecoyExploed();
         }
 

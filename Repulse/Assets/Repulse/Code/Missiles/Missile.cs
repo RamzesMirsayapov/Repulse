@@ -2,9 +2,9 @@ using UnityEngine;
 
 public abstract class Missile : MonoBehaviour, IReflectable
 {
-    [SerializeField] protected float _speed = 40f;
-
     [SerializeField] protected Rigidbody _rigidbody;
+
+    [SerializeField] protected float _speed = 40f;
 
     private bool _isReflected = false;
 
@@ -22,9 +22,9 @@ public abstract class Missile : MonoBehaviour, IReflectable
 
     public void ReflectionMove(Vector3 direction)
     {
-        if (direction == null)
+        if (_isReflected == true)
         {
-            Debug.Log("Ќаправление равно нулю");
+            Debug.Log("уже отражено");
             return;
         }
 

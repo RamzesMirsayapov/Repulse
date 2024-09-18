@@ -8,7 +8,7 @@ public class DecoyDirectMissileCreator : MissileCreator
 
         var gameObject = _diContainer.InstantiatePrefab(prefab, transform.position, transform.rotation, null);
 
-        var missileComponent = gameObject.AddComponent<DirectMissileMove>();
+        var missileComponent = gameObject.GetComponent<DirectMissileMove>();
 
         missileComponent.Initialize(speed);
 
