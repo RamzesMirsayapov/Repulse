@@ -17,9 +17,17 @@ public class DecoyExplosionAttack : MonoBehaviour, IDecoy
     {
         if(_targetFinder.TryFind(out IDamageable damageable))
         {
+            Debug.Log("а ну а ну");
+
             damageable.ApplyDamage(_damage);
-            Destroy(gameObject);
+            DestroyObject();
         }
+    }
+
+    private void DestroyObject()
+    {
+        Debug.Log("уничтоение");
+        Destroy(gameObject);
     }
 
     private void OnCollisionEnter(Collision collision)

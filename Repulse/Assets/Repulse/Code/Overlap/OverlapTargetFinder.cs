@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 public class OverlapTargetFinder
@@ -13,6 +15,11 @@ public class OverlapTargetFinder
     public bool TryFind<TComponent>(out TComponent component)
     {
         return TryFindComponent(out component);
+    }
+
+    public bool TryFind<TComponent>(ICollection<TComponent> results)
+    {
+        return TryFindManyComponent(results);
     }
 
     private bool TryFindComponent<TComponent>(out TComponent component)
@@ -39,6 +46,30 @@ public class OverlapTargetFinder
         return false;
     }
 
+    private bool TryFindManyComponent<TComponent>(ICollection<TComponent> results)
+    {
+        results.Clear();
+        PerformOverlap();
+
+        for (int i = 0; i < _overlapSettings.Size; i++)
+        {
+            if (_overlapSettings.ConsiderObstacles)
+            {
+                if (HasObstacleOnTheWay(i))
+                {
+                    continue;
+                }
+            }
+
+            if (HasComponent(_overlapSettings.OverlapResults[i], out TComponent target))
+            {
+                results.Add(target);
+            }
+        }
+
+        return results.Count > 0;
+    }
+
     private void PerformOverlap()
     {
         Vector3 position = _overlapSettings.OverlapPoint.TransformPoint(_overlapSettings.Offset);
@@ -50,6 +81,8 @@ public class OverlapTargetFinder
 
             default: throw new ArgumentOutOfRangeException(nameof(_overlapSettings.OverlapType));
         }
+
+        Debug.Log(_overlapSettings.Size);
     }
 
     private void OverlapBox(Vector3 position)

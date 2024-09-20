@@ -383,14 +383,14 @@ MonoBehaviour:
       m_Bits: 128
     _overlapPoint: {fileID: 4140890919427168828}
     _overlapType: 0
-    _boxSize: {x: 8, y: 6, z: 12}
+    _boxSize: {x: 200, y: 100, z: 200}
     _sphereRadius: 0.5
     _positionOffset: {x: 0, y: 2, z: 4}
     _considerObstacles: 0
     _obstacleMask:
       serializedVersion: 2
       m_Bits: 1
-    _drawGizmos: 0
+    _drawGizmos: 1
     _gizmosColor: {r: 1, g: 0, b: 0.029372692, a: 0.5529412}
   _rayCastMask:
     serializedVersion: 2

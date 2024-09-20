@@ -1,4 +1,7 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using static UnityEngine.GraphicsBuffer;
 
 public class WeaponAttack : MonoBehaviour
 {
@@ -8,11 +11,15 @@ public class WeaponAttack : MonoBehaviour
 
     [SerializeField] private LayerMask _rayCastMask;
 
+    private Transform cameraTransform => _mainCamera.transform;
+
     private OverlapTargetFinder _targetFinder;
 
-    private float _distance = Mathf.Infinity;
+    private const float _distance = Mathf.Infinity;
 
-    private Transform cameraTransform => _mainCamera.transform;
+    private Vector3 _endPointReflection;
+
+    private readonly List<IReflectable> _reflectableResults = new(24);
 
     private void Start()
     {
@@ -34,17 +41,25 @@ public class WeaponAttack : MonoBehaviour
             Debug.Log("dgsgdsgdsgdgd");
 
             decoy.DecoyExploed();
+
+            //return;
         }
 
-        if (_targetFinder.TryFind(out IReflectable reflectable))
+        if (_targetFinder.TryFind(_reflectableResults))
         {
             Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
 
             if (Physics.Raycast(ray, out RaycastHit hitInfo, _distance, _rayCastMask))
             {
-                reflectable.ReflectionMove(hitInfo.point);
+                _endPointReflection = hitInfo.point;
+                _reflectableResults.ForEach(Reflect);
             }
         }
+    }
+
+    private void Reflect(IReflectable reflectable)
+    {
+        reflectable.ReflectionMove(_endPointReflection);
     }
 
     private void OnDrawGizmos()

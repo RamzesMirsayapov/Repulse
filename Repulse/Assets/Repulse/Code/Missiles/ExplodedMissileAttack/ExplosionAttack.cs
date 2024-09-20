@@ -11,6 +11,8 @@ public class ExplosionAttack : MonoBehaviour
     private void Start()
     {
         _targetFinder = new OverlapTargetFinder(_overlapSettings);
+
+        //Destroy(gameObject, 10f);
     }
 
     private void PerformAttack()
