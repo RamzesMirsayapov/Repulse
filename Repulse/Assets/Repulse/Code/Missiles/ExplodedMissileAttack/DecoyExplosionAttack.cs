@@ -15,13 +15,14 @@ public class DecoyExplosionAttack : MonoBehaviour, IDecoy
 
     public void DecoyExploed()
     {
-        if(_targetFinder.TryFind(out IDamageable damageable))
+        if (_targetFinder.TryFind(out IDamageable damageable))
         {
             Debug.Log("а ну а ну");
 
             damageable.ApplyDamage(_damage);
-            DestroyObject();
         }
+        //вынести за условие
+        DestroyObject();
     }
 
     private void DestroyObject()

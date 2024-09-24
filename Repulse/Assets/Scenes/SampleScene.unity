@@ -521,7 +521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c299a21992f906a40afbea306a110419, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _missileSpeed: 40
+  _missileSpeed: 50
   _spawnPoints:
   - {fileID: 1706291838}
   - {fileID: 1678546162}
@@ -529,10 +529,10 @@ MonoBehaviour:
   - {fileID: 1712840926}
   _spawnMissileSettings:
   - _nameMissile: DefaultHomingMissile
-    _chanceSpawn: 50
+    _chanceSpawn: 100
     Weight: 0
   - _nameMissile: DecoyHomingMissile
-    _chanceSpawn: 50
+    _chanceSpawn: 0
     Weight: 0
 --- !u!1 &263594830
 GameObject:

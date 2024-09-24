@@ -20,6 +20,7 @@ public class WeaponAttack : MonoBehaviour
     private Vector3 _endPointReflection;
 
     private readonly List<IReflectable> _reflectableResults = new(24);
+    private readonly List<IDecoy> _decoyResults = new(24);
 
     private void Start()
     {
@@ -30,20 +31,13 @@ public class WeaponAttack : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            test();
             PerformAttack();
         }
     }
 
     private void PerformAttack()
     {
-        if(_targetFinder.TryFind(out IDecoy decoy))
-        {
-            Debug.Log("dgsgdsgdsgdgd");
-
-            decoy.DecoyExploed();
-
-            //return;
-        }
 
         if (_targetFinder.TryFind(_reflectableResults))
         {
@@ -57,9 +51,26 @@ public class WeaponAttack : MonoBehaviour
         }
     }
 
+    private void test()
+    {
+        if (_targetFinder.TryFind(_decoyResults))
+        {
+            Debug.Log("dgsgdsgdsgdgd");
+
+            _decoyResults.ForEach(Decoy);
+
+            //return;
+        }
+    }
+
     private void Reflect(IReflectable reflectable)
     {
         reflectable.ReflectionMove(_endPointReflection);
+    }
+
+    private void Decoy(IDecoy decoy)
+    {
+        decoy.DecoyExploed();
     }
 
     private void OnDrawGizmos()

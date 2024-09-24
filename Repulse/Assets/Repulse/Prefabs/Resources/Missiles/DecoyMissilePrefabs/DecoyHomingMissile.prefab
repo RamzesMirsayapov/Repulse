@@ -5008,8 +5008,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5673d72481e6cf4b8eb9182e9c66efe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 40
   _rigidbody: {fileID: 1387594833753412857}
+  _speed: 40
   _rotateSpeed: 200
   _maxDistancePredict: 100
   _minDistancePredict: 20
