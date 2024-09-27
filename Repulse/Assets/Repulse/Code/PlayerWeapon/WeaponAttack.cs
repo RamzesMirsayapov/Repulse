@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using static UnityEngine.GraphicsBuffer;
 
 public class WeaponAttack : MonoBehaviour
 {
@@ -70,7 +68,7 @@ public class WeaponAttack : MonoBehaviour
 
     private void Decoy(IDecoy decoy)
     {
-        decoy.DecoyExploed();
+        decoy.DecoyExplosion();
     }
 
     private void OnDrawGizmos()

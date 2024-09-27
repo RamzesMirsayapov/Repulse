@@ -1,6 +1,7 @@
+using System;
 using UnityEngine;
 
-public class ExplosionAttack : MonoBehaviour
+public class ExplosionAttack : MonoBehaviour, IExplosion
 {
     [SerializeField, Min(0f)] private float _damage;
 
@@ -8,11 +9,11 @@ public class ExplosionAttack : MonoBehaviour
 
     private OverlapTargetFinder _targetFinder;
 
+    public event Action OnDie;
+
     private void Start()
     {
         _targetFinder = new OverlapTargetFinder(_overlapSettings);
-
-        //Destroy(gameObject, 10f);
     }
 
     private void PerformAttack()
@@ -25,7 +26,14 @@ public class ExplosionAttack : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        DestroyObject();
+    }
+
+    private void DestroyObject()
+    {
         PerformAttack();
+
+        OnDie?.Invoke();
 
         Destroy(gameObject);
     }

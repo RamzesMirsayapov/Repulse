@@ -1,6 +1,7 @@
+using System;
 using UnityEngine;
 
-public class DecoyExplosionAttack : MonoBehaviour, IDecoy
+public class DecoyExplosionAttack : MonoBehaviour, IExplosion, IDecoy
 {
     [SerializeField, Min(0f)] private float _damage;
 
@@ -8,17 +9,17 @@ public class DecoyExplosionAttack : MonoBehaviour, IDecoy
 
     private OverlapTargetFinder _targetFinder;
 
+    public event Action OnDie;
+
     private void Start()
     {
         _targetFinder = new OverlapTargetFinder(_overlapSettings);
     }
 
-    public void DecoyExploed()
+    public void DecoyExplosion()
     {
         if (_targetFinder.TryFind(out IDamageable damageable))
         {
-            Debug.Log("а ну а ну");
-
             damageable.ApplyDamage(_damage);
         }
         //вынести за условие
@@ -27,12 +28,14 @@ public class DecoyExplosionAttack : MonoBehaviour, IDecoy
 
     private void DestroyObject()
     {
+        OnDie?.Invoke();
+
         Debug.Log("уничтоение");
         Destroy(gameObject);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        Destroy(gameObject);
+        DestroyObject();
     }
 }

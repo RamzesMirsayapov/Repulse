@@ -6,6 +6,11 @@ public class GameplaySceneInstaller : MonoInstaller
     [SerializeField] private PlayerMovement _playerPrefab;
     [SerializeField] private Transform _playerSpawnPoint;
 
+    [SerializeField] private PointDisplayer _pointDisplayer;
+    [SerializeField] private GameObject _player;
+
+    private Camera _camera;
+
     private PlayerMovement playerMovement;
 
     public override void InstallBindings()
@@ -19,6 +24,10 @@ public class GameplaySceneInstaller : MonoInstaller
         BindDirectMissileCreator();
 
         BindBallisticMissile();
+
+        BindCamera();
+
+        BindPointDisplayer();
     }
 
     private void CreatePlayer()
@@ -66,5 +75,19 @@ public class GameplaySceneInstaller : MonoInstaller
         Container.Bind<FlightCalculationBezier>().FromNew().AsTransient();
 
         Container.Bind<SettingsCalculationBezier>().FromComponentInParents().AsTransient();
+    }
+
+    private void BindPointDisplayer()
+    {
+
+
+        Container.Bind<PointDisplayer>().FromInstance(_pointDisplayer).AsSingle();
+    }
+
+    private void BindCamera()
+    {
+        _camera = _player.GetComponentInChildren<Camera>();
+
+        Container.Bind<Camera>().FromInstance(_camera).AsSingle();
     }
 }

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -2556729209205523204}
   - component: {fileID: -1261014441557331871}
   - component: {fileID: 7363334096197347649}
+  - component: {fileID: 6725066193428611522}
   m_Layer: 7
   m_Name: DefaultDirectMissile
   m_TagString: Untagged
@@ -127,8 +128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e81560166bad6af42b0fddf8eb60954c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 40
   _rigidbody: {fileID: -8024329934062330808}
+  _speed: 40
 --- !u!114 &-1261014441557331871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,6 +181,18 @@ CapsuleCollider:
   m_Height: 1.3824817
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 1}
+--- !u!114 &6725066193428611522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6667902201192983030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2764670a676c504d92013f6d9ee22fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7656813125811924480
 GameObject:
   m_ObjectHideFlags: 0

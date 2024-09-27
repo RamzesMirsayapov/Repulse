@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public abstract class Missile : MonoBehaviour, IReflectable
@@ -6,9 +7,13 @@ public abstract class Missile : MonoBehaviour, IReflectable
 
     [SerializeField] protected float _speed = 40f;
 
+    private PointDisplayer _pointDisplayer;
+
     private bool _isReflected = false;
 
     public bool IsReflected => _isReflected;
+
+    public event Action OnReflected;
 
     protected void Initialize(float speed)
     {
@@ -29,6 +34,8 @@ public abstract class Missile : MonoBehaviour, IReflectable
         }
 
         _isReflected = true;
+
+        OnReflected?.Invoke();
 
         Vector3 newDirection = direction - transform.position;
         newDirection.Normalize();

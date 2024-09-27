@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using UnityEngine;
 
 public class OverlapTargetFinder
@@ -81,8 +80,6 @@ public class OverlapTargetFinder
 
             default: throw new ArgumentOutOfRangeException(nameof(_overlapSettings.OverlapType));
         }
-
-        Debug.Log(_overlapSettings.Size);
     }
 
     private void OverlapBox(Vector3 position)

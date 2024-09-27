@@ -6,7 +6,7 @@ public class DirectMissileCreator : MissileCreator
     {
         var prefab = Resources.Load<GameObject>("Missiles/DefaultDirectMissile");
 
-        var gameObject = GameObject.Instantiate(prefab, transform.position, transform.rotation);
+        var gameObject = _diContainer.InstantiatePrefab(prefab, transform.position, transform.rotation, null);
 
         var missileComponent = gameObject.GetComponent<DirectMissileMove>();
 

@@ -1,4 +1,4 @@
 public interface IDecoy
 {
-    public void DecoyExploed();
+    public void DecoyExplosion();
 }

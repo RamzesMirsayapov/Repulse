@@ -4845,6 +4845,7 @@ GameObject:
   - component: {fileID: 6474612858650158986}
   - component: {fileID: 1169013975186991325}
   - component: {fileID: 1290018129933731463}
+  - component: {fileID: 8811541516848262688}
   m_Layer: 7
   m_Name: DecoyHomingMissile
   m_TagString: Untagged
@@ -5016,3 +5017,15 @@ MonoBehaviour:
   _maxTimePrediction: 0.1
   _deviationAmount: 25
   _deviationSpeed: 2
+--- !u!114 &8811541516848262688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2557476077672040512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2764670a676c504d92013f6d9ee22fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
