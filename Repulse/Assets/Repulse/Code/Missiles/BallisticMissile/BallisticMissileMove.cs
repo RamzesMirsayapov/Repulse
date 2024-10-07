@@ -9,11 +9,7 @@ public class BallisticMissileMove : Missile
 
     private const int _indexMaskEverything = 1;
 
-    private Vector3 _startPoint;
-    private Vector3 _middlePoint;
-    private Vector3 _lastTargetPosition;
-
-    private Vector3 _targetPosition;
+    private Vector3 _startPoint, _middlePoint, _lastTargetPosition, _targetPosition;
 
     private FlightCalculationBezier _flightCalculationBezier;
     private SettingsCalculationBezier _settingsCalculationBezier;
@@ -52,7 +48,7 @@ public class BallisticMissileMove : Missile
         _lastTargetPosition = _settingsCalculationBezier.TargetPosition.position;
 
         Ray ray = new Ray(_lastTargetPosition, Vector3.down);
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, 100f, _indexMaskEverything))
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, 1000f, _indexMaskEverything))
         {
             _targetPosition = hitInfo.point;
         }

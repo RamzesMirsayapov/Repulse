@@ -26,7 +26,7 @@ public class KeyboardInput : MonoBehaviour
 
         inputX = Input.GetAxis("Mouse X");
         inputY = Input.GetAxis("Mouse Y");
-        
+
         _jumpHandler.GravityHandling();
 
         if (Input.GetKeyDown(KeyCode.Space)) //должно идти после вверхнего метода хз почему

@@ -6,9 +6,9 @@ public class ProbalitySpawnMissiles
 
     private List<MissileCreator> _missileCreators;
 
-    private double _accumulatedWights;
-
     private System.Random _random = new System.Random();
+
+    private double _accumulatedWights;
 
     public ProbalitySpawnMissiles(List<SpawnMissileSettings> spawnMissileSettings, List<MissileCreator> missileCreators)
     {

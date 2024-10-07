@@ -10,14 +10,15 @@ public class DirectMissileSpawner : MonoBehaviour
 
     [SerializeField] private List<SpawnMissileSettings> _spawnMissileSettings;
 
-    private int _randomSpawnPointValues;
-
     private List<MissileCreator> _missileCreators;
+
+    private ProbalitySpawnMissiles _probalitySpawnMissiles;
+
     private MissileCreator _directMissileCreator;
     private MissileCreator _decoyDirectMissileCreator;
     private MissileCreator _missileCreator;
 
-    private ProbalitySpawnMissiles _probalitySpawnMissiles;
+    private int _randomSpawnPointValues;
 
     [Inject]
     private void Construct(DirectMissileCreator directMissileCreator, DecoyDirectMissileCreator decoyDirectMissileCreator)
@@ -36,15 +37,6 @@ public class DirectMissileSpawner : MonoBehaviour
         }
     }
 
-    private void SpawnMissile()
-    {
-        _randomSpawnPointValues = Random.Range(0, _spawnPoints.Length);
-
-        _missileCreator = _spawnMissileSettings[_probalitySpawnMissiles.GetRandomMissileIndex()].MissileCreator;
-
-        var missile = _missileCreator.CreateMissile(_speed, _spawnPoints[_randomSpawnPointValues]);
-    }
-
     private void InitializeSpawner()
     {
         _missileCreators = new List<MissileCreator>() { _directMissileCreator, _decoyDirectMissileCreator };
@@ -52,5 +44,14 @@ public class DirectMissileSpawner : MonoBehaviour
         _probalitySpawnMissiles = new ProbalitySpawnMissiles(_spawnMissileSettings, _missileCreators);
 
         _probalitySpawnMissiles.SortFactory();
+    }
+
+    private void SpawnMissile()
+    {
+        _randomSpawnPointValues = Random.Range(0, _spawnPoints.Length);
+
+        _missileCreator = _spawnMissileSettings[_probalitySpawnMissiles.GetRandomMissileIndex()].MissileCreator;
+
+        var missile = _missileCreator.CreateMissile(_speed, _spawnPoints[_randomSpawnPointValues]);
     }
 }

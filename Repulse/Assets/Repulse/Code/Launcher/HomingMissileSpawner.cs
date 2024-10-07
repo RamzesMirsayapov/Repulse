@@ -10,14 +10,14 @@ public class HomingMissileSpawner : MonoBehaviour
 
     [SerializeField] private List<SpawnMissileSettings> _spawnMissileSettings;
 
-    private int _randomSpawnPointValues;
-
     private List<MissileCreator> _missileCreators;
     private HomingMissileCreator _homingMissileCreator;
     private DecoyHomingMissileCreator _decoyHomingMissileCreator;
     private MissileCreator _missileCreator;
 
     private ProbalitySpawnMissiles _probalitySpawnMissiles;
+
+    private int _randomSpawnPointValues;
 
     [Inject]
     private void Construct(HomingMissileCreator homingMissileCreator, DecoyHomingMissileCreator decoyHomingMissileCreator)

@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 135053024}
   - component: {fileID: 135053025}
   m_Layer: 0
-  m_Name: Installer
+  m_Name: PointerIconInstaller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -271,11 +271,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e606ace4cc54a4183c218afc73c545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerPrefab: {fileID: 6528706413269498800, guid: c3e08e33eb1a42b4688d3d7502829776,
+  _pointDisplayer: {fileID: 263594835}
+  _pointerIcon: {fileID: 7093478495967305689, guid: 8b88fe4dfbc686c49b671a3709505064,
     type: 3}
-  _playerSpawnPoint: {fileID: 507425244}
-  _pointDisplayer: {fileID: 661535624}
-  _player: {fileID: 1550074965574291496, guid: c3e08e33eb1a42b4688d3d7502829776, type: 3}
 --- !u!1 &152938466
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,7 +283,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 152938467}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MissileSpawnPoint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -421,7 +419,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 165627552}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DirectLauncher3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -453,7 +451,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 176831538}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DirectSpawnPoint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -469,7 +467,7 @@ Transform:
   m_GameObject: {fileID: 176831537}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0.688}
+  m_LocalPosition: {x: -0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -485,7 +483,7 @@ GameObject:
   m_Component:
   - component: {fileID: 219792588}
   - component: {fileID: 219792589}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: '*HomingLaunchers'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -531,10 +529,10 @@ MonoBehaviour:
   - {fileID: 1712840926}
   _spawnMissileSettings:
   - _nameMissile: DefaultHomingMissile
-    _chanceSpawn: 100
+    _chanceSpawn: 50
     Weight: 0
   - _nameMissile: DecoyHomingMissile
-    _chanceSpawn: 0
+    _chanceSpawn: 50
     Weight: 0
 --- !u!1 &263594830
 GameObject:
@@ -548,6 +546,7 @@ GameObject:
   - component: {fileID: 263594833}
   - component: {fileID: 263594832}
   - component: {fileID: 263594831}
+  - component: {fileID: 263594835}
   m_Layer: 5
   m_Name: MainCanvas
   m_TagString: Untagged
@@ -587,9 +586,9 @@ MonoBehaviour:
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -638,6 +637,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &263594835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263594830}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71fffa1cfed3f9c4b9326c8f4d8cdef5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &350453945
 GameObject:
   m_ObjectHideFlags: 0
@@ -713,6 +724,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 350453945}
   m_CullTransparentMesh: 1
+--- !u!1 &407903675
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 407903677}
+  - component: {fileID: 407903676}
+  m_Layer: 0
+  m_Name: MissileInstaller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &407903676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 407903675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b73d63ae71aebcb41a0150ee304a742b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &407903677
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 407903675}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1977501589}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -842,8 +897,7 @@ GameObject:
   - component: {fileID: 413789455}
   - component: {fileID: 413789458}
   - component: {fileID: 413789457}
-  - component: {fileID: 413789456}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -860,33 +914,12 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1134111481}
   m_Father: {fileID: 585223803}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &413789456
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 413789454}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &413789457
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -948,7 +981,7 @@ GameObject:
   - component: {fileID: 429237471}
   - component: {fileID: 429237472}
   - component: {fileID: 429237473}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: '*DirectLaunchers'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1011,10 +1044,10 @@ MonoBehaviour:
   - {fileID: 1205908412}
   _spawnMissileSettings:
   - _nameMissile: DirectMissile
-    _chanceSpawn: 100
+    _chanceSpawn: 50
     Weight: 0
   - _nameMissile: DecoyDirectMissile
-    _chanceSpawn: 0
+    _chanceSpawn: 50
     Weight: 0
 --- !u!1 &450096662
 GameObject:
@@ -1074,7 +1107,7 @@ Transform:
   m_GameObject: {fileID: 507425243}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1089,7 +1122,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 507569585}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MiddlePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1120,7 +1153,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 530447585}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MiddlePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1153,8 +1186,7 @@ GameObject:
   - component: {fileID: 547576356}
   - component: {fileID: 547576359}
   - component: {fileID: 547576358}
-  - component: {fileID: 547576357}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1171,33 +1203,12 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 176831538}
   m_Father: {fileID: 813791690}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &547576357
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 547576355}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &547576358
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1257,7 +1268,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 585223803}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DirectLauncher1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1289,7 +1300,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 591166783}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HomingLauncher3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1321,7 +1332,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 646096045}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MissileSpawnPoint3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1362,7 +1373,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &661535624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1370,7 +1381,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 661535623}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71fffa1cfed3f9c4b9326c8f4d8cdef5, type: 3}
   m_Name: 
@@ -1404,7 +1415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
@@ -1466,7 +1477,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 669214600}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MissileSpawnPoint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1603,7 +1614,7 @@ GameObject:
   m_Component:
   - component: {fileID: 694236773}
   - component: {fileID: 694236774}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BallisticLauncher1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1650,7 +1661,7 @@ GameObject:
   m_Component:
   - component: {fileID: 718010904}
   - component: {fileID: 718010905}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BallisticLauncher2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1845,7 +1856,7 @@ GameObject:
   - component: {fileID: 723003100}
   - component: {fileID: 723003099}
   - component: {fileID: 723003098}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2057,7 +2068,7 @@ GameObject:
   - component: {fileID: 768528935}
   - component: {fileID: 768528934}
   - component: {fileID: 768528933}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2074,7 +2085,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 646096045}
@@ -2163,7 +2174,7 @@ GameObject:
   - component: {fileID: 786150750}
   - component: {fileID: 786150749}
   - component: {fileID: 786150748}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2180,7 +2191,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1205908412}
@@ -2266,7 +2277,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 813791690}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DirectLauncher2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2557,7 +2568,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 954358824}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DirectSpawnPoint3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2573,7 +2584,7 @@ Transform:
   m_GameObject: {fileID: 954358823}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0.688}
+  m_LocalPosition: {x: -0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2591,7 +2602,7 @@ GameObject:
   - component: {fileID: 1033073290}
   - component: {fileID: 1033073289}
   - component: {fileID: 1033073288}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2608,7 +2619,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1712840926}
@@ -2835,7 +2846,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1134111481}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DirectSpawnPoint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2851,7 +2862,7 @@ Transform:
   m_GameObject: {fileID: 1134111480}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0.688}
+  m_LocalPosition: {x: -0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2869,7 +2880,7 @@ GameObject:
   - component: {fileID: 1134945842}
   - component: {fileID: 1134945841}
   - component: {fileID: 1134945840}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2974,7 +2985,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1148357788}
   - component: {fileID: 1148357789}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spawner / Launchers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3138,7 +3149,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1205908412}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DirectSpawnPoint3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3154,7 +3165,7 @@ Transform:
   m_GameObject: {fileID: 1205908411}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0.688}
+  m_LocalPosition: {x: -0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3169,7 +3180,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1323327300}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HomingLauncher2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3269,7 +3280,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1427258995}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HomingLauncher1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3406,7 +3417,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1508484884}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HomingLauncher4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3438,7 +3449,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1547431353}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DirectLauncher4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3471,7 +3482,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1552902686}
   - component: {fileID: 1552902687}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: '*BallisticLaunchers'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3625,7 +3636,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1678546162}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MissileSpawnPoint2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3656,7 +3667,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1706291838}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MissileSpawnPoint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3687,7 +3698,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1712840926}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MissileSpawnPoint4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3826,7 +3837,7 @@ GameObject:
   - component: {fileID: 1865637080}
   - component: {fileID: 1865637079}
   - component: {fileID: 1865637078}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3843,7 +3854,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1706291838}
@@ -3920,6 +3931,53 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1865637076}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1872585282
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1872585284}
+  - component: {fileID: 1872585283}
+  m_Layer: 0
+  m_Name: PlayerInstaller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1872585283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872585282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 204d902e76bfc764fb2b6429e72c05a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerPrefab: {fileID: 6528706413269498800, guid: c3e08e33eb1a42b4688d3d7502829776,
+    type: 3}
+  _playerSpawnPoint: {fileID: 507425244}
+--- !u!4 &1872585284
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872585282}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1977501589}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1898967144
 GameObject:
   m_ObjectHideFlags: 0
@@ -4087,6 +4145,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 135053024}
+  - {fileID: 1872585284}
+  - {fileID: 407903677}
   m_Father: {fileID: 450096663}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1989713892
@@ -4101,7 +4161,7 @@ GameObject:
   - component: {fileID: 1989713896}
   - component: {fileID: 1989713895}
   - component: {fileID: 1989713894}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4118,7 +4178,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1678546162}
@@ -4238,8 +4298,7 @@ GameObject:
   - component: {fileID: 2052935148}
   - component: {fileID: 2052935151}
   - component: {fileID: 2052935150}
-  - component: {fileID: 2052935149}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4256,33 +4315,12 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 954358824}
   m_Father: {fileID: 165627552}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &2052935149
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2052935147}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &2052935150
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4379,6 +4417,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scriptableObjectInstallers: []
   _monoInstallers:
+  - {fileID: 1872585283}
+  - {fileID: 407903676}
   - {fileID: 135053025}
   _installerPrefabs: []
   _autoRun: 1
@@ -4532,9 +4572,9 @@ SceneRoots:
   - {fileID: 2032332319}
   - {fileID: 1898967145}
   - {fileID: 718768255}
-  - {fileID: 1148357788}
-  - {fileID: 263594834}
   - {fileID: 1397430247}
+  - {fileID: 263594834}
   - {fileID: 450096663}
+  - {fileID: 1148357788}
   - {fileID: 507425244}
   - {fileID: 661535628}

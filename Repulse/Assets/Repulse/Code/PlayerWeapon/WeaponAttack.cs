@@ -3,41 +3,36 @@ using UnityEngine;
 
 public class WeaponAttack : MonoBehaviour
 {
-    [SerializeField] private Camera _mainCamera;
+    [SerializeField] private LayerMask _rayCastMask;
 
     [SerializeField] private OverlapSettings _overlapSettings;
 
-    [SerializeField] private LayerMask _rayCastMask;
-
+    [SerializeField] private Camera _mainCamera;
     private Transform cameraTransform => _mainCamera.transform;
-
-    private OverlapTargetFinder _targetFinder;
-
-    private const float _distance = Mathf.Infinity;
-
-    private Vector3 _endPointReflection;
 
     private readonly List<IReflectable> _reflectableResults = new(24);
     private readonly List<IDecoy> _decoyResults = new(24);
 
-    private void Start()
-    {
-        _targetFinder = new OverlapTargetFinder(_overlapSettings);
-    }
+    private Vector3 _endPointReflection;
+
+    private readonly float _distance = Mathf.Infinity;
 
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
-            test();
             PerformAttack();
         }
     }
 
     private void PerformAttack()
     {
+        if (_overlapSettings.TryFind(_decoyResults))
+        {
+            _decoyResults.ForEach(Decoy);
+        }
 
-        if (_targetFinder.TryFind(_reflectableResults))
+        if (_overlapSettings.TryFind(_reflectableResults))
         {
             Ray ray = new Ray(cameraTransform.position, cameraTransform.forward);
 
@@ -46,18 +41,6 @@ public class WeaponAttack : MonoBehaviour
                 _endPointReflection = hitInfo.point;
                 _reflectableResults.ForEach(Reflect);
             }
-        }
-    }
-
-    private void test()
-    {
-        if (_targetFinder.TryFind(_decoyResults))
-        {
-            Debug.Log("dgsgdsgdsgdgd");
-
-            _decoyResults.ForEach(Decoy);
-
-            //return;
         }
     }
 

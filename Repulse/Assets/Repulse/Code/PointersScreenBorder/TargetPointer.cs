@@ -35,9 +35,12 @@ public class TargetPointer : MonoBehaviour
             _exploesionAttack = decoyExplosionAttack;
         }
 
-        AddToList();
-
         Debug.Log(_exploesionAttack);
+    }
+
+    private void Start()
+    {
+        AddToList();
     }
 
     private void OnEnable()

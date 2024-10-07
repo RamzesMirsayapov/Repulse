@@ -3,17 +3,15 @@ using UnityEngine;
 
 public abstract class Missile : MonoBehaviour, IReflectable
 {
+    public event Action OnReflected;
+
     [SerializeField] protected Rigidbody _rigidbody;
 
     [SerializeField] protected float _speed = 40f;
 
-    private PointDisplayer _pointDisplayer;
-
     private bool _isReflected = false;
 
     public bool IsReflected => _isReflected;
-
-    public event Action OnReflected;
 
     protected void Initialize(float speed)
     {

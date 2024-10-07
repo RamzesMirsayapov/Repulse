@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using Zenject;
 
@@ -11,11 +10,12 @@ public class HomingMissileMove : Missile
     [SerializeField] private float _maxDistancePredict = 100f;
     [SerializeField] private float _minDistancePredict = 20f;
     [SerializeField] private float _maxTimePrediction = 0.1f;
-    private Vector3 _standardPrediction, _deviatedPrediction;
 
     [Header("DEVIATION")]
     [SerializeField] private float _deviationAmount = 25f;
     [SerializeField] private float _deviationSpeed = 2f;
+
+    private Vector3 _standardPrediction, _deviatedPrediction;
 
     private PlayerMovement _playerTarget;
 

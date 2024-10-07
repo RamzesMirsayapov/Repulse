@@ -3,11 +3,11 @@ using Zenject;
 
 public class HomingMissileCreator : MissileCreator
 {
-    public override Missile CreateMissile(float speed, Transform transform)
+    public override Missile CreateMissile(float speed, Transform spawnPoint)
     {
         var prefab = Resources.Load<GameObject>("Missiles/DefaultHomingMissile");
 
-        var gameObject = _diContainer.InstantiatePrefab(prefab, transform.position, transform.rotation, null);
+        var gameObject = _diContainer.InstantiatePrefab(prefab, spawnPoint.position, spawnPoint.rotation, spawnPoint);
 
         var missileComponent = gameObject.GetComponent<HomingMissileMove>();
 

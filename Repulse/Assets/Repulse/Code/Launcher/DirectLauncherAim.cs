@@ -13,11 +13,6 @@ public class DirectLauncherAim : MonoBehaviour
         _playerMovement = playerMovement;
     }
 
-    private void Start()
-    {
-
-    }
-
     private void Update()
     {
         foreach (var launcher in _launchers)
