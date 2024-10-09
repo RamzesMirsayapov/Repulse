@@ -12,7 +12,7 @@ public class PlayerJumpHandler : MonoBehaviour
     private CharacterController _characterController;
     private PlayerMovement _playerMovement;
 
-    private float startJumpVelocity;
+    private float startJumpVelocity;           
     private Vector3 velocityDirection;
 
     private void Start()
@@ -24,7 +24,7 @@ public class PlayerJumpHandler : MonoBehaviour
         _gravityForce = (2 * _maxJumpHeight) / Mathf.Pow(maxHeightTime, 2);
         startJumpVelocity = (2 * _maxJumpHeight) / maxHeightTime;
     }
-
+    
     public void Jump()
     {
         if (_characterController.isGrounded)
