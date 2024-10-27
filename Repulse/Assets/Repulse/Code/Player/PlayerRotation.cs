@@ -1,4 +1,5 @@
 using UnityEngine;
+using Zenject;
 
 public class PlayerRotation : MonoBehaviour
 {
@@ -7,6 +8,21 @@ public class PlayerRotation : MonoBehaviour
     [SerializeField, Min(0f)] private float _maxYAngle = 90f;
 
     private float _cameraVerticalRotation;
+
+    private IInput _input;
+
+    [Inject]
+    private void Construct(IInput input)
+    {
+        _input = input;
+
+        _input.OnRotate += Rotate;
+    }
+
+    private void OnDisable()
+    {
+        _input.OnRotate -= Rotate;
+    }
 
     public void Rotate(float inputX, float inputY)
     {

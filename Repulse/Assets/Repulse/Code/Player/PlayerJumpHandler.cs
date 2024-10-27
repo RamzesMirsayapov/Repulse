@@ -1,4 +1,5 @@
 using UnityEngine;
+using Zenject;
 
 public class PlayerJumpHandler : MonoBehaviour
 {
@@ -14,6 +15,23 @@ public class PlayerJumpHandler : MonoBehaviour
 
     private float startJumpVelocity;           
     private Vector3 velocityDirection;
+
+    private IInput _input;
+
+    [Inject]
+    private void Construct(IInput input)
+    {
+        _input = input;
+
+        _input.OnSpaceClicked += Jump;
+        _input.OnGravityChange += GravityHandling;
+    }
+
+    private void OnDisable()
+    {
+        _input.OnSpaceClicked -= Jump;
+        _input.OnGravityChange -= GravityHandling;
+    }
 
     private void Start()
     {

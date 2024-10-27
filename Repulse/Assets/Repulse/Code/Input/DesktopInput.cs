@@ -1,14 +1,15 @@
 using System;
 using UnityEngine;
+using UnityEngine.UIElements;
 using Zenject;
 
 public class DesktopInput : IInput, ITickable
 {
     public event Action<float, float> OnRotate;  // имена
     public event Action<Vector3> OnDirectionMove;
+    public event Action OnLeftMouseClicked;
     public event Action OnGravityChange;
     public event Action OnSpaceClicked;
-    public event Action OnLeftMouseClicked;
 
     private float horizontal;
     private float vertical;
@@ -24,9 +25,10 @@ public class DesktopInput : IInput, ITickable
         inputX = Input.GetAxis("Mouse X");
         inputY = Input.GetAxis("Mouse Y");
 
-        CheckGravitation();
-
+        CheckRotate();
         CheckMove(); // мб ниже
+
+        CheckGravitation();
 
         ProcessSpaceClick();
         ProcessMouseClick();

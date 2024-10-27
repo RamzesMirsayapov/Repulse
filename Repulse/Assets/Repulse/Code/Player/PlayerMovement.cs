@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.Windows;
+using Zenject;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
@@ -10,6 +12,21 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private CharacterController _characterController;
 
     public CharacterController CharacterController => _characterController;
+
+    private IInput _input;
+
+    [Inject]
+    private void Construct(IInput input)
+    {
+        _input = input;
+
+        _input.OnDirectionMove += Move;
+    }
+
+    private void OnDisable()
+    {
+        _input.OnDirectionMove -= Move;
+    }
 
     public float VelocityDirectionY
     {

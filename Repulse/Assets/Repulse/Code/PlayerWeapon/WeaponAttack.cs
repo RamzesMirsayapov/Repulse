@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class WeaponAttack : MonoBehaviour
 {
@@ -17,12 +18,19 @@ public class WeaponAttack : MonoBehaviour
 
     private readonly float _distance = Mathf.Infinity;
 
-    private void Update()
+    private IInput _input;
+
+    [Inject]
+    private void Construct(IInput input)
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            PerformAttack();
-        }
+        _input = input;
+
+        _input.OnLeftMouseClicked += PerformAttack;
+    }
+
+    private void OnDisable()
+    {
+        _input.OnLeftMouseClicked -= PerformAttack;
     }
 
     private void PerformAttack()

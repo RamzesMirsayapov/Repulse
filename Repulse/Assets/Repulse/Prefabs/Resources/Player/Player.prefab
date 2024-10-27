@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7746384626233795771}
   - component: {fileID: 464277074988431420}
   - component: {fileID: 6528706413269498800}
-  - component: {fileID: 6939742100345206145}
   - component: {fileID: 940671393734993420}
   - component: {fileID: 504039306697294455}
   m_Layer: 6
@@ -77,21 +76,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 20
   _characterController: {fileID: 464277074988431420}
---- !u!114 &6939742100345206145
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1550074965574291496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e3c95a43c8756c4c840df1fafd11bc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerMovement: {fileID: 6528706413269498800}
-  _playerRotation: {fileID: 4806086566642395655}
-  _jumpHandler: {fileID: 940671393734993420}
 --- !u!114 &940671393734993420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -407,7 +391,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 982e36c689423934b9b8279d0230410b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainCamera: {fileID: 5933915302206513567}
+  _rayCastMask:
+    serializedVersion: 2
+    m_Bits: 1
   _overlapSettings:
     _searchMask:
       serializedVersion: 2
@@ -423,9 +409,7 @@ MonoBehaviour:
       m_Bits: 1
     _drawGizmos: 1
     _gizmosColor: {r: 1, g: 0, b: 0.029372692, a: 0.5529412}
-  _rayCastMask:
-    serializedVersion: 2
-    m_Bits: 1
+  _mainCamera: {fileID: 5933915302206513567}
 --- !u!1 &4852627260651022843
 GameObject:
   m_ObjectHideFlags: 0
