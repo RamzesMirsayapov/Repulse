@@ -2,18 +2,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class HomingMissileSpawner : MonoBehaviour
+public class HomingMissileSpawner : MissilesSpawner
 {
-    [SerializeField] private float _missileSpeed = 40;
-
-    [SerializeField] private Transform[] _spawnPoints;
-
     [SerializeField] private List<SpawnMissileSettings> _spawnMissileSettings;
 
-    private List<MissileCreator> _missileCreators;
+    private List<ISpawnable> _missileCreators;
     private HomingMissileCreator _homingMissileCreator;
     private DecoyHomingMissileCreator _decoyHomingMissileCreator;
-    private MissileCreator _missileCreator;
 
     private ProbalitySpawnMissiles _probalitySpawnMissiles;
 
@@ -24,15 +19,8 @@ public class HomingMissileSpawner : MonoBehaviour
     {
         _homingMissileCreator = homingMissileCreator;
         _decoyHomingMissileCreator = decoyHomingMissileCreator;
-    }
 
-    private void Start()
-    {
-        _missileCreators = new List<MissileCreator>() { _homingMissileCreator, _decoyHomingMissileCreator };
-
-        _probalitySpawnMissiles = new ProbalitySpawnMissiles(_spawnMissileSettings, _missileCreators);
-
-        _probalitySpawnMissiles.SortFactory();
+        InitializeSpawner();
     }
 
     private void Update()
@@ -43,12 +31,21 @@ public class HomingMissileSpawner : MonoBehaviour
         }
     }
 
-    private void SpawnMissile()
+    protected override void InitializeSpawner()
+    {
+        _missileCreators = new List<ISpawnable>() { _homingMissileCreator, _decoyHomingMissileCreator };
+
+        _probalitySpawnMissiles = new ProbalitySpawnMissiles(_spawnMissileSettings, _missileCreators);
+
+        _probalitySpawnMissiles.SortFactory();
+    }
+
+    public override void SpawnMissile()
     {
         _randomSpawnPointValues = Random.Range(0, _spawnPoints.Length);
 
-        _missileCreator = _spawnMissileSettings[_probalitySpawnMissiles.GetRandomMissileIndex()].MissileCreator;
+        _missileCreator = (MissileCreator)_spawnMissileSettings[_probalitySpawnMissiles.GetRandomMissileIndex()].MissileCreator;
         
-        var newMissile = _missileCreator.CreateMissile(_missileSpeed, _spawnPoints[_randomSpawnPointValues]);
+        var newMissile = _missileCreator.CreateMissile(_speed, _spawnPoints[_randomSpawnPointValues]);
     }
 }

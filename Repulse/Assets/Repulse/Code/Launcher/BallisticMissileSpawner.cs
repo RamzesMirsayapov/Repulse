@@ -2,14 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class BallisticMissileSpawner : MonoBehaviour
+public class BallisticMissileSpawner : MissilesSpawner
 {
-    [SerializeField] private float _missileSpeed = 40;
-
-    [SerializeField] private List<Transform> _spawnPoints;
-
-    private MissileCreator _missileCreator;
-
     [Inject]
     private void Construct(BallisticMissileCreator ballisticMissileCreator)
     {
@@ -24,8 +18,13 @@ public class BallisticMissileSpawner : MonoBehaviour
         }
     }
 
-    private void SpawnMissile()
+    protected override void InitializeSpawner()
     {
-        var newMissile = _missileCreator.CreateMissile(_missileSpeed, _spawnPoints[Random.Range(0, _spawnPoints.Count)]);
+
+    }
+
+    public override void SpawnMissile()
+    {
+        var newMissile = _missileCreator.CreateMissile(_speed, _spawnPoints[Random.Range(0, _spawnPoints.Length)]);
     }
 }

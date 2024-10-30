@@ -2,21 +2,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class DirectMissileSpawner : MonoBehaviour
+public class DirectMissileSpawner : MissilesSpawner
 {
-    [SerializeField] private float _speed = 40;
-
-    [SerializeField] private Transform[] _spawnPoints;
-
     [SerializeField] private List<SpawnMissileSettings> _spawnMissileSettings;
 
-    private List<MissileCreator> _missileCreators;
+    private List<ISpawnable> _missileCreators;
 
     private ProbalitySpawnMissiles _probalitySpawnMissiles;
 
     private MissileCreator _directMissileCreator;
     private MissileCreator _decoyDirectMissileCreator;
-    private MissileCreator _missileCreator;
 
     private int _randomSpawnPointValues;
 
@@ -25,9 +20,9 @@ public class DirectMissileSpawner : MonoBehaviour
     {
         _directMissileCreator = directMissileCreator;
         _decoyDirectMissileCreator = decoyDirectMissileCreator;
-    }
 
-    private void Start() => InitializeSpawner();
+        InitializeSpawner();
+    }
 
     private void Update()
     {
@@ -37,20 +32,20 @@ public class DirectMissileSpawner : MonoBehaviour
         }
     }
 
-    private void InitializeSpawner()
+    protected override void InitializeSpawner()
     {
-        _missileCreators = new List<MissileCreator>() { _directMissileCreator, _decoyDirectMissileCreator };
+        _missileCreators = new List<ISpawnable>() { _directMissileCreator, _decoyDirectMissileCreator };
 
         _probalitySpawnMissiles = new ProbalitySpawnMissiles(_spawnMissileSettings, _missileCreators);
 
         _probalitySpawnMissiles.SortFactory();
     }
 
-    private void SpawnMissile()
+    public override void SpawnMissile()
     {
         _randomSpawnPointValues = Random.Range(0, _spawnPoints.Length);
 
-        _missileCreator = _spawnMissileSettings[_probalitySpawnMissiles.GetRandomMissileIndex()].MissileCreator;
+        _missileCreator = (MissileCreator)_spawnMissileSettings[_probalitySpawnMissiles.GetRandomMissileIndex()].MissileCreator;
 
         var missile = _missileCreator.CreateMissile(_speed, _spawnPoints[_randomSpawnPointValues]);
     }

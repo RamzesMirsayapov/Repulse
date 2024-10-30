@@ -26,6 +26,8 @@ public class WeaponAttack : MonoBehaviour
         _input = input;
 
         _input.OnLeftMouseClicked += PerformAttack;
+
+        Cursor.lockState = CursorLockMode.Locked; ////убрать
     }
 
     private void OnDisable()

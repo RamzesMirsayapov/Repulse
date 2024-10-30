@@ -521,7 +521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c299a21992f906a40afbea306a110419, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _missileSpeed: 50
+  _speed: 40
   _spawnPoints:
   - {fileID: 1706291838}
   - {fileID: 1678546162}
@@ -3017,23 +3017,21 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1148357787}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c299a21992f906a40afbea306a110419, type: 3}
+  m_Script: {fileID: 11500000, guid: 0b76692e1708c7442a9aa7a1fc8992e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _missileSpeed: 40
-  _spawnPoints:
-  - {fileID: 1706291838}
-  - {fileID: 1678546162}
-  - {fileID: 646096045}
-  - {fileID: 1712840926}
+  _missilesSpawner: []
   _spawnMissileSettings:
-  - _nameMissile: DefaultHomingMissile
-    _chanceSpawn: 90
+  - _nameMissile: 
+    _chanceSpawn: 0
     Weight: 0
-  - _nameMissile: DefaultDirectMissile
-    _chanceSpawn: 10
+  - _nameMissile: 
+    _chanceSpawn: 0
+    Weight: 0
+  - _nameMissile: 
+    _chanceSpawn: 0
     Weight: 0
 --- !u!1 &1192978481
 GameObject:
@@ -3518,7 +3516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1036a336aa76934419b9501fdbb8f399, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _missileSpeed: 40
+  _speed: 40
   _spawnPoints:
   - {fileID: 669214600}
   - {fileID: 152938467}
