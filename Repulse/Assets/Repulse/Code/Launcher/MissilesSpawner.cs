@@ -10,5 +10,5 @@ public abstract class MissilesSpawner : MonoBehaviour, ISpawnable
     protected MissileCreator _missileCreator;
 
     protected abstract void InitializeSpawner();
-    public abstract void SpawnMissile();
+    public abstract void SpawnMissile(); // передавать скорость
 }

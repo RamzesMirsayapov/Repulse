@@ -1,30 +1,50 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GlobalMissilesSpawner : MonoBehaviour
 {
-    //[SerializeField] private HomingMissileSpawner HomingLaunchers;
-    //[SerializeField] private DirectMissileSpawner DirectLaunchers;
-    //[SerializeField] private BallisticMissileSpawner BallisticLaunchers;
+    [SerializeField] private DifficultyLevelConfig _difficultyLevelConfig;
+
+    private List<SpawnObjectsSettings> _spawnObjectsSettings => _difficultyLevelConfig.LevelDifficultySettings[0].SpawnObjectsSettings;
+    private float _cooldownSpawn => _difficultyLevelConfig.LevelDifficultySettings[0].CoolDownSpawn;
+    private float _speedMissile => _difficultyLevelConfig.LevelDifficultySettings[0].SpeedMissiles;
 
     public event Action OnMissileSpawn;
 
-    [SerializeField] private List<MissilesSpawner> _missilesSpawner;
+    [SerializeField] private List<MissilesSpawner> _missilesSpawners;
 
-    [SerializeField] private List<SpawnMissileSettings> _spawnMissileSettings;
+    //[SerializeField] private List<SpawnObjectsSettings> _spawnObjectsSettings;
 
-    private List<ISpawnable> _missilesSpawner2;
+    private List<ISpawnable> _missilesSpawner2 = new List<ISpawnable>();
 
     private ProbalitySpawnMissiles _probalitySpawnMissiles;
 
     private MissilesSpawner _missileSpawner;
 
-    private int _randomSpawnPointValues;
+
+    private Coroutine _spawnCoroutine;
+
+    private float _spawnCooldown;
+
+    private int _currentLevel;
 
     private void Start()
     {
         InitializeSpawner();
+    }
+
+    private void InitializeSpawner()
+    {
+        foreach (var item in _missilesSpawners)
+        {
+            _missilesSpawner2.Add(item);
+        }
+
+        _probalitySpawnMissiles = new ProbalitySpawnMissiles(_spawnObjectsSettings, _missilesSpawner2);
+
+        _probalitySpawnMissiles.SortFactory();
     }
 
     private void Update()
@@ -35,23 +55,39 @@ public class GlobalMissilesSpawner : MonoBehaviour
         }
     }
 
-    private void InitializeSpawner()
+    public void StartWork()
     {
+        StopWork();
+        _spawnCoroutine = StartCoroutine(SpawnCoroutine());
+    }
 
+    public void StopWork()
+    {
+        if (_spawnCoroutine != null)
+            StopCoroutine(SpawnCoroutine());
+    }
 
-        _probalitySpawnMissiles = new ProbalitySpawnMissiles(_spawnMissileSettings, _missilesSpawner2);
-
-        _probalitySpawnMissiles.SortFactory();
+    public void SetLevel(int level)
+    {
+        _currentLevel = level;
     }
 
     private void SpawnMissile()
     {
-        OnMissileSpawn?.Invoke(); ///
+        OnMissileSpawn?.Invoke();
 
-        _randomSpawnPointValues = UnityEngine.Random.Range(0, _missilesSpawner.Count);
-
-        _missileSpawner = (MissilesSpawner)_spawnMissileSettings[_probalitySpawnMissiles.GetRandomMissileIndex()].MissileCreator;
+        _missileSpawner = (MissilesSpawner)_spawnObjectsSettings[_probalitySpawnMissiles.GetRandomMissileIndex()].SpawnObject;
 
         _missileSpawner.SpawnMissile();
+    }
+
+    private IEnumerator SpawnCoroutine()
+    {
+        while(true)
+        {
+            SpawnMissile();
+
+            yield return new WaitForSeconds(_spawnCooldown);
+        }
     }
 }

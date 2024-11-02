@@ -4,7 +4,7 @@ using Zenject;
 
 public class DirectMissileSpawner : MissilesSpawner
 {
-    [SerializeField] private List<SpawnMissileSettings> _spawnMissileSettings;
+    [SerializeField] private List<SpawnObjectsSettings> _spawnObjectsSettings;
 
     private List<ISpawnable> _missileCreators;
 
@@ -36,7 +36,7 @@ public class DirectMissileSpawner : MissilesSpawner
     {
         _missileCreators = new List<ISpawnable>() { _directMissileCreator, _decoyDirectMissileCreator };
 
-        _probalitySpawnMissiles = new ProbalitySpawnMissiles(_spawnMissileSettings, _missileCreators);
+        _probalitySpawnMissiles = new ProbalitySpawnMissiles(_spawnObjectsSettings, _missileCreators);
 
         _probalitySpawnMissiles.SortFactory();
     }
@@ -45,7 +45,7 @@ public class DirectMissileSpawner : MissilesSpawner
     {
         _randomSpawnPointValues = Random.Range(0, _spawnPoints.Length);
 
-        _missileCreator = (MissileCreator)_spawnMissileSettings[_probalitySpawnMissiles.GetRandomMissileIndex()].MissileCreator;
+        _missileCreator = (MissileCreator)_spawnObjectsSettings[_probalitySpawnMissiles.GetRandomMissileIndex()].SpawnObject;
 
         var missile = _missileCreator.CreateMissile(_speed, _spawnPoints[_randomSpawnPointValues]);
     }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ProbalitySpawnMissiles
 {
-    private List<SpawnMissileSettings> _spawnMissileSettings;
+    private List<SpawnObjectsSettings> _spawnMissileSettings;
 
     private List<ISpawnable> _missileCreators;
 
@@ -11,7 +11,7 @@ public class ProbalitySpawnMissiles
 
     private double _accumulatedWights;
 
-    public ProbalitySpawnMissiles(List<SpawnMissileSettings> spawnMissileSettings, List<ISpawnable> missileCreators)
+    public ProbalitySpawnMissiles(List<SpawnObjectsSettings> spawnMissileSettings, List<ISpawnable> missileCreators)
     {
         _spawnMissileSettings = spawnMissileSettings;
         _missileCreators = missileCreators;
@@ -23,7 +23,7 @@ public class ProbalitySpawnMissiles
 
         foreach (var settings in _spawnMissileSettings)
         {
-            settings.MissileCreator = _missileCreators[index];
+            settings.SpawnObject = _missileCreators[index];
 
             index++;
         }

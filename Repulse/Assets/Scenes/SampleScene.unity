@@ -527,12 +527,12 @@ MonoBehaviour:
   - {fileID: 1678546162}
   - {fileID: 646096045}
   - {fileID: 1712840926}
-  _spawnMissileSettings:
-  - _nameMissile: DefaultHomingMissile
-    _chanceSpawn: 50
+  _spawnObjectsSettings:
+  - _nameObject: HomingMissile
+    _chanceSpawn: 70
     Weight: 0
-  - _nameMissile: DecoyHomingMissile
-    _chanceSpawn: 50
+  - _nameObject: DecoyHomingMissile
+    _chanceSpawn: 30
     Weight: 0
 --- !u!1 &263594830
 GameObject:
@@ -1042,12 +1042,12 @@ MonoBehaviour:
   - {fileID: 176831538}
   - {fileID: 954358824}
   - {fileID: 1205908412}
-  _spawnMissileSettings:
-  - _nameMissile: DirectMissile
-    _chanceSpawn: 50
+  _spawnObjectsSettings:
+  - _nameObject: DirectMissile
+    _chanceSpawn: 70
     Weight: 0
-  - _nameMissile: DecoyDirectMissile
-    _chanceSpawn: 50
+  - _nameObject: DecoyDirectMissile
+    _chanceSpawn: 30
     Weight: 0
 --- !u!1 &450096662
 GameObject:
@@ -3006,8 +3006,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 219792588}
-  - {fileID: 1552902686}
   - {fileID: 429237471}
+  - {fileID: 1552902686}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1148357789
@@ -3022,17 +3022,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b76692e1708c7442a9aa7a1fc8992e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _missilesSpawner: []
-  _spawnMissileSettings:
-  - _nameMissile: 
-    _chanceSpawn: 0
-    Weight: 0
-  - _nameMissile: 
-    _chanceSpawn: 0
-    Weight: 0
-  - _nameMissile: 
-    _chanceSpawn: 0
-    Weight: 0
+  _difficultyLevelConfig: {fileID: 11400000, guid: 7372b19dc8e812749af2fed6471b0ece,
+    type: 2}
+  _missilesSpawners:
+  - {fileID: 219792589}
+  - {fileID: 429237473}
+  - {fileID: 1552902687}
 --- !u!1 &1192978481
 GameObject:
   m_ObjectHideFlags: 0
