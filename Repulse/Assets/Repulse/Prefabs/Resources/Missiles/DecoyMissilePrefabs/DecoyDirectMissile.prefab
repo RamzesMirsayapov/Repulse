@@ -4843,8 +4843,8 @@ GameObject:
   - component: {fileID: 4315433994018758798}
   - component: {fileID: -8024329934062330808}
   - component: {fileID: 7363334096197347649}
-  - component: {fileID: -3649818925207107929}
   - component: {fileID: -2015427501862088050}
+  - component: {fileID: -3649818925207107929}
   - component: {fileID: 8738032429797168722}
   m_Layer: 7
   m_Name: DecoyDirectMissile
@@ -4969,6 +4969,19 @@ CapsuleCollider:
   m_Height: 1.3824817
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 1}
+--- !u!114 &-2015427501862088050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6667902201192983030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e81560166bad6af42b0fddf8eb60954c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidbody: {fileID: -8024329934062330808}
 --- !u!114 &-3649818925207107929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4981,6 +4994,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30a6c8345fbaab3409adedd13822a052, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _missile: {fileID: -2015427501862088050}
   _damage: 10
   _overlapSettings:
     _searchMask:
@@ -4997,20 +5011,7 @@ MonoBehaviour:
       m_Bits: 1
     _drawGizmos: 1
     _gizmosColor: {r: 0, g: 1, b: 1, a: 1}
---- !u!114 &-2015427501862088050
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6667902201192983030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e81560166bad6af42b0fddf8eb60954c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rigidbody: {fileID: -8024329934062330808}
-  _speed: 40
+    _effectPrefab: {fileID: 0}
 --- !u!114 &8738032429797168722
 MonoBehaviour:
   m_ObjectHideFlags: 0

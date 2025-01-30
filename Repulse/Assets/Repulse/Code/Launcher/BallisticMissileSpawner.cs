@@ -14,7 +14,7 @@ public class BallisticMissileSpawner : MissilesSpawner
     {
         if(Input.GetKeyUp(KeyCode.V))
         {
-            SpawnMissile();
+            SpawnMissile(40);
         }
     }
 
@@ -23,8 +23,8 @@ public class BallisticMissileSpawner : MissilesSpawner
 
     }
 
-    public override void SpawnMissile()
+    public override void SpawnMissile(float speed)
     {
-        var newMissile = _missileCreator.CreateMissile(_speed, _spawnPoints[Random.Range(0, _spawnPoints.Length)]);
+        var newMissile = _missileCreator.CreateMissile(speed, _spawnPoints[Random.Range(0, _spawnPoints.Length)]);
     }
 }

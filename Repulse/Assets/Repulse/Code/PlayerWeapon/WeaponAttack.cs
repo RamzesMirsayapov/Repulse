@@ -1,31 +1,41 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class WeaponAttack : MonoBehaviour
+public class WeaponAttack : MonoBehaviour, IPauseHandler
 {
+    [Header("Common")]
+    [SerializeField] private Camera _mainCamera;
     [SerializeField] private LayerMask _rayCastMask;
+    [SerializeField] private float _cooldawnAttack;
 
+    [Header("Overlap")]
     [SerializeField] private OverlapSettings _overlapSettings;
 
-    [SerializeField] private Camera _mainCamera;
+    private PauseManager _pauseManager;
     private Transform cameraTransform => _mainCamera.transform;
 
     private readonly List<IReflectable> _reflectableResults = new(24);
     private readonly List<IDecoy> _decoyResults = new(24);
 
-    private Vector3 _endPointReflection;
-
     private readonly float _distance = Mathf.Infinity;
 
+    private bool _isWating = false;
+    private bool _isPaused = false;
+
     private IInput _input;
+    private Vector3 _endPointReflection;
 
     [Inject]
-    private void Construct(IInput input)
+    private void Construct(IInput input, PauseManager pauseManager)
     {
         _input = input;
+        _pauseManager = pauseManager;
 
         _input.OnLeftMouseClicked += PerformAttack;
+
+        _pauseManager.Register(this);
 
         Cursor.lockState = CursorLockMode.Locked; ////убрать
     }
@@ -37,6 +47,13 @@ public class WeaponAttack : MonoBehaviour
 
     private void PerformAttack()
     {
+        if (_isWating || _isPaused)
+        {
+            return;
+        }
+
+        //_overlapSettings.EffectPrefab.Play();
+
         if (_overlapSettings.TryFind(_decoyResults))
         {
             _decoyResults.ForEach(Decoy);
@@ -52,6 +69,8 @@ public class WeaponAttack : MonoBehaviour
                 _reflectableResults.ForEach(Reflect);
             }
         }
+
+        StartCoroutine(CooldownAttack());
     }
 
     private void Reflect(IReflectable reflectable)
@@ -62,6 +81,15 @@ public class WeaponAttack : MonoBehaviour
     private void Decoy(IDecoy decoy)
     {
         decoy.DecoyExplosion();
+    }
+
+    private IEnumerator CooldownAttack()
+    {
+        _isWating = true;
+
+        yield return new WaitForSeconds(_cooldawnAttack);
+
+        _isWating = false;
     }
 
     private void OnDrawGizmos()
@@ -89,5 +117,10 @@ public class WeaponAttack : MonoBehaviour
 
         Gizmos.color = color;
         Gizmos.DrawSphere(hitPosition, hitPointRadius);
+    }
+
+    public void SetPaused(bool isPaused)
+    {
+        _isPaused = isPaused;
     }
 }

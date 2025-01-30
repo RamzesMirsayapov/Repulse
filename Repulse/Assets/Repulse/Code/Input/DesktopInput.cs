@@ -1,21 +1,23 @@
 using System;
 using UnityEngine;
-using UnityEngine.UIElements;
 using Zenject;
 
 public class DesktopInput : IInput, ITickable
 {
-    public event Action<float, float> OnRotate;  // имена
+
+    public event Action<float, float> OnRotate;
     public event Action<Vector3> OnDirectionMove;
     public event Action OnLeftMouseClicked;
     public event Action OnGravityChange;
     public event Action OnSpaceClicked;
+    public event Action OnPause;
 
     private float horizontal;
     private float vertical;
     
     private float inputX;
     private float inputY;
+
 
     public void Tick()
     {
@@ -26,12 +28,13 @@ public class DesktopInput : IInput, ITickable
         inputY = Input.GetAxis("Mouse Y");
 
         CheckRotate();
-        CheckMove(); // мб ниже
+        CheckMove();
 
         CheckGravitation();
 
         ProcessSpaceClick();
         ProcessMouseClick();
+        ProcessEscapeClick();
     }
 
     private void ProcessMouseClick()
@@ -63,5 +66,13 @@ public class DesktopInput : IInput, ITickable
     private void CheckGravitation()
     {
         OnGravityChange?.Invoke();
+    }
+
+    private void ProcessEscapeClick()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            OnPause?.Invoke();
+        }
     }
 }

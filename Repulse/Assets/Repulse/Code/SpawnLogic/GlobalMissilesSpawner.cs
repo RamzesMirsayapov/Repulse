@@ -2,57 +2,60 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
-public class GlobalMissilesSpawner : MonoBehaviour
+public class GlobalMissilesSpawner : MonoBehaviour, IPauseHandler
 {
     [SerializeField] private DifficultyLevelConfig _difficultyLevelConfig;
 
-    private List<SpawnObjectsSettings> _spawnObjectsSettings => _difficultyLevelConfig.LevelDifficultySettings[0].SpawnObjectsSettings;
-    private float _cooldownSpawn => _difficultyLevelConfig.LevelDifficultySettings[0].CoolDownSpawn;
-    private float _speedMissile => _difficultyLevelConfig.LevelDifficultySettings[0].SpeedMissiles;
+    [SerializeField] private List<MissilesSpawner> _missilesSpawners;
+
+    private List<SpawnObjectsSettings> _spawnObjectsSettings;
+
+    private float _cooldownSpawn;
+    private float _speedMissile;
 
     public event Action OnMissileSpawn;
 
-    [SerializeField] private List<MissilesSpawner> _missilesSpawners;
-
-    //[SerializeField] private List<SpawnObjectsSettings> _spawnObjectsSettings;
-
-    private List<ISpawnable> _missilesSpawner2 = new List<ISpawnable>();
+    private List<ISpawnable> _missilesSpawner2 = new List<ISpawnable>();  ////нзвание сменить
 
     private ProbalitySpawnMissiles _probalitySpawnMissiles;
 
     private MissilesSpawner _missileSpawner;
 
-
     private Coroutine _spawnCoroutine;
 
-    private float _spawnCooldown;
+    private PauseManager _pauseManager;
 
-    private int _currentLevel;
+    private bool _isPaused;
+
+    private int _currentWave;
+
+    [Inject]
+    private void Construct(PauseManager pauseManager)
+    {
+        _pauseManager = pauseManager;
+
+        _isPaused = _pauseManager.IsPaused;
+    }
 
     private void Start()
     {
-        InitializeSpawner();
-    }
-
-    private void InitializeSpawner()
-    {
-        foreach (var item in _missilesSpawners)
-        {
-            _missilesSpawner2.Add(item);
-        }
-
-        _probalitySpawnMissiles = new ProbalitySpawnMissiles(_spawnObjectsSettings, _missilesSpawner2);
-
-        _probalitySpawnMissiles.SortFactory();
+        UpdateObjectSpawnerSettings();
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.G))
+        if (Input.GetKeyDown(KeyCode.G))
         {
             SpawnMissile();
         }
+    }
+
+    private void UpdateObjectSpawnerSettings()
+    {
+        UpdateConfigValues();
+        InitializeSpawner();
     }
 
     public void StartWork()
@@ -67,9 +70,31 @@ public class GlobalMissilesSpawner : MonoBehaviour
             StopCoroutine(SpawnCoroutine());
     }
 
-    public void SetLevel(int level)
+    public void SetWave(int wave)
     {
-        _currentLevel = level;
+        _currentWave = wave;
+
+        UpdateObjectSpawnerSettings();
+    }
+
+    private void UpdateConfigValues()
+    {
+        _spawnObjectsSettings = _difficultyLevelConfig.LevelDifficultySettings[_currentWave].SpawnObjectsSettings;
+
+        _cooldownSpawn = _difficultyLevelConfig.LevelDifficultySettings[_currentWave].CoolDownSpawn;
+        _speedMissile = _difficultyLevelConfig.LevelDifficultySettings[_currentWave].SpeedMissiles;
+    }
+
+    private void InitializeSpawner()
+    {
+        foreach (var item in _missilesSpawners)
+        {
+            _missilesSpawner2.Add(item);
+        }
+
+        _probalitySpawnMissiles = new ProbalitySpawnMissiles(_spawnObjectsSettings, _missilesSpawner2);
+
+        _probalitySpawnMissiles.SortFactory();
     }
 
     private void SpawnMissile()
@@ -78,16 +103,24 @@ public class GlobalMissilesSpawner : MonoBehaviour
 
         _missileSpawner = (MissilesSpawner)_spawnObjectsSettings[_probalitySpawnMissiles.GetRandomMissileIndex()].SpawnObject;
 
-        _missileSpawner.SpawnMissile();
+        _missileSpawner.SpawnMissile(_speedMissile);
     }
 
     private IEnumerator SpawnCoroutine()
     {
+        if (_isPaused)
+            yield return null;
+
         while(true)
         {
             SpawnMissile();
 
-            yield return new WaitForSeconds(_spawnCooldown);
+            yield return new WaitForSeconds(_cooldownSpawn);
         }
+    }
+
+    public void SetPaused(bool isPaused)
+    {
+        _isPaused = isPaused;
     }
 }

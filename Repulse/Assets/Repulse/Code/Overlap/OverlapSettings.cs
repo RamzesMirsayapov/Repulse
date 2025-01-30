@@ -24,6 +24,9 @@ public class OverlapSettings
     [SerializeField] private bool _drawGizmos = true;
     [SerializeField] private Color _gizmosColor = Color.cyan;
 
+    [Header("Particle")]
+    [SerializeField] private ParticleSystem _effectPrefab;
+
     [NonSerialized] public float Size;
 
     public readonly Collider[] OverlapResults = new Collider[32];
@@ -36,6 +39,7 @@ public class OverlapSettings
     public Vector3 Offset => _positionOffset;
     public bool ConsiderObstacles => _considerObstacles;
     public LayerMask ObstacleMask => _obstacleMask;
+    public ParticleSystem EffectPrefab => _effectPrefab;
 
     public void TryDrawGizmos()
     {

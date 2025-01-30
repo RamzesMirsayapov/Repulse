@@ -28,7 +28,7 @@ public class DirectMissileSpawner : MissilesSpawner
     {
         if(Input.GetKeyUp(KeyCode.B))
         {
-            SpawnMissile();
+            SpawnMissile(40);
         }
     }
 
@@ -41,12 +41,12 @@ public class DirectMissileSpawner : MissilesSpawner
         _probalitySpawnMissiles.SortFactory();
     }
 
-    public override void SpawnMissile()
+    public override void SpawnMissile(float speed)
     {
         _randomSpawnPointValues = Random.Range(0, _spawnPoints.Length);
 
         _missileCreator = (MissileCreator)_spawnObjectsSettings[_probalitySpawnMissiles.GetRandomMissileIndex()].SpawnObject;
 
-        var missile = _missileCreator.CreateMissile(_speed, _spawnPoints[_randomSpawnPointValues]);
+        var missile = _missileCreator.CreateMissile(speed, _spawnPoints[_randomSpawnPointValues]);
     }
 }

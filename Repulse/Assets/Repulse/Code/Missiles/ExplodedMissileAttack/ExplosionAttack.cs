@@ -1,9 +1,12 @@
 using System;
 using UnityEngine;
 
+[RequireComponent(typeof(Missile))]
 public class ExplosionAttack : MonoBehaviour, IExplosion
 {
     public event Action OnDie;
+
+    [SerializeField] private Missile _missile;
 
     [SerializeField, Min(0f)] private float _damage;
 
@@ -28,6 +31,8 @@ public class ExplosionAttack : MonoBehaviour, IExplosion
 
     private void OnCollisionEnter(Collision collision)
     {
+        _missile.UnRegisterPauseMissile();
+
         DestroyObject();
     }
 

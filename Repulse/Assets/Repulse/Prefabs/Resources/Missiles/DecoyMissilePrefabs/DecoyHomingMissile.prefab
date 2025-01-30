@@ -4843,8 +4843,8 @@ GameObject:
   - component: {fileID: 1649077488017336925}
   - component: {fileID: 1387594833753412857}
   - component: {fileID: 6474612858650158986}
-  - component: {fileID: 1169013975186991325}
   - component: {fileID: 1290018129933731463}
+  - component: {fileID: 1169013975186991325}
   - component: {fileID: 8811541516848262688}
   m_Layer: 7
   m_Name: DecoyHomingMissile
@@ -4969,6 +4969,25 @@ CapsuleCollider:
   m_Height: 1.3824817
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 1}
+--- !u!114 &1290018129933731463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2557476077672040512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5673d72481e6cf4b8eb9182e9c66efe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidbody: {fileID: 1387594833753412857}
+  _rotateSpeed: 200
+  _maxDistancePredict: 100
+  _minDistancePredict: 20
+  _maxTimePrediction: 0.1
+  _deviationAmount: 25
+  _deviationSpeed: 2
 --- !u!114 &1169013975186991325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4981,6 +5000,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30a6c8345fbaab3409adedd13822a052, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _missile: {fileID: 1290018129933731463}
   _damage: 10
   _overlapSettings:
     _searchMask:
@@ -4997,26 +5017,7 @@ MonoBehaviour:
       m_Bits: 1
     _drawGizmos: 1
     _gizmosColor: {r: 0, g: 1, b: 1, a: 1}
---- !u!114 &1290018129933731463
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2557476077672040512}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5673d72481e6cf4b8eb9182e9c66efe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rigidbody: {fileID: 1387594833753412857}
-  _speed: 40
-  _rotateSpeed: 200
-  _maxDistancePredict: 100
-  _minDistancePredict: 20
-  _maxTimePrediction: 0.1
-  _deviationAmount: 25
-  _deviationSpeed: 2
+    _effectPrefab: {fileID: 0}
 --- !u!114 &8811541516848262688
 MonoBehaviour:
   m_ObjectHideFlags: 0

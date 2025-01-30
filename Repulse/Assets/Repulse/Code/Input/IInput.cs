@@ -8,4 +8,5 @@ public interface IInput
     public event Action OnLeftMouseClicked;
     public event Action OnGravityChange;
     public event Action OnSpaceClicked;
+    public event Action OnPause;
 }

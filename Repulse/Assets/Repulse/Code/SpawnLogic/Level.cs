@@ -8,23 +8,41 @@ public class Level : MonoBehaviour
     public event Action OnLevelStarted;
     public event Action OnLevelFinished;
 
-    private int _levelNumber = 0;
+    private int _waveNumber = 0;
+
+    private void Start()
+    {
+        Invoke("RestartLevel", 4f);
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyUp(KeyCode.R))
+        {
+            ChangeWave();
+        }
+    }
 
     private void RestartLevel()
     {
         OnLevelStarted?.Invoke();
 
-        _globalMissilesSpawner.SetLevel(_levelNumber);
+        _globalMissilesSpawner.SetWave(_waveNumber);
         _globalMissilesSpawner.StopWork();
         _globalMissilesSpawner.StartWork();
     }
 
-
-    private void ChangeLevel()
+    private void ChangeWave()
     {
-        _levelNumber++;
+        if (_waveNumber >= 4)
+        {
+            OnLevelFinished?.Invoke();
+            return;
+        }
 
-        _globalMissilesSpawner.SetLevel(_levelNumber);
+        _waveNumber++;
+
+        _globalMissilesSpawner.SetWave(_waveNumber);
         _globalMissilesSpawner.StartWork();
     }
 

@@ -1,4 +1,5 @@
 using UnityEngine;
+using Zenject;
 
 [RequireComponent(typeof(Rigidbody))]
 public class DirectMissileMove : Missile
@@ -9,6 +10,9 @@ public class DirectMissileMove : Missile
 
     protected override void Move()
     {
+        if (_isPaused)
+            return;
+
         base.Move();
     }
 }

@@ -391,25 +391,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 982e36c689423934b9b8279d0230410b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mainCamera: {fileID: 5933915302206513567}
   _rayCastMask:
     serializedVersion: 2
     m_Bits: 1
+  _cooldawnAttack: 0.4
   _overlapSettings:
     _searchMask:
       serializedVersion: 2
       m_Bits: 128
     _overlapPoint: {fileID: 4140890919427168828}
     _overlapType: 0
-    _boxSize: {x: 8, y: 5, z: 12}
+    _boxSize: {x: 10, y: 7, z: 16}
     _sphereRadius: 0.5
-    _positionOffset: {x: 0, y: 1, z: 4}
+    _positionOffset: {x: 0, y: 2, z: 5.5}
     _considerObstacles: 0
     _obstacleMask:
       serializedVersion: 2
       m_Bits: 1
     _drawGizmos: 1
     _gizmosColor: {r: 1, g: 0, b: 0.029372692, a: 0.5529412}
-  _mainCamera: {fileID: 5933915302206513567}
+    _effectPrefab: {fileID: 0}
 --- !u!1 &4852627260651022843
 GameObject:
   m_ObjectHideFlags: 0

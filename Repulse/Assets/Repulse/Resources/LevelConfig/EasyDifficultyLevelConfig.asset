@@ -16,48 +16,48 @@ MonoBehaviour:
   - _spawnObjectsSettings:
     - _nameObject: HomingLaunchers
       _chanceSpawn: 10
-      Weight: 0
+      Weight: 10
     - _nameObject: DirectLaunchers
       _chanceSpawn: 70
-      Weight: 0
+      Weight: 80
     - _nameObject: BallisticLaunchers
       _chanceSpawn: 20
-      Weight: 0
+      Weight: 100
     _cooldownSpawn: 3
     _speedMissiles: 40
   - _spawnObjectsSettings:
     - _nameObject: HomingLaunchers
       _chanceSpawn: 20
-      Weight: 0
+      Weight: 20
     - _nameObject: DirectLaunchers
       _chanceSpawn: 60
-      Weight: 0
+      Weight: 80
     - _nameObject: BallisticLaunchers
       _chanceSpawn: 20
-      Weight: 0
+      Weight: 100
+    _cooldownSpawn: 2.5
+    _speedMissiles: 60
+  - _spawnObjectsSettings:
+    - _nameObject: HomingLaunchers
+      _chanceSpawn: 20
+      Weight: 20
+    - _nameObject: DirectLaunchers
+      _chanceSpawn: 50
+      Weight: 70
+    - _nameObject: BallisticLaunchers
+      _chanceSpawn: 30
+      Weight: 100
     _cooldownSpawn: 3
     _speedMissiles: 40
   - _spawnObjectsSettings:
     - _nameObject: HomingLaunchers
-      _chanceSpawn: 20
-      Weight: 0
+      _chanceSpawn: 30
+      Weight: 30
     - _nameObject: DirectLaunchers
       _chanceSpawn: 50
-      Weight: 0
-    - _nameObject: BallisticLaunchers
-      _chanceSpawn: 30
-      Weight: 0
-    _cooldownSpawn: 3
-    _speedMissiles: 40
-  - _spawnObjectsSettings:
-    - _nameObject: HomingLaunchers
-      _chanceSpawn: 30
-      Weight: 0
-    - _nameObject: DirectLaunchers
-      _chanceSpawn: 50
-      Weight: 0
+      Weight: 80
     - _nameObject: BallisticLaunchers
       _chanceSpawn: 20
-      Weight: 0
+      Weight: 100
     _cooldownSpawn: 2.5
     _speedMissiles: 45

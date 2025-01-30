@@ -37,6 +37,9 @@ public class HomingMissileMove : Missile
 
     protected override void Move()
     {
+        if (_isPaused)
+            return;
+
         base.Move();
         
         if(!IsReflected)

@@ -3,7 +3,7 @@ using Zenject;
 
 public class BallisticMissileMove : Missile
 {
-    [SerializeField] private float _speedF = 0.1f;
+    [SerializeField] private float _speedF = 0.1f;  
 
     private float _flightTime = 0;
 
@@ -15,7 +15,8 @@ public class BallisticMissileMove : Missile
     private SettingsCalculationBezier _settingsCalculationBezier;
 
     [Inject]
-    private void Constuct(FlightCalculationBezier flightCalculationBezier, SettingsCalculationBezier settingsCalculationBezier)
+    private void Constuct(FlightCalculationBezier flightCalculationBezier,
+        SettingsCalculationBezier settingsCalculationBezier)
     {
         _flightCalculationBezier = flightCalculationBezier;
         _settingsCalculationBezier = settingsCalculationBezier;
@@ -35,10 +36,13 @@ public class BallisticMissileMove : Missile
 
     protected override void Move()
     {
+        if (_isPaused)
+            return;
+
         base.Move();
 
-        if(!IsReflected)
-            RotateMissile();
+        if (!IsReflected)
+            MoveMissile();
     }
 
     private void GetPoints()
@@ -56,14 +60,24 @@ public class BallisticMissileMove : Missile
 
     private void RotateMissile()
     {
-        _flightTime += Time.deltaTime * _speedF;
-
         Vector3 rotation = _flightCalculationBezier.GetFirstDerivative(_startPoint, _middlePoint, _targetPosition, _flightTime);
 
+        _rigidbody.MoveRotation(Quaternion.LookRotation(rotation));
+    }
+
+    private void MoveDirectionMissile()
+    {
         Vector3 moveDirection = _flightCalculationBezier.GetPoint(_startPoint, _middlePoint, _targetPosition, _flightTime);
 
         _rigidbody.MovePosition(moveDirection);
+    }
 
-        _rigidbody.MoveRotation(Quaternion.LookRotation(rotation));
+    private void MoveMissile()
+    {
+        _flightTime += Time.deltaTime * _speedF;
+
+        RotateMissile();
+
+        MoveDirectionMissile();
     }
 }

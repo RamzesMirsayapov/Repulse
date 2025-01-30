@@ -4931,7 +4931,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: -4610492209744659673}
-  _speed: 40
   _speedF: 0.1
 --- !u!114 &-3366855910319873318
 MonoBehaviour:
@@ -4945,6 +4944,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da3eb7f5322cb7341a7e3d3c783a73f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _missile: {fileID: -355123403719938050}
   _damage: 10
   _overlapSettings:
     _searchMask:
@@ -4961,6 +4961,7 @@ MonoBehaviour:
       m_Bits: 1
     _drawGizmos: 1
     _gizmosColor: {r: 0, g: 1, b: 1, a: 1}
+    _effectPrefab: {fileID: 0}
 --- !u!54 &-4610492209744659673
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-//[CreateAssetMenu(fileName = "LevelDifficultySettings", menuName = "LevelConfig/LevelDifficultySettings")]
 [Serializable]
 public class LevelDifficultySettings
 {

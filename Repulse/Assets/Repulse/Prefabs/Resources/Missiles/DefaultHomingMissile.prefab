@@ -4959,7 +4959,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 1387594833753412857}
-  _speed: 40
   _rotateSpeed: 200
   _maxDistancePredict: 100
   _minDistancePredict: 20
@@ -4978,6 +4977,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da3eb7f5322cb7341a7e3d3c783a73f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _missile: {fileID: -6338380221900535761}
   _damage: 10
   _overlapSettings:
     _searchMask:
@@ -4994,6 +4994,7 @@ MonoBehaviour:
       m_Bits: 1
     _drawGizmos: 1
     _gizmosColor: {r: 0, g: 1, b: 1, a: 1}
+    _effectPrefab: {fileID: 0}
 --- !u!136 &6474612858650158986
 CapsuleCollider:
   m_ObjectHideFlags: 0

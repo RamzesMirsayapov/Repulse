@@ -13,7 +13,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     public void ApplyDamage(float damage)
     {
-        Debug.Log("нанесло урона:    " + damage);
+        //Debug.Log("нанесло урона:    " + damage);
 
         _currentHealth -= damage;
     }

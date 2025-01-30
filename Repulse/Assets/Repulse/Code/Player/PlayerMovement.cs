@@ -1,9 +1,8 @@
 using UnityEngine;
-using UnityEngine.Windows;
 using Zenject;
 
 [RequireComponent(typeof(CharacterController))]
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour, IPauseHandler
 {
     [Header("Movement Stats")]
     [SerializeField, Min(0f)] private float _moveSpeed;
@@ -13,14 +12,21 @@ public class PlayerMovement : MonoBehaviour
 
     public CharacterController CharacterController => _characterController;
 
+    private PauseManager _pauseManager;
+
     private IInput _input;
 
+    private bool _isPauesed;
+
     [Inject]
-    private void Construct(IInput input)
+    private void Construct(IInput input, PauseManager pauseManager)
     {
         _input = input;
+        _pauseManager = pauseManager;
 
         _input.OnDirectionMove += Move;
+
+        _pauseManager.Register(this);
     }
 
     private void OnDisable()
@@ -41,11 +47,19 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move(Vector3 moveDirection)
     {
+        if (_isPauesed)
+            return;
+
         _xzDirection = (moveDirection.x * transform.right) + (moveDirection.z * transform.forward);
         _xzDirection = Vector3.ClampMagnitude(_xzDirection, 1f) * _moveSpeed;
 
         _velocityDirection = new Vector3(_xzDirection.x, VelocityDirectionY, _xzDirection.z);
 
         _characterController.Move(_velocityDirection * Time.deltaTime);
+    }
+
+    public void SetPaused(bool isPaused)
+    {
+        _isPauesed = isPaused;
     }
 }

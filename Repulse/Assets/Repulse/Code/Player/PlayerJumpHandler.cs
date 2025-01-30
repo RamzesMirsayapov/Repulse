@@ -1,7 +1,7 @@
 using UnityEngine;
 using Zenject;
 
-public class PlayerJumpHandler : MonoBehaviour
+public class PlayerJumpHandler : MonoBehaviour, IPauseHandler
 {
     [Header("Jump stats")]
     [SerializeField, Min(0f)] private float _maxJumpTime;
@@ -12,19 +12,25 @@ public class PlayerJumpHandler : MonoBehaviour
 
     private CharacterController _characterController;
     private PlayerMovement _playerMovement;
-
-    private float startJumpVelocity;           
-    private Vector3 velocityDirection;
+    private PauseManager _pauseManager;
 
     private IInput _input;
+       
+    private Vector3 velocityDirection;
+    private float startJumpVelocity;
+
+    private bool _isPaused;
 
     [Inject]
-    private void Construct(IInput input)
+    private void Construct(IInput input, PauseManager pauseManager)
     {
         _input = input;
+        _pauseManager = pauseManager;
 
         _input.OnSpaceClicked += Jump;
         _input.OnGravityChange += GravityHandling;
+
+        _pauseManager.Register(this);
     }
 
     private void OnDisable()
@@ -45,15 +51,26 @@ public class PlayerJumpHandler : MonoBehaviour
     
     public void Jump()
     {
+        if(_isPaused)
+            return;
+
         if (_characterController.isGrounded)
             _playerMovement.VelocityDirectionY = startJumpVelocity;
     }
 
     public void GravityHandling()
     {
+        if (_isPaused)
+            return;
+
         if (!_characterController.isGrounded)
             _playerMovement.VelocityDirectionY -= _gravityForce * Time.deltaTime;
         else
             _playerMovement.VelocityDirectionY = -10f;
+    }
+
+    public void SetPaused(bool isPaused)
+    {
+        _isPaused = isPaused;
     }
 }
