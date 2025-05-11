@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour, IDamageable
+public class PlayerHealth : MonoBehaviour, IDamageable, IHealable
 {
     [SerializeField] private float _maxHealth;
 
@@ -16,5 +16,10 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         //Debug.Log("нанесло урона:    " + damage);
 
         _currentHealth -= damage;
+    }
+
+    public void ApplyHealth(float heal)
+    {
+        _currentHealth += heal;
     }
 }

@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ae972dc7ea3d69409d34c43bb9c9522, type: 3}
+  m_Name: ImpossibleDifficultyLevelConfig
+  m_EditorClassIdentifier: 
+  _levelDifficultySettings:
+  - _spawnObjectsSettings:
+    - _nameObject: HomingLaunchers
+      _chanceSpawn: 20
+      Weight: 10
+    - _nameObject: DirectLaunchers
+      _chanceSpawn: 60
+      Weight: 80
+    - _nameObject: BallisticLaunchers
+      _chanceSpawn: 20
+      Weight: 100
+    _cooldownSpawn: 3
+    _speedMissiles: 40
+  - _spawnObjectsSettings:
+    - _nameObject: HomingLaunchers
+      _chanceSpawn: 20
+      Weight: 20
+    - _nameObject: DirectLaunchers
+      _chanceSpawn: 60
+      Weight: 80
+    - _nameObject: BallisticLaunchers
+      _chanceSpawn: 20
+      Weight: 100
+    _cooldownSpawn: 2.5
+    _speedMissiles: 60
+  - _spawnObjectsSettings:
+    - _nameObject: HomingLaunchers
+      _chanceSpawn: 20
+      Weight: 20
+    - _nameObject: DirectLaunchers
+      _chanceSpawn: 50
+      Weight: 70
+    - _nameObject: BallisticLaunchers
+      _chanceSpawn: 30
+      Weight: 100
+    _cooldownSpawn: 3
+    _speedMissiles: 40
+  - _spawnObjectsSettings:
+    - _nameObject: HomingLaunchers
+      _chanceSpawn: 30
+      Weight: 30
+    - _nameObject: DirectLaunchers
+      _chanceSpawn: 50
+      Weight: 80
+    - _nameObject: BallisticLaunchers
+      _chanceSpawn: 20
+      Weight: 100
+    _cooldownSpawn: 2.5
+    _speedMissiles: 45

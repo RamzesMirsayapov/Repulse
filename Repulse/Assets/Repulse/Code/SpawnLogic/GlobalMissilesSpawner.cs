@@ -6,9 +6,9 @@ using Zenject;
 
 public class GlobalMissilesSpawner : MonoBehaviour, IPauseHandler
 {
-    [SerializeField] private DifficultyLevelConfig _difficultyLevelConfig;
-
     [SerializeField] private List<MissilesSpawner> _missilesSpawners;
+
+    private DifficultyLevelConfig _difficultyLevelConfig;
 
     private List<SpawnObjectsSettings> _spawnObjectsSettings;
 
@@ -32,17 +32,28 @@ public class GlobalMissilesSpawner : MonoBehaviour, IPauseHandler
     private int _currentWave;
 
     [Inject]
-    private void Construct(PauseManager pauseManager)
+    private void Construct(DifficultyLevelConfig levelDifficultySettings, PauseManager pauseManager)
     {
+        _difficultyLevelConfig = levelDifficultySettings;
+
+        if(_difficultyLevelConfig == null)
+        {
+            _difficultyLevelConfig = Resources.Load<DifficultyLevelConfig>("LevelConfig/NormalDifficultyLevelConfig");
+        }
+
+        Debug.Log(_difficultyLevelConfig.name);
+
         _pauseManager = pauseManager;
 
         _isPaused = _pauseManager.IsPaused;
-    }
 
-    private void Start()
-    {
         UpdateObjectSpawnerSettings();
     }
+
+    //private void Start()
+    //{
+    //    UpdateObjectSpawnerSettings();
+    //}
 
     private void Update()
     {
@@ -67,7 +78,10 @@ public class GlobalMissilesSpawner : MonoBehaviour, IPauseHandler
     public void StopWork()
     {
         if (_spawnCoroutine != null)
-            StopCoroutine(SpawnCoroutine());
+        {
+            StopCoroutine(_spawnCoroutine);
+            _spawnCoroutine = null;
+        }
     }
 
     public void SetWave(int wave)
@@ -108,11 +122,14 @@ public class GlobalMissilesSpawner : MonoBehaviour, IPauseHandler
 
     private IEnumerator SpawnCoroutine()
     {
-        if (_isPaused)
-            yield return null;
-
         while(true)
         {
+            if (_isPaused)
+            {
+                yield return null;
+                continue;
+            }
+
             SpawnMissile();
 
             yield return new WaitForSeconds(_cooldownSpawn);

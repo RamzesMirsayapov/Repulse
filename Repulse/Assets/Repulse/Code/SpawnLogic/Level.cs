@@ -1,18 +1,33 @@
 using System;
+using System.Collections;
 using UnityEngine;
+using Zenject;
 
 public class Level : MonoBehaviour
 {
+    public event Action OnLevelStarted;
+    public event Action OnWaveChanged;
+    public event Action OnLevelFinished;
+
     [SerializeField] private GlobalMissilesSpawner _globalMissilesSpawner;
 
-    public event Action OnLevelStarted;
-    public event Action OnLevelFinished;
+    [SerializeField] private float _breakTimeValue;
+
+    private Timer _timer;
 
     private int _waveNumber = 0;
 
+    [Inject]
+    private void Construct(Timer timer)
+    {
+        _timer = timer;
+
+        _timer.OnWaveCompleted += ChangeWave;
+    }
+
     private void Start()
     {
-        Invoke("RestartLevel", 4f);
+        Invoke("RestartLevel", _breakTimeValue);
     }
 
     private void Update()
@@ -23,12 +38,16 @@ public class Level : MonoBehaviour
         }
     }
 
+    private void OnDisable()
+    {
+        _timer.OnWaveCompleted -= ChangeWave;
+    }
+
     private void RestartLevel()
     {
         OnLevelStarted?.Invoke();
 
         _globalMissilesSpawner.SetWave(_waveNumber);
-        _globalMissilesSpawner.StopWork();
         _globalMissilesSpawner.StartWork();
     }
 
@@ -40,10 +59,7 @@ public class Level : MonoBehaviour
             return;
         }
 
-        _waveNumber++;
-
-        _globalMissilesSpawner.SetWave(_waveNumber);
-        _globalMissilesSpawner.StartWork();
+        StartCoroutine(BreakBeforeNextWave());
     }
 
     private void LoseLevel()
@@ -51,5 +67,23 @@ public class Level : MonoBehaviour
         _globalMissilesSpawner.StopWork();
 
         OnLevelFinished?.Invoke();
+    }
+
+    private IEnumerator BreakBeforeNextWave()
+    {
+        _globalMissilesSpawner.StopWork();
+
+        yield return new WaitForSeconds(_breakTimeValue);
+
+        IncreaseWaveNumber();
+
+    }
+
+    private void IncreaseWaveNumber()
+    {
+        _waveNumber++;
+
+        _globalMissilesSpawner.SetWave(_waveNumber);
+        _globalMissilesSpawner.StartWork();
     }
 }

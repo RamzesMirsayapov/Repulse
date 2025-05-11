@@ -24,7 +24,7 @@ MonoBehaviour:
       _chanceSpawn: 20
       Weight: 100
     _cooldownSpawn: 3
-    _speedMissiles: 40
+    _speedMissiles: 20
   - _spawnObjectsSettings:
     - _nameObject: HomingLaunchers
       _chanceSpawn: 20
@@ -36,7 +36,7 @@ MonoBehaviour:
       _chanceSpawn: 20
       Weight: 100
     _cooldownSpawn: 2.5
-    _speedMissiles: 60
+    _speedMissiles: 20
   - _spawnObjectsSettings:
     - _nameObject: HomingLaunchers
       _chanceSpawn: 20
@@ -48,7 +48,7 @@ MonoBehaviour:
       _chanceSpawn: 30
       Weight: 100
     _cooldownSpawn: 3
-    _speedMissiles: 40
+    _speedMissiles: 20
   - _spawnObjectsSettings:
     - _nameObject: HomingLaunchers
       _chanceSpawn: 30
@@ -60,4 +60,4 @@ MonoBehaviour:
       _chanceSpawn: 20
       Weight: 100
     _cooldownSpawn: 2.5
-    _speedMissiles: 45
+    _speedMissiles: 20

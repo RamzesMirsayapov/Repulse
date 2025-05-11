@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Missile))]
 public class DecoyExplosionAttack : MonoBehaviour, IExplosion, IDecoy
 {
-    public event Action OnDie;
+    public event Action OnExploded;
 
     [SerializeField] private Missile _missile;
 
@@ -24,7 +24,7 @@ public class DecoyExplosionAttack : MonoBehaviour, IExplosion, IDecoy
 
     private void DestroyObject()
     {
-        OnDie?.Invoke();
+        OnExploded?.Invoke();
 
         Destroy(gameObject);
     }

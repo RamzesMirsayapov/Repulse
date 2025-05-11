@@ -3,10 +3,12 @@ using Zenject;
 
 public class PlayerInstaller : MonoInstaller
 {
-    [SerializeField] private PlayerMovement _playerPrefab;
+    //[SerializeField] private PlayerMovement _playerPrefab;
+    [SerializeField] private Player _playerPrefab;
     [SerializeField] private Transform _playerSpawnPoint;
 
-    private PlayerMovement _playerMovement;
+    //private PlayerMovement _playerMovement;
+    private Player _player;
 
     private Camera _camera;
 
@@ -19,8 +21,8 @@ public class PlayerInstaller : MonoInstaller
 
     private void CreatePlayer()
     {
-        _playerMovement = Container.
-            InstantiatePrefabForComponent<PlayerMovement>
+        _player = Container.
+            InstantiatePrefabForComponent<Player>
             (_playerPrefab, _playerSpawnPoint.position,
             _playerSpawnPoint.rotation, null);
     }
@@ -28,14 +30,14 @@ public class PlayerInstaller : MonoInstaller
     private void BindPlayer()
     {
         Container.
-            Bind<PlayerMovement>().
-            FromInstance(_playerMovement).
+            Bind<Player>().
+            FromInstance(_player).
             AsSingle();
     }
 
     private void BindPlayerCamera()
     {
-        _camera = _playerMovement.gameObject.GetComponentInChildren<Camera>();
+        _camera = _player.gameObject.GetComponentInChildren<Camera>();
 
         Container.
             Bind<Camera>().
