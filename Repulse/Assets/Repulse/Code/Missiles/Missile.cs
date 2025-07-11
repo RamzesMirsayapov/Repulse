@@ -57,12 +57,15 @@ public abstract class Missile : MonoBehaviour, IReflectable, IPauseHandler
     {
         _isPaused = isPaused;
 
-        _missileVelocity = _rigidbody.velocity;
+        if(gameObject != null)
+        {
+            _missileVelocity = _rigidbody.velocity;
 
-        if (_isPaused == true)
-            _rigidbody.velocity = Vector3.zero;
-        else
-            _rigidbody.velocity = _missileVelocity;
+            if (_isPaused == true)
+                _rigidbody.velocity = Vector3.zero;
+            else
+                _rigidbody.velocity = _missileVelocity;
+        }
     }
 
     public void UnRegisterPauseMissile()

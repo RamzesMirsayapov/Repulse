@@ -18,9 +18,9 @@ public class PointDisplayer : MonoBehaviour
     RectTransform _rectTransform;
 
     [Inject]
-    private void Construct(PlayerMovement playerMovement, Camera camera, PointerIcon pointerIcon)
+    private void Construct(Player player, Camera camera, PointerIcon pointerIcon)
     {
-        _playerTransform = playerMovement.transform.GetChild(0).GetChild(1);
+        _playerTransform = player.transform.GetChild(0).GetChild(1);
 
         _camera = camera;
 

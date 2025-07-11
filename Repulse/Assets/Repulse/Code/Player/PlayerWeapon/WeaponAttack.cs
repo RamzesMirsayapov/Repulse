@@ -8,7 +8,7 @@ public class WeaponAttack : MonoBehaviour, IPauseHandler
     [Header("Common")]
     [SerializeField] private Camera _mainCamera;
     [SerializeField] private LayerMask _rayCastMask;
-    [SerializeField] private float _cooldawnAttack;
+    [SerializeField] private float _cooldownAttack;
 
     [Header("Overlap")]
     [SerializeField] private OverlapSettings _overlapSettings;
@@ -26,6 +26,9 @@ public class WeaponAttack : MonoBehaviour, IPauseHandler
 
     private IInput _input;
     private Vector3 _endPointReflection;
+
+    public void SetCooldownAttack(float newCooldown) => _cooldownAttack = newCooldown;
+    public float GetCooldownAttack() => _cooldownAttack;
 
     [Inject]
     private void Construct(IInput input, PauseManager pauseManager)
@@ -87,7 +90,7 @@ public class WeaponAttack : MonoBehaviour, IPauseHandler
     {
         _isWating = true;
 
-        yield return new WaitForSeconds(_cooldawnAttack);
+        yield return new WaitForSeconds(_cooldownAttack);
 
         _isWating = false;
     }

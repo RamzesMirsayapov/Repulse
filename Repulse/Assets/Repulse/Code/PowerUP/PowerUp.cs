@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,16 +6,18 @@ using Zenject;
 
 public abstract class PowerUp : MonoBehaviour
 {
-    protected LayerMask _playerMask;
+    public event Action<PowerUp> OnPickedUp;
 
-    protected PowerUpSpawner _powerUPSpawner;
+    protected Player _player;
+
+    protected PowerUpSpawner _powerUPSpawner; // убрать
 
     protected Collision _collision;
 
     [Inject]
-    private void Construct(PlayerMovement playerMovement, PowerUpSpawner powerUPSpawner)
+    private void Construct(Player player, PowerUpSpawner powerUPSpawner)
     {
-        _playerMask = playerMovement.gameObject.layer;
+        _player = player;
 
         _powerUPSpawner = powerUPSpawner;
     }
@@ -23,11 +26,15 @@ public abstract class PowerUp : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (_playerMask == collision.gameObject.layer)
+        if (_player.PlayerMask == collision.gameObject.layer)
         {
             _collision = collision;
 
+            OnPickedUp?.Invoke(this);
+
             Activate();
+
+            Destroy(gameObject);
         }
     }
 }

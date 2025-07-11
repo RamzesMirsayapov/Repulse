@@ -53,13 +53,20 @@ public class Level : MonoBehaviour
 
     private void ChangeWave()
     {
-        if (_waveNumber >= 4)
+        if (_waveNumber >= 3) // 4
         {
-            OnLevelFinished?.Invoke();
+            WinLevel();
             return;
         }
 
         StartCoroutine(BreakBeforeNextWave());
+    }
+
+    private void WinLevel()
+    {
+        _globalMissilesSpawner.StopWork();
+
+        OnLevelFinished?.Invoke();
     }
 
     private void LoseLevel()

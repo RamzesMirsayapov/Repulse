@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 6528706413269498800}
   - component: {fileID: 940671393734993420}
   - component: {fileID: 504039306697294455}
+  - component: {fileID: 8396841969368340104}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -172,6 +173,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ac8c8c680185f845bc6c2522b382f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _characterController: {fileID: 464277074988431420}
+  _playerMovement: {fileID: 6528706413269498800}
   _maxJumpTime: 0.7
   _maxJumpHeight: 4
   _gravityForce: 9.81
@@ -188,6 +191,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
+--- !u!114 &8396841969368340104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550074965574291496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e827fa29914976439c2a54e1fcde7b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerMovement: {fileID: 6528706413269498800}
+  _jumpHandler: {fileID: 940671393734993420}
+  _playerHealth: {fileID: 504039306697294455}
+  _characterController: {fileID: 464277074988431420}
+  _weaponAttack: {fileID: 1906998766207796376}
 --- !u!1 &1708621075522145277
 GameObject:
   m_ObjectHideFlags: 0
@@ -542,7 +562,7 @@ MonoBehaviour:
   _rayCastMask:
     serializedVersion: 2
     m_Bits: 1
-  _cooldawnAttack: 0.4
+  _cooldownAttack: 0
   _overlapSettings:
     _searchMask:
       serializedVersion: 2

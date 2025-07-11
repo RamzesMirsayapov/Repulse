@@ -3,6 +3,9 @@ using Zenject;
 
 public class PlayerJumpHandler : MonoBehaviour, IPauseHandler
 {
+    [SerializeField] private CharacterController _characterController;
+    [SerializeField] private PlayerMovement _playerMovement;
+
     [Header("Jump stats")]
     [SerializeField, Min(0f)] private float _maxJumpTime;
     [SerializeField, Min(0f)] private float _maxJumpHeight;
@@ -10,8 +13,6 @@ public class PlayerJumpHandler : MonoBehaviour, IPauseHandler
     [Header("Gravity handling")]
     [SerializeField, Min(0f)] private float _gravityForce = 9.81f;
 
-    private CharacterController _characterController;
-    private PlayerMovement _playerMovement;
     private PauseManager _pauseManager;
 
     private IInput _input;
@@ -31,6 +32,8 @@ public class PlayerJumpHandler : MonoBehaviour, IPauseHandler
         _input.OnGravityChange += GravityHandling;
 
         _pauseManager.Register(this);
+
+        CalculateGravityForce();
     }
 
     private void OnDisable()
@@ -39,16 +42,6 @@ public class PlayerJumpHandler : MonoBehaviour, IPauseHandler
         _input.OnGravityChange -= GravityHandling;
     }
 
-    private void Start()
-    {
-        _characterController = GetComponent<CharacterController>();
-        _playerMovement = GetComponent<PlayerMovement>();
-
-        float maxHeightTime = _maxJumpTime / 2;
-        _gravityForce = (2 * _maxJumpHeight) / Mathf.Pow(maxHeightTime, 2);
-        startJumpVelocity = (2 * _maxJumpHeight) / maxHeightTime;
-    }
-    
     public void Jump()
     {
         if(_isPaused)
@@ -72,5 +65,13 @@ public class PlayerJumpHandler : MonoBehaviour, IPauseHandler
     public void SetPaused(bool isPaused)
     {
         _isPaused = isPaused;
+    }
+
+    private void CalculateGravityForce()
+    {
+        float maxHeightTime = _maxJumpTime / 2;
+
+        _gravityForce = (2 * _maxJumpHeight) / Mathf.Pow(maxHeightTime, 2);
+        startJumpVelocity = (2 * _maxJumpHeight) / maxHeightTime;
     }
 }

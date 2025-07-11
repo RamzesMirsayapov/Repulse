@@ -5,19 +5,19 @@ public class DirectLauncherAim : MonoBehaviour
 {
     [SerializeField] private GameObject[] _launchers;
 
-    private PlayerMovement _playerMovement;
+    private Player _player;
 
     [Inject]
-    private void Construct(PlayerMovement playerMovement)
+    private void Construct(Player player)
     {
-        _playerMovement = playerMovement;
+        _player = player;
     }
 
     private void Update()
     {
         foreach (var launcher in _launchers)
         {
-            Vector3 direction = _playerMovement.transform.position - launcher.transform.position;
+            Vector3 direction = _player.PlayerPosition - launcher.transform.position;
 
             launcher.transform.rotation = Quaternion.LookRotation(direction);
         }

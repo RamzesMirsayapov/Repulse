@@ -17,10 +17,10 @@ public class HomingMissileMove : Missile
 
     private Vector3 _standardPrediction, _deviatedPrediction;
 
-    private PlayerMovement _playerTarget;
+    private Player _playerTarget;
 
     [Inject]
-    private void Constuct(PlayerMovement player)
+    private void Constuct(Player player)
     {
         _playerTarget = player;
     }
@@ -40,11 +40,15 @@ public class HomingMissileMove : Missile
         if (_isPaused)
             return;
 
-        base.Move();
+        base.Move(); 
         
         if(!IsReflected)
         {
-            var leadTimePercentage = Mathf.InverseLerp(_minDistancePredict, _maxDistancePredict, Vector3.Distance(transform.position, _playerTarget.transform.position));
+            float distanceToTarget = Vector3.Distance
+                (transform.position, _playerTarget.PlayerPosition);
+
+            float leadTimePercentage = Mathf.InverseLerp
+                (_minDistancePredict, _maxDistancePredict, distanceToTarget);
 
             PredictMovement(leadTimePercentage);
 
@@ -58,7 +62,7 @@ public class HomingMissileMove : Missile
     {
         var predictionTime = Mathf.Lerp(0, _maxTimePrediction, leadTimePercentage);
 
-        _standardPrediction = _playerTarget.transform.position + _playerTarget.CharacterController.velocity * predictionTime;
+        _standardPrediction = _playerTarget.PlayerPosition + _playerTarget.CharacterController.velocity * predictionTime;
     }
 
     private void AddDeviation(float leadTimePercentage)

@@ -13,8 +13,8 @@ public class SettingsCalculationBezier : MonoBehaviour
     public Transform TargetPosition => _targetPosition;
 
     [Inject]
-    private void Construct(PlayerMovement playerMovement)
+    private void Construct(Player player)
     {
-        _targetPosition = playerMovement.transform;
+        _targetPosition = player.transform;
     }
 }

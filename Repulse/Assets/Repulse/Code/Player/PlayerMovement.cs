@@ -18,6 +18,20 @@ public class PlayerMovement : MonoBehaviour, IPauseHandler
 
     private bool _isPauesed;
 
+    private float _velocityDirectionY;
+
+    private Vector3 _velocityDirection;
+    private Vector3 _xzDirection;
+
+    public void SetSpeed(float newSpeed) => _moveSpeed = newSpeed;
+    public float GetSpeed() => _moveSpeed;
+
+    public float VelocityDirectionY
+    {
+        get { return _velocityDirectionY; }
+        set { _velocityDirectionY = value; }
+    }
+
     [Inject]
     private void Construct(IInput input, PauseManager pauseManager)
     {
@@ -34,18 +48,7 @@ public class PlayerMovement : MonoBehaviour, IPauseHandler
         _input.OnDirectionMove -= Move;
     }
 
-    public float VelocityDirectionY
-    {
-        get { return _velocityDirectionY; }
-        set { _velocityDirectionY = value; }
-    }
-
-    private float _velocityDirectionY;
-
-    private Vector3 _velocityDirection;
-    private Vector3 _xzDirection;
-
-    public void Move(Vector3 moveDirection)
+    private void Move(Vector3 moveDirection) // поменять на Public вдруг что
     {
         if (_isPauesed)
             return;

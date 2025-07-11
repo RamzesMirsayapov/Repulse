@@ -6,11 +6,11 @@ public class Medkit : PowerUp
 
     public override void Activate()
     {
-        _powerUPSpawner.RemoveMedkitFromList(this);
+        //_powerUPSpawner.RemoveMedkitFromList(this);
 
-        if(_collision.gameObject.TryGetComponent(out IHealable damageable))
+        if(_collision.gameObject.TryGetComponent(out IHealable healable))
         {
-            damageable.ApplyHealth(_healAmount);
+            healable.ApplyHealth(_healAmount);
         }
     }
 }
