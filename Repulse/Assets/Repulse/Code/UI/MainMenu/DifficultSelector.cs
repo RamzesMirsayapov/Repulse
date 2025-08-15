@@ -27,6 +27,6 @@ public class DifficultSelector : MonoBehaviour
 
     private void StartGame()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneLoader.LoadGameScene();
     }
 }
