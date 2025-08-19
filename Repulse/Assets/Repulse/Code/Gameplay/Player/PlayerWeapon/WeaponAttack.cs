@@ -90,7 +90,7 @@ public class WeaponAttack : MonoBehaviour, IPauseHandler
 
     private void Decoy(IDecoy decoy)
     {
-        decoy.DecoyExplosion();
+        decoy.DecoyExplosiveAttack();
     }
 
     private IEnumerator CooldownAttack()

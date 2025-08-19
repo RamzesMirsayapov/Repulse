@@ -11,7 +11,23 @@ public class ExplosionAttack : MonoBehaviour, IExplosion
 
     [SerializeField] private OverlapSettings _overlapSettings;
 
-    private void PerformAttack()
+    private void OnCollisionEnter(Collision collision)
+    {
+        _missile.UnRegisterPauseMissile();
+
+        DestroyObject();
+    }
+
+    private void DestroyObject()
+    {
+        ExplosiveAttack();
+
+        OnExploded?.Invoke();
+
+        Destroy(gameObject);
+    }
+
+    private void ExplosiveAttack()
     {
         if(_missile.IsReflected)
         {
@@ -24,20 +40,9 @@ public class ExplosionAttack : MonoBehaviour, IExplosion
         }
     }
 
-    private void DestroyObject()
+    private void PlayEffect()
     {
-        PerformAttack();
 
-        OnExploded?.Invoke();
-
-        Destroy(gameObject);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        _missile.UnRegisterPauseMissile();
-
-        DestroyObject();
     }
 
     private void OnDrawGizmos()

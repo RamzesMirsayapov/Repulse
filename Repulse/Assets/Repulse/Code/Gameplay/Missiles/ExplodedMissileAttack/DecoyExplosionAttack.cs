@@ -2,9 +2,11 @@ using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Missile))]
-public class DecoyExplosionAttack : MonoBehaviour, IExplosion, IDecoy
+public class DecoyExplosionAttack : MonoBehaviour, IDecoy
 {
     public event Action OnExploded;
+
+    public event Action OnDecoyExploded;
 
     [Header("Missile Settings")]
     [SerializeField] private Missile _missile;
@@ -13,11 +15,13 @@ public class DecoyExplosionAttack : MonoBehaviour, IExplosion, IDecoy
     [Header("Overlap Settings")]
     [SerializeField] private OverlapSettings _overlapSettings;
 
-    public void DecoyExplosion()
+    public void DecoyExplosiveAttack()
     {
         if (_overlapSettings.TryFind(out IDamageable damageable))
         {
             damageable.ApplyDamage(_damage);
+
+            OnExploded?.Invoke();
         }
 
         DestroyObject();
@@ -25,14 +29,14 @@ public class DecoyExplosionAttack : MonoBehaviour, IExplosion, IDecoy
 
     private void DestroyObject()
     {
-        OnExploded?.Invoke();
-
         Destroy(gameObject);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         _missile.UnRegisterPauseMissile();
+
+        OnDecoyExploded?.Invoke();
 
         DestroyObject();
     }

@@ -1,4 +1,8 @@
-public interface IDecoy
+using System;
+
+public interface IDecoy : IExplosion
 {
-    public void DecoyExplosion();
+    public event Action OnDecoyExploded;
+
+    public void DecoyExplosiveAttack();
 }
