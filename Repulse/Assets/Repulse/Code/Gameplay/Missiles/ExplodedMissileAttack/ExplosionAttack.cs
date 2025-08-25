@@ -1,18 +1,33 @@
 using System;
 using UnityEngine;
+using Zenject;
 
 [RequireComponent(typeof(Missile))]
 public class ExplosionAttack : MonoBehaviour, IExplosion
 {
     public event Action OnExploded;
 
+    [Header("Missile Settings")]
     [SerializeField, Min(0f)] private float _damage;
     [SerializeField] private Missile _missile;
 
+    [Header("Overlap Settings")]
     [SerializeField] private OverlapSettings _overlapSettings;
+
+    private SoundManager _soundManager;
+
+    [Inject]
+    private void Construct(SoundManager soundManager)
+    {
+        _soundManager = soundManager;
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
+        ExplosiveAttack();
+
+        OnExploded?.Invoke();
+
         _missile.UnRegisterPauseMissile();
 
         DestroyObject();
@@ -20,16 +35,16 @@ public class ExplosionAttack : MonoBehaviour, IExplosion
 
     private void DestroyObject()
     {
-        ExplosiveAttack();
-
-        OnExploded?.Invoke();
-
         Destroy(gameObject);
     }
 
     private void ExplosiveAttack()
     {
-        if(_missile.IsReflected)
+        _soundManager.PlayExplosionSound(transform.position);
+
+        SpawnEffectOnDestroy();
+
+        if (_missile.IsReflected)
         {
             return;
         }
@@ -40,9 +55,13 @@ public class ExplosionAttack : MonoBehaviour, IExplosion
         }
     }
 
-    private void PlayEffect()
+    private void SpawnEffectOnDestroy()
     {
+        var effect = Instantiate(_overlapSettings.EffectPrefab, transform.position, Quaternion.Euler(Vector3.up));
 
+        effect.Play();
+
+        Destroy(effect, _overlapSettings.EffectPrefabLifeTime);
     }
 
     private void OnDrawGizmos()

@@ -6,7 +6,7 @@ public class Medkit : PowerUp
 
     public override void Activate()
     {
-        if(_collision.gameObject.TryGetComponent(out IHealable healable))
+        if (_player.TryGetComponent(out IHealable healable))
         {
             healable.ApplyHealth(_healAmount);
         }

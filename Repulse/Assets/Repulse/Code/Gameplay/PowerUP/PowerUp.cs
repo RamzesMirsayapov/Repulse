@@ -10,7 +10,7 @@ public abstract class PowerUp : MonoBehaviour
 
     protected Player _player;
 
-    protected Collision _collision;
+    protected Collider _collision;
 
     [Inject]
     private void Construct(Player player)
@@ -20,16 +20,16 @@ public abstract class PowerUp : MonoBehaviour
 
     public abstract void Activate();
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collider)
     {
         if(_player == null)
         {
             return;
         }
 
-        if (_player.PlayerLayer == collision.gameObject.layer)
+        if (_player.PlayerLayer == collider.gameObject.layer)
         {
-            _collision = collision;
+            _collision = collider;
 
             OnPickedUp?.Invoke(this);
 

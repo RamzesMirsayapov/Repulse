@@ -26,6 +26,7 @@ public class OverlapSettings
 
     [Header("Particle")]
     [SerializeField] private ParticleSystem _effectPrefab;
+    [SerializeField] private float _effectPrefabLifeTime;
 
     [NonSerialized] public float Size;
 
@@ -40,6 +41,7 @@ public class OverlapSettings
     public bool ConsiderObstacles => _considerObstacles;
     public LayerMask ObstacleMask => _obstacleMask;
     public ParticleSystem EffectPrefab => _effectPrefab;
+    public float EffectPrefabLifeTime => _effectPrefabLifeTime;
 
     public void TryDrawGizmos()
     {

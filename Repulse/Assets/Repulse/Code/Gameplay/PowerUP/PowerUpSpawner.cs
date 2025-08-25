@@ -33,6 +33,14 @@ public class PowerUpSpawner : MonoBehaviour
         Initialize();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            TrySpawnMedkit();
+        }
+    }
+
     private void Initialize()
     {
         TrySpawnPowerUp();

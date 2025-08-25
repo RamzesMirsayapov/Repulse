@@ -15,16 +15,18 @@ public class HealthBar : MonoBehaviour
     {
         _playerHealth = player.PlayerHealth;
 
-        _playerHealth.OnDamageApplied += HealthBarChanchge;
+        _playerHealth.OnHealthChanged += HealthBarChanchge;
     }
 
     private void OnDisable()
     {
-        _playerHealth.OnDamageApplied -= HealthBarChanchge;
+        _playerHealth.OnHealthChanged -= HealthBarChanchge;
     }
 
     private void HealthBarChanchge(float valueAsPercentage)
     {
+        Debug.Log("тут HealthBar UI");
+
         _healthBarFilling.fillAmount = valueAsPercentage;
 
         _healthBarFilling.color = _gradientHealthFilling.Evaluate(valueAsPercentage);

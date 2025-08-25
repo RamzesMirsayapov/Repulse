@@ -57,12 +57,6 @@ public class WeaponAttack : MonoBehaviour, IPauseHandler
         {
             return;
         }
-        else
-        {
-            OnAttack?.Invoke();
-        }
-
-        //_overlapSettings.EffectPrefab.Play();
 
         if (_overlapSettings.TryFind(_decoyResults))
         {
@@ -79,6 +73,10 @@ public class WeaponAttack : MonoBehaviour, IPauseHandler
                 _reflectableResults.ForEach(Reflect);
             }
         }
+
+        OnAttack?.Invoke();
+
+        _overlapSettings.EffectPrefab.Play();
 
         StartCoroutine(CooldownAttack());
     }

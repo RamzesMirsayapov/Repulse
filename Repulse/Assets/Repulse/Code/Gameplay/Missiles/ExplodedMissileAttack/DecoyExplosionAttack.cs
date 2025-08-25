@@ -1,8 +1,10 @@
 using System;
 using UnityEngine;
+using UnityEngine.UIElements;
+using Zenject;
 
 [RequireComponent(typeof(Missile))]
-public class DecoyExplosionAttack : MonoBehaviour, IDecoy
+public class DecoyExplosionAttack : MonoBehaviour, IExplosion, IDecoy
 {
     public event Action OnExploded;
 
@@ -15,8 +17,22 @@ public class DecoyExplosionAttack : MonoBehaviour, IDecoy
     [Header("Overlap Settings")]
     [SerializeField] private OverlapSettings _overlapSettings;
 
+    [Header("DecoyExplosionEffect")]
+    [SerializeField] private ParticleSystem _decoyExplosionEffect;
+
+    private SoundManager _soundManager;
+
+    [Inject]
+    private void Construct(SoundManager soundManager)
+    {
+        _soundManager = soundManager;
+    }
+
     public void DecoyExplosiveAttack()
     {
+        _soundManager.PlayExplosionSound(transform.position);
+        SpawnEffectOnDestroy(_overlapSettings.EffectPrefab);
+
         if (_overlapSettings.TryFind(out IDamageable damageable))
         {
             damageable.ApplyDamage(_damage);
@@ -27,18 +43,31 @@ public class DecoyExplosionAttack : MonoBehaviour, IDecoy
         DestroyObject();
     }
 
-    private void DestroyObject()
-    {
-        Destroy(gameObject);
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
         _missile.UnRegisterPauseMissile();
 
         OnDecoyExploded?.Invoke();
 
+        _soundManager.PlayDecoyExplosionSound(transform.position);
+
+        SpawnEffectOnDestroy(_decoyExplosionEffect);
+
         DestroyObject();
+    }
+
+    private void SpawnEffectOnDestroy(ParticleSystem particle)
+    {
+        var effect = Instantiate(particle, transform.position, Quaternion.Euler(Vector3.up));
+
+        effect.Play();
+
+        Destroy(effect, _overlapSettings.EffectPrefabLifeTime);
+    }
+
+    private void DestroyObject()
+    {
+        Destroy(gameObject);
     }
 
     private void OnDrawGizmos()

@@ -1,6 +1,6 @@
 using System;
 
-public interface IDecoy : IExplosion
+public interface IDecoy
 {
     public event Action OnDecoyExploded;
 

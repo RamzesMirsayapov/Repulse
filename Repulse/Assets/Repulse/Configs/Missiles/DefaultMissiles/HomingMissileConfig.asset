@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21149d9cfdef9604f9e078429f257310, type: 3}
+  m_Name: HomingMissileConfig
+  m_EditorClassIdentifier: 
+  _rotateSpeed: 200
+  _maxDistancePredict: 100
+  _minDistancePredict: 20
+  _maxTimePrediction: 0.1
+  _deviationAmount: 25
+  _deviationSpeed: 2
+  _missileExplosionConfig: {fileID: 11400000, guid: adc6a50dff3956343a5c2a9742ae8e98,
+    type: 2}

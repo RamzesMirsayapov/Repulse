@@ -4893,6 +4893,7 @@ GameObject:
   - component: {fileID: -2015427501862088050}
   - component: {fileID: -3649818925207107929}
   - component: {fileID: 5663324703386782726}
+  - component: {fileID: 2880767587153229999}
   m_Layer: 7
   m_Name: DecoyDirectMissile
   m_TagString: Untagged
@@ -5059,7 +5060,11 @@ MonoBehaviour:
       m_Bits: 1
     _drawGizmos: 1
     _gizmosColor: {r: 0, g: 1, b: 1, a: 1}
-    _effectPrefab: {fileID: 0}
+    _effectPrefab: {fileID: 6424187993943965875, guid: 8d91123a06f571d48838a9255fc4f985,
+      type: 3}
+    _effectPrefabLifeTime: 1
+  _decoyExplosionEffect: {fileID: 902337349595714816, guid: e94909247ec4049429749c0c85538429,
+    type: 3}
 --- !u!82 &5663324703386782726
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5156,3 +5161,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2880767587153229999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6667902201192983030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935452e6cd6fe0146bd2582de4447f40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioSource: {fileID: 5663324703386782726}
+  _volume: 1
+  _minPitch: 0.9
+  _maxPitch: 1.1
+  _useRandomPitch: 1
+  _explosionSound: {fileID: 8300000, guid: dde6a3c37f2417d44967bc0a53fa1e18, type: 3}
+  _decoyExplosionSound: {fileID: 8300000, guid: d8aafc820174eb14b9defa21e3785fbd,
+    type: 3}
+  _decoyExplossionAttack: {fileID: -3649818925207107929}

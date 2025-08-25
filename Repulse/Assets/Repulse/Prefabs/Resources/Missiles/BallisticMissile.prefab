@@ -4846,6 +4846,7 @@ GameObject:
   - component: {fileID: -4610492209744659673}
   - component: {fileID: 2415636964283790184}
   - component: {fileID: -3785328211093137176}
+  - component: {fileID: 7473800284500628815}
   m_Layer: 7
   m_Name: BallisticMissile
   m_TagString: Untagged
@@ -4962,7 +4963,9 @@ MonoBehaviour:
       m_Bits: 1
     _drawGizmos: 1
     _gizmosColor: {r: 0, g: 1, b: 1, a: 1}
-    _effectPrefab: {fileID: 0}
+    _effectPrefab: {fileID: 6424187993943965875, guid: 8d91123a06f571d48838a9255fc4f985,
+      type: 3}
+    _effectPrefabLifeTime: 1
 --- !u!54 &-4610492209744659673
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5109,3 +5112,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7473800284500628815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7890692585972945665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 445c24f19fe74b7438ee8f0213d0c515, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioSource: {fileID: -3785328211093137176}
+  _volume: 1
+  _minPitch: 0.9
+  _maxPitch: 1.1
+  _useRandomPitch: 1
+  _explosionSound: {fileID: 8300000, guid: dde6a3c37f2417d44967bc0a53fa1e18, type: 3}
+  _explosionAttack: {fileID: -3366855910319873318}

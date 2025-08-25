@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 356c5638a0e7465479cccd59ae9c731e, type: 3}
+  m_Name: DecoyHomingMissileExplosionConfig
+  m_EditorClassIdentifier: 
+  _damage: 10
+  _overlapSettings:
+    _searchMask:
+      serializedVersion: 2
+      m_Bits: 64
+    _overlapPoint: {fileID: 2478058469524456588, guid: 26fc68afd72b76f4ca4ecc4061b347bd,
+      type: 3}
+    _overlapType: 1
+    _boxSize: {x: 1, y: 1, z: 1}
+    _sphereRadius: 10
+    _positionOffset: {x: 0, y: 0, z: 0}
+    _considerObstacles: 1
+    _obstacleMask:
+      serializedVersion: 2
+      m_Bits: 1
+    _drawGizmos: 1
+    _gizmosColor: {r: 0, g: 1, b: 1, a: 1}
+    _effectPrefab: {fileID: 0}
+  _decoyExplosionEffectPrefab: {fileID: 0}
+  _explosionEffectDestroyDelay: 0
+  _explosionSound: {fileID: 0}
+  _decoyExplosionSound: {fileID: 0}

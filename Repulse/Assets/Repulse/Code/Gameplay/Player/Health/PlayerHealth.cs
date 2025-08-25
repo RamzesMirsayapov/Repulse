@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour, IDamageable, IHealable
 {
-    public event Action<float> OnDamageApplied;
+    public event Action<float> OnHealthChanged;
     public event Action OnDamageReceived;
 
     public event Action<Color> OnEffectStarted;
@@ -15,6 +15,8 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IHealable
     private int _blockCount;
 
     private float _currentHealth;
+
+    public float HealthNormalized => (float)_currentHealth / _maxHealth;
 
     public void ApplyShieldEffect(int blockCount, float duration, Color boostEffectColor)
     {
@@ -42,10 +44,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IHealable
     public void ApplyDamage(float damage)
     {
         if (damage < 0)
-        {
-            Debug.Log("отрицательный урон!!!");
             return;
-        }
 
         if (_blockCount > 0)
         {
@@ -65,9 +64,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IHealable
             Death();
         }
 
-        float currentHealthAsPercentage = _currentHealth / _maxHealth;
-
-        OnDamageApplied?.Invoke(currentHealthAsPercentage);
+        OnHealthChanged?.Invoke(HealthNormalized);
         OnDamageReceived?.Invoke();
     }
 
@@ -87,5 +84,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IHealable
         {
             _currentHealth = _maxHealth;
         }
+
+        OnHealthChanged?.Invoke(HealthNormalized);
     }
 }

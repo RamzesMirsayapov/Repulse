@@ -659,6 +659,7 @@ Transform:
   m_Children:
   - {fileID: 6542027525500658906}
   - {fileID: 4665866613561125092}
+  - {fileID: 8358323771026061458}
   m_Father: {fileID: 4251425872134625063}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1906998766207796376
@@ -677,7 +678,7 @@ MonoBehaviour:
   _rayCastMask:
     serializedVersion: 2
     m_Bits: 1
-  _cooldownAttack: 0
+  _cooldownAttack: 1
   _overlapSettings:
     _searchMask:
       serializedVersion: 2
@@ -693,7 +694,8 @@ MonoBehaviour:
       m_Bits: 1
     _drawGizmos: 1
     _gizmosColor: {r: 1, g: 0, b: 0.029372692, a: 0.5529412}
-    _effectPrefab: {fileID: 0}
+    _effectPrefab: {fileID: 4256330563812210071}
+    _effectPrefabLifeTime: 1
 --- !u!1 &4852627260651022843
 GameObject:
   m_ObjectHideFlags: 0
@@ -1150,3 +1152,83 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1001 &2862346056744203200
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4140890919427168828}
+    m_Modifications:
+    - target: {fileID: 6073002657793723218, guid: 255906cc5187f694caca658be533d79b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.424
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073002657793723218, guid: 255906cc5187f694caca658be533d79b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.378
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073002657793723218, guid: 255906cc5187f694caca658be533d79b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.948
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073002657793723218, guid: 255906cc5187f694caca658be533d79b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073002657793723218, guid: 255906cc5187f694caca658be533d79b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073002657793723218, guid: 255906cc5187f694caca658be533d79b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073002657793723218, guid: 255906cc5187f694caca658be533d79b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073002657793723218, guid: 255906cc5187f694caca658be533d79b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073002657793723218, guid: 255906cc5187f694caca658be533d79b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073002657793723218, guid: 255906cc5187f694caca658be533d79b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6151376004363137521, guid: 255906cc5187f694caca658be533d79b,
+        type: 3}
+      propertyPath: m_Name
+      value: WeaponAttackEffect
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 255906cc5187f694caca658be533d79b, type: 3}
+--- !u!198 &4256330563812210071 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2065074744806360663, guid: 255906cc5187f694caca658be533d79b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2862346056744203200}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8358323771026061458 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6073002657793723218, guid: 255906cc5187f694caca658be533d79b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2862346056744203200}
+  m_PrefabAsset: {fileID: 0}
