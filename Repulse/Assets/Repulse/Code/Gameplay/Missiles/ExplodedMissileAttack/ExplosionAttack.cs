@@ -60,8 +60,6 @@ public class ExplosionAttack : MonoBehaviour, IExplosion
         var effect = Instantiate(_overlapSettings.EffectPrefab, transform.position, Quaternion.Euler(Vector3.up));
 
         effect.Play();
-
-        Destroy(effect, _overlapSettings.EffectPrefabLifeTime);
     }
 
     private void OnDrawGizmos()

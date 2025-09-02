@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 public class PauseManager : IPauseHandler
 {
@@ -20,6 +21,8 @@ public class PauseManager : IPauseHandler
     public void SetPaused(bool isPaused)
     {
         IsPaused = isPaused;
+
+        Time.timeScale = IsPaused ? 0f : 1f;
 
         foreach (var handler in _handlers)
         {

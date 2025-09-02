@@ -42,8 +42,6 @@ public class WeaponAttack : MonoBehaviour, IPauseHandler
         _input.OnLeftMouseClicked += PerformAttack;
 
         _pauseManager.Register(this);
-
-        Cursor.lockState = CursorLockMode.Locked; ////убрать
     }
 
     private void OnDisable()
@@ -131,7 +129,7 @@ public class WeaponAttack : MonoBehaviour, IPauseHandler
     {
         float originalCooldownAttack = _cooldownAttack;
 
-        _cooldownAttack = originalCooldownAttack * multiplier;
+        _cooldownAttack = originalCooldownAttack / multiplier;
 
         OnEffectStarted?.Invoke(boostEffectColor);
 

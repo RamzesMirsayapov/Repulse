@@ -12,6 +12,8 @@ public class UIPausePanel : MonoBehaviour
     [SerializeField] private Button _restartButton;
     [SerializeField] private Button _exitButton;
 
+    public bool IsActive = false;
+
     private void OnEnable()
     {
         _resumeButton?.onClick.AddListener(ResumeButtonClick);
@@ -29,6 +31,8 @@ public class UIPausePanel : MonoBehaviour
     public void SetActive(bool active)
     {
         gameObject.SetActive(active);
+
+        IsActive = active;
     }
 
     private void ResumeButtonClick()
@@ -39,10 +43,14 @@ public class UIPausePanel : MonoBehaviour
     private void RestartButtonClick()
     {
         OnRestartButtonClicked?.Invoke();
+
+        SceneLoader.LoadGameScene();
     }
 
     private void ExitButtonClick()
     {
         OnExitButtonClicked?.Invoke();
+
+        SceneLoader.LoadMainMenu();
     }
 }

@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,8 +16,6 @@ public class GlobalMissilesSpawner : MonoBehaviour, IPauseHandler
     private Coroutine _spawnCoroutine;
     private bool _isPaused;
 
-    //private List<ISpawnable> _missilesSpawner2 = new List<ISpawnable>();  ////нзвание сменить
-
     private PauseManager _pauseManager;
     private ProbabilityObjectSpawner _probabilitySpawner;
 
@@ -27,9 +24,6 @@ public class GlobalMissilesSpawner : MonoBehaviour, IPauseHandler
     [Inject]
     private void Construct(DifficultyLevelConfig levelDifficultySettings, PauseManager pauseManager)
     {
-        //    _difficultyLevelConfig = _difficultyLevelConfig ??
-        //        Resources.Load<DifficultyLevelConfig>("LevelConfig/NormalDifficultyLevelConfig");
-
         _difficultyLevelConfig = levelDifficultySettings;
 
         if (_difficultyLevelConfig == null)
@@ -51,13 +45,17 @@ public class GlobalMissilesSpawner : MonoBehaviour, IPauseHandler
         {
             SpawnMissile();
         }
-    }
 
-    //private void UpdateObjectSpawnerSettings()
-    //{
-    //    UpdateConfigValues();
-    //    InitializeSpawner();
-    //}
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            Cursor.lockState = CursorLockMode.Locked; ////убрать
+        }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            Cursor.lockState = CursorLockMode.Confined; ////убрать
+        }
+    }
 
     public void StartWork()
     {
@@ -78,7 +76,8 @@ public class GlobalMissilesSpawner : MonoBehaviour, IPauseHandler
     {
         _currentWave = wave;
 
-        //UpdateObjectSpawnerSettings();
+        Debug.Log(_currentWave);
+
         UpdateSpawnerSettings();
     }
 
@@ -88,20 +87,13 @@ public class GlobalMissilesSpawner : MonoBehaviour, IPauseHandler
 
         _spawnObjectsSettings = waveSettings.SpawnObjectsSettings;
         _spawnCooldown = waveSettings.CoolDownSpawn;
-        _missileSpeed = waveSettings.SpeedMissiles;
+        //_missileSpeed = waveSettings.SpeedMissiles;
 
         InitializeSpawner();
     }
 
     private void InitializeSpawner()
     {
-        //foreach (var item in _missileSpawners)
-        //{
-        //    _missilesSpawner2.Add(item);
-        //}
-
-        //_probabilitySpawner = new ProbabilityMissileSpawner(_spawnObjectsSettings, _missilesSpawner2);
-
         _probabilitySpawner = new ProbabilityObjectSpawner(
             _spawnObjectsSettings,
             _missileSpawners.Cast<ISpawnable>().ToList()
@@ -112,14 +104,10 @@ public class GlobalMissilesSpawner : MonoBehaviour, IPauseHandler
 
     private void SpawnMissile()
     {
-        //_missileSpawner = (MissilesSpawner)_spawnObjectsSettings[_probabilitySpawner.GetRandomMissileIndex()].SpawnObject;
-
-        //_missileSpawner.SpawnMissile(_missileSpeed);
-
         var spawnSetting = _spawnObjectsSettings[_probabilitySpawner.GetRandomMissileIndex()];
         var selectedSpawner = (MissilesSpawner)spawnSetting.SpawnObject;
 
-        selectedSpawner.SpawnMissile(_missileSpeed);
+        selectedSpawner.SpawnMissile(spawnSetting.MissileSpeed);
     }
 
     private IEnumerator SpawnCoroutine()
@@ -129,11 +117,27 @@ public class GlobalMissilesSpawner : MonoBehaviour, IPauseHandler
             if (_isPaused)
             {
                 yield return null;
+                continue;
             }
 
             SpawnMissile();
 
             yield return new WaitForSeconds(_spawnCooldown);
+
+            //yield return StartCoroutine(PausableWaitForSeconds(_spawnCooldown));
+        }
+    }
+
+    private IEnumerator PausableWaitForSeconds(float duration)
+    {
+        float timer = 0f;
+        while (timer < duration)
+        {
+            if (!_isPaused)
+            {
+                timer += Time.deltaTime;
+            }
+            yield return null;
         }
     }
 

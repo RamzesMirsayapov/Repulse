@@ -13,31 +13,9 @@ MonoBehaviour:
   m_Name: NormalDifficultyLevelConfig
   m_EditorClassIdentifier: 
   _levelDifficultySettings:
-  - _spawnObjectsSettings:
-    - _nameObject: HomingLaunchers
-      _chanceSpawn: 20
-      Weight: 20
-    - _nameObject: DirectLaunchers
-      _chanceSpawn: 60
-      Weight: 80
-    - _nameObject: BallisticLaunchers
-      _chanceSpawn: 20
-      Weight: 100
-    _cooldownSpawn: 3
-    _speedMissiles: 200
-  - _spawnObjectsSettings:
-    - _nameObject: HomingLaunchers
-      _chanceSpawn: 20
-      Weight: 20
-    - _nameObject: DirectLaunchers
-      _chanceSpawn: 60
-      Weight: 80
-    - _nameObject: BallisticLaunchers
-      _chanceSpawn: 20
-      Weight: 100
-    _cooldownSpawn: 2.5
-    _speedMissiles: 200
-  - _spawnObjectsSettings:
+  - _speedMissiles: 35
+    _cooldownSpawn: 2
+    _spawnObjectsSettings:
     - _nameObject: HomingLaunchers
       _chanceSpawn: 20
       Weight: 20
@@ -47,17 +25,39 @@ MonoBehaviour:
     - _nameObject: BallisticLaunchers
       _chanceSpawn: 30
       Weight: 100
-    _cooldownSpawn: 3
-    _speedMissiles: 200
-  - _spawnObjectsSettings:
+  - _speedMissiles: 35
+    _cooldownSpawn: 2
+    _spawnObjectsSettings:
+    - _nameObject: HomingLaunchers
+      _chanceSpawn: 20
+      Weight: 20
+    - _nameObject: DirectLaunchers
+      _chanceSpawn: 40
+      Weight: 60
+    - _nameObject: BallisticLaunchers
+      _chanceSpawn: 40
+      Weight: 100
+  - _speedMissiles: 35
+    _cooldownSpawn: 2
+    _spawnObjectsSettings:
     - _nameObject: HomingLaunchers
       _chanceSpawn: 30
       Weight: 30
     - _nameObject: DirectLaunchers
-      _chanceSpawn: 50
-      Weight: 80
+      _chanceSpawn: 40
+      Weight: 70
     - _nameObject: BallisticLaunchers
-      _chanceSpawn: 20
+      _chanceSpawn: 30
       Weight: 100
-    _cooldownSpawn: 2.5
-    _speedMissiles: 200
+  - _speedMissiles: 35
+    _cooldownSpawn: 1.8
+    _spawnObjectsSettings:
+    - _nameObject: HomingLaunchers
+      _chanceSpawn: 30
+      Weight: 30
+    - _nameObject: DirectLaunchers
+      _chanceSpawn: 30
+      Weight: 60
+    - _nameObject: BallisticLaunchers
+      _chanceSpawn: 40
+      Weight: 100

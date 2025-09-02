@@ -11,7 +11,7 @@ public class Level : MonoBehaviour
 
     [SerializeField] private GlobalMissilesSpawner _globalMissilesSpawner;
 
-    [SerializeField] private float _breakTimeValue;
+    [SerializeField] private float _breakTimeValue = 5f;
 
     private Timer _timer;
 
@@ -53,7 +53,7 @@ public class Level : MonoBehaviour
 
     private void ChangeWave()
     {
-        if (_waveNumber >= 3) // 4
+        if (_waveNumber >= 4)
         {
             WinLevel();
             return;
@@ -88,9 +88,9 @@ public class Level : MonoBehaviour
 
     private void IncreaseWaveNumber()
     {
-        _waveNumber++;
-
         _globalMissilesSpawner.SetWave(_waveNumber);
         _globalMissilesSpawner.StartWork();
+
+        _waveNumber++;
     }
 }

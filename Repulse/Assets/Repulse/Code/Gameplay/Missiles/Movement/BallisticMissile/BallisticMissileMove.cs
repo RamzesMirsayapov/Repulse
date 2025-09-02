@@ -3,13 +3,19 @@ using Zenject;
 
 public class BallisticMissileMove : Missile
 {
-    [SerializeField] private float _speedF = 0.1f;  
+    [SerializeField] private ExplosionAttack _explosionAttack;
+
+    [SerializeField] private float _speedF = 0.25f;
+
+    [SerializeField] private ParticleSystem _indicatorEffect;
 
     private float _flightTime = 0;
 
     private const int _indexMaskEverything = 1;
 
     private Vector3 _startPoint, _middlePoint, _lastTargetPosition, _targetPosition;
+
+    private GameObject _indicatorParticle;
 
     private FlightCalculationBezier _flightCalculationBezier;
     private SettingsCalculationBezier _settingsCalculationBezier;
@@ -27,12 +33,23 @@ public class BallisticMissileMove : Missile
         base.Initialize(speed);
 
         GetPoints();
+
+        PlayIndicatorEffect();
     }
 
-    private void FixedUpdate()
+    private void OnEnable()
     {
-        Move();
+        _explosionAttack.OnExploded += DestroyIndicatorEffect;
+        OnReflected += DestroyIndicatorEffect;
     }
+
+    private void OnDisable()
+    {
+        _explosionAttack.OnExploded -= DestroyIndicatorEffect;
+        OnReflected -= DestroyIndicatorEffect;
+    }
+
+    private void FixedUpdate() => Move();
 
     protected override void Move()
     {
@@ -43,6 +60,31 @@ public class BallisticMissileMove : Missile
 
         if (!IsReflected)
             MoveMissile();
+    }
+
+    private void MoveMissile()
+    {
+        _flightTime += Time.deltaTime * _speedF;
+
+        RotateMissile();
+
+        MoveDirectionMissile();
+    }
+
+    private void RotateMissile()
+    {
+        Vector3 rotation = _flightCalculationBezier.GetFirstDerivative(
+            _startPoint, _middlePoint, _targetPosition, _flightTime);
+
+        _rigidbody.MoveRotation(Quaternion.LookRotation(rotation));
+    }
+
+    private void MoveDirectionMissile()
+    {
+        Vector3 moveDirection = _flightCalculationBezier.GetPoint(
+            _startPoint, _middlePoint, _targetPosition, _flightTime);
+
+        _rigidbody.MovePosition(moveDirection);
     }
 
     private void GetPoints()
@@ -58,26 +100,9 @@ public class BallisticMissileMove : Missile
         }
     }
 
-    private void RotateMissile()
-    {
-        Vector3 rotation = _flightCalculationBezier.GetFirstDerivative(_startPoint, _middlePoint, _targetPosition, _flightTime);
+    private void PlayIndicatorEffect() =>
+    _indicatorParticle = Instantiate(_indicatorEffect.gameObject, _targetPosition, Quaternion.identity);
 
-        _rigidbody.MoveRotation(Quaternion.LookRotation(rotation));
-    }
-
-    private void MoveDirectionMissile()
-    {
-        Vector3 moveDirection = _flightCalculationBezier.GetPoint(_startPoint, _middlePoint, _targetPosition, _flightTime);
-
-        _rigidbody.MovePosition(moveDirection);
-    }
-
-    private void MoveMissile()
-    {
-        _flightTime += Time.deltaTime * _speedF;
-
-        RotateMissile();
-
-        MoveDirectionMissile();
-    }
+    private void DestroyIndicatorEffect() =>
+        Destroy(_indicatorParticle);
 }

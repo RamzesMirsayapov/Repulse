@@ -5,7 +5,7 @@ using UnityEngine;
 public class CooldownAttackPowerUp : PowerUp
 {
     [Header("Timing Settings")]
-    [SerializeField, Min(0f)] private float _cooldownAttackMultiplier = 1.5f;
+    [SerializeField, Min(0f)] private float _cooldownAttackMultiplier = 2f;
     [SerializeField, Min(0f)] private float _duration;
 
     [Header("BoostEffectColor")]

@@ -61,8 +61,6 @@ public class DecoyExplosionAttack : MonoBehaviour, IExplosion, IDecoy
         var effect = Instantiate(particle, transform.position, Quaternion.Euler(Vector3.up));
 
         effect.Play();
-
-        Destroy(effect, _overlapSettings.EffectPrefabLifeTime);
     }
 
     private void DestroyObject()

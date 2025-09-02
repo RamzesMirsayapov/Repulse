@@ -23,8 +23,6 @@ public class LevelLogicInstaller : MonoInstaller
             Container.Bind<DifficultyLevelConfig>()
                 .FromInstance(SelectedConfigHolder.SelectedConfig)
                 .AsSingle();
-
-            SelectedConfigHolder.SelectedConfig = null;
         }
     }
 
