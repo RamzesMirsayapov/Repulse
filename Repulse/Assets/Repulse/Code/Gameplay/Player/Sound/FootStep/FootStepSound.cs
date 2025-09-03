@@ -9,7 +9,7 @@ public class FootStepSound : MonoBehaviour
     [SerializeField] private List<AudioClip> _audioClips;
 
     [Header("Volume")]
-    [SerializeField] private float _volumeFootStepSound;
+    [SerializeField] private float _volume;
 
     [Header("AudioPitch")]
     [SerializeField] private float _minPitch;
@@ -36,7 +36,7 @@ public class FootStepSound : MonoBehaviour
         if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hitInfo, 3f))
         {
             _audioSource.pitch = Random.Range(_minPitch, _maxPitch);
-            _audioSource.volume = _volumeFootStepSound;
+            _audioSource.volume = _volume;
             _audioSource.PlayOneShot(_audioClips[Random.Range(0, _audioClips.Count)]);
         }
     }

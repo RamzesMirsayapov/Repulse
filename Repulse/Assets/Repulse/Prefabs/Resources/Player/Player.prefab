@@ -346,7 +346,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 791f30ca932ccef49803b3ffeaf3185f, type: 3}
   - {fileID: 8300000, guid: 0df823a7e1bb6b244b6c2c29c6728a88, type: 3}
   - {fileID: 8300000, guid: 55de9def07cbe124e92e76147291dedd, type: 3}
-  _volumeFootStepSound: 0.1
+  _volume: 0.05
   _minPitch: 0.9
   _maxPitch: 1.1
   _stepRate: 0.35
@@ -406,7 +406,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -760,6 +760,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4140890919427168828}
   - component: {fileID: 1906998766207796376}
+  - component: {fileID: 6330239550949556819}
+  - component: {fileID: 5615287201530046857}
   m_Layer: 6
   m_Name: Weapon
   m_TagString: Untagged
@@ -820,6 +822,120 @@ MonoBehaviour:
     _gizmosColor: {r: 1, g: 0, b: 0.029372692, a: 0.5529412}
     _effectPrefab: {fileID: 4256330563812210071}
     _effectPrefabLifeTime: 1
+--- !u!114 &6330239550949556819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3600383825576121645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb78049a49f7fd041b52b134243f6535, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weaponAttack: {fileID: 1906998766207796376}
+  _audioSource: {fileID: 5615287201530046857}
+  _shotSound: {fileID: 8300000, guid: b58130229de3b6342959c5e781f16b47, type: 3}
+  _volume: 0.2
+  _minPitch: 0.9
+  _maxPitch: 1.1
+--- !u!82 &5615287201530046857
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3600383825576121645}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 1
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &4852627260651022843
 GameObject:
   m_ObjectHideFlags: 0
@@ -949,7 +1065,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c6a9a7e20921ba45b139eb19378d63c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: {x: 1, y: 1}
+  force: {x: 3, y: 3}
   multiplier: 5
   inverseX: 1
   inverseY: 0
@@ -1372,7 +1488,7 @@ PrefabInstance:
     - target: {fileID: 7268800839861333734, guid: a219e4ab12c0cde44b093af2e5df84a5,
         type: 3}
       propertyPath: EmissionModule.rateOverTime.scalar
-      value: 6553600
+      value: 10000000
       objectReference: {fileID: 0}
     - target: {fileID: 9210403155149850457, guid: a219e4ab12c0cde44b093af2e5df84a5,
         type: 3}

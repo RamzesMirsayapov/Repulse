@@ -6,10 +6,11 @@ using Zenject;
 public class IndicatorSystem : MonoBehaviour
 {
     [Header("Settings")]
-    [SerializeField] private Camera _targetCamera;
     [SerializeField] private RectTransform _indicatorsCanvas;
     [SerializeField] private GameObject _indicatorPrefab;
     [SerializeField] private float _screenBorderOffset = 50f;
+
+    private Camera _targetCamera;
 
     private Dictionary<Transform, Indicator> _trackedObjects = new Dictionary<Transform, Indicator>();
     private Queue<Indicator> _indicatorsPool = new Queue<Indicator>();
