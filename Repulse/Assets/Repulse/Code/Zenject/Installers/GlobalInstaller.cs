@@ -1,6 +1,6 @@
-using System;
 using Zenject;
 using UnityEngine;
+using YG;
 
 public class GlobalInstaller : MonoInstaller
 {
@@ -21,5 +21,10 @@ public class GlobalInstaller : MonoInstaller
     private void BindSoundManager()
     {
         Container.Bind<SoundManager>().FromInstance(_soundManager).AsSingle();
+    }
+
+    private void ActivateStickyADV()
+    {
+        YG2.StickyAdActivity(true);
     }
 }

@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour, IPauseHandler
         _input.OnDirectionMove -= Move;
     }
 
-    private void Move(Vector3 moveDirection) // поменять на Public вдруг что
+    private void Move(Vector3 moveDirection)
     {
         if (_isPauesed)
             return;

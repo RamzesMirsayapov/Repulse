@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _missile: {fileID: 1290018129933731463}
-  _damage: 10
+  _damage: 15
   _overlapSettings:
     _searchMask:
       serializedVersion: 2
@@ -370,6 +370,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DecoyMissileTrail
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658085546937547071, guid: fbc883dfc1d950341b168235fee1fedd,
+        type: 3}
+      propertyPath: cullingMode
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4201399124200026992, guid: fbc883dfc1d950341b168235fee1fedd,
         type: 3}

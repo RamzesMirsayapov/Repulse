@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using YG;
 
 public class DifficultSelector : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class DifficultSelector : MonoBehaviour
 
     private void OnLevelSelected(int index)
     {
+        YG2.InterstitialAdvShow();
+
         SelectedConfigHolder.SelectedConfig = _levelConfigs[index];
 
         StartGame();

@@ -6,7 +6,6 @@ using System;
 
 public class Timer : MonoBehaviour, IPauseHandler
 {
-    public event Action<float> OnTimerUpdate;
     public event Action OnWaveCompleted;
 
     [SerializeField] private TMP_Text _timerText;
@@ -23,18 +22,12 @@ public class Timer : MonoBehaviour, IPauseHandler
 
     private bool _isPaused;
 
-    public void SetPaused(bool isPaused)
-    {
-        _isPaused = isPaused;
-    }
-
     [Inject]
     private void Construct(Level level, PauseManager pauseManager)
     {
         _level = level;
         _pauseManager = pauseManager;
 
-        _level.OnWaveChanged += StartTimer;
         _level.OnLevelStarted += StartTimer;
         _level.OnLevelFinished += StopTimer;
 
@@ -44,7 +37,6 @@ public class Timer : MonoBehaviour, IPauseHandler
 
     private void OnDisable()
     {
-        _level.OnWaveChanged -= StartTimer;
         _level.OnLevelStarted -= StartTimer;
         _level.OnLevelFinished -= StopTimer;
     }
@@ -70,8 +62,39 @@ public class Timer : MonoBehaviour, IPauseHandler
         }
     }
 
+    //private IEnumerator RunTimerCoroutine()
+    //{
+    //    while (true)
+    //    {
+    //        if (_isPaused)
+    //        {
+    //            yield return null;
+    //            continue;
+    //        }
+
+    //        _secondsElapsed++;
+
+    //        if (_secondsElapsed >= 60) //_secondsElapsed % 60 == 0
+    //        {
+    //            _secondsElapsed = 0;
+    //            _minutesElapsed++;
+
+    //            OnWaveCompleted?.Invoke();
+    //        }
+
+    //        _timerText.text = _minutesElapsed.ToString("D2") + ":" + _secondsElapsed.ToString("D2");
+
+    //        yield return new WaitForSeconds(1);
+    //    }
+    //}
+
     private IEnumerator RunTimerCoroutine()
     {
+        _minutesElapsed = 4;
+        _secondsElapsed = 0;
+
+        bool firstMinute = true;
+
         while (true)
         {
             if (_isPaused)
@@ -80,19 +103,39 @@ public class Timer : MonoBehaviour, IPauseHandler
                 continue;
             }
 
-            _secondsElapsed++;
+            _secondsElapsed--;
 
-            if (_secondsElapsed % 60 == 0)
+            if (_secondsElapsed < 0)
             {
-                _secondsElapsed = 0;
-                _minutesElapsed++;
+                if (_minutesElapsed > 0)
+                {
+                    _minutesElapsed--;
+                    _secondsElapsed = 59;
 
-                OnWaveCompleted?.Invoke();
+                    if (!firstMinute)
+                    {
+                        OnWaveCompleted?.Invoke();
+                    }
+                    firstMinute = false;
+                }
+                else
+                {
+                    _minutesElapsed = 0;
+                    _secondsElapsed = 0;
+
+                    OnWaveCompleted?.Invoke();
+
+                    yield break;
+                }
             }
-
             _timerText.text = _minutesElapsed.ToString("D2") + ":" + _secondsElapsed.ToString("D2");
 
             yield return new WaitForSeconds(1);
         }
+    }
+
+    public void SetPaused(bool isPaused)
+    {
+        _isPaused = isPaused;
     }
 }

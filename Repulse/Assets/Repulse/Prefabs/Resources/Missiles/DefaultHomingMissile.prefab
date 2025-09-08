@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da3eb7f5322cb7341a7e3d3c783a73f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 10
+  _damage: 15
   _missile: {fileID: -6338380221900535761}
   _overlapSettings:
     _searchMask:
@@ -362,6 +362,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1583713801625449143}
     m_Modifications:
+    - target: {fileID: 946571643466882376, guid: bd4693e673f5e5345a9e3da35f4a8613,
+        type: 3}
+      propertyPath: cullingMode
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2975858485178204161, guid: bd4693e673f5e5345a9e3da35f4a8613,
         type: 3}
       propertyPath: m_Name

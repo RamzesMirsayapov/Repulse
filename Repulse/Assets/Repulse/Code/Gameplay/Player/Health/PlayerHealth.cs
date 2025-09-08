@@ -33,6 +33,9 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IHealable
         {
             _blockCount--;
 
+            if(_blockCount == 0)
+                OnEffectEnded?.Invoke();
+
             return;
         }
 

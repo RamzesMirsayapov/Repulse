@@ -9859,7 +9859,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speedMultiplier: 2
   _duration: 10
-  _boostEffectColor: {r: 0, g: 0.42205977, b: 1, a: 1}
+  _boostEffectColor: {r: 1, g: 0.47546774, b: 0, a: 1}
 --- !u!135 &6569418875058805422
 SphereCollider:
   m_ObjectHideFlags: 0

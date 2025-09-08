@@ -41,11 +41,6 @@ public class GlobalMissilesSpawner : MonoBehaviour, IPauseHandler
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            SpawnMissile();
-        }
-
         if(Input.GetKeyDown(KeyCode.R))
         {
             Cursor.lockState = CursorLockMode.Locked; ////убрать
@@ -79,6 +74,8 @@ public class GlobalMissilesSpawner : MonoBehaviour, IPauseHandler
         Debug.Log(_currentWave);
 
         UpdateSpawnerSettings();
+
+        StartWork();
     }
 
     private void UpdateSpawnerSettings()

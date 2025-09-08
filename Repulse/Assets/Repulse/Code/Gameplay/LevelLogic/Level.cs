@@ -6,12 +6,11 @@ using Zenject;
 public class Level : MonoBehaviour
 {
     public event Action OnLevelStarted;
-    public event Action OnWaveChanged;
     public event Action OnLevelFinished;
 
     [SerializeField] private GlobalMissilesSpawner _globalMissilesSpawner;
 
-    [SerializeField] private float _breakTimeValue = 5f;
+    [SerializeField] private float _breakTimeValue = 4f;
 
     private Timer _timer;
 
@@ -25,30 +24,21 @@ public class Level : MonoBehaviour
         _timer.OnWaveCompleted += ChangeWave;
     }
 
-    private void Start()
-    {
-        Invoke("RestartLevel", _breakTimeValue);
-    }
-
-    private void Update()
-    {
-        if(Input.GetKeyUp(KeyCode.R))
-        {
-            ChangeWave();
-        }
-    }
-
     private void OnDisable()
     {
         _timer.OnWaveCompleted -= ChangeWave;
     }
 
-    private void RestartLevel()
+    private void Start()
+    {
+        StartLevel();
+    }
+
+    private void StartLevel()
     {
         OnLevelStarted?.Invoke();
 
-        _globalMissilesSpawner.SetWave(_waveNumber);
-        _globalMissilesSpawner.StartWork();
+        ChangeWave();
     }
 
     private void ChangeWave()
@@ -69,13 +59,6 @@ public class Level : MonoBehaviour
         OnLevelFinished?.Invoke();
     }
 
-    private void LoseLevel()
-    {
-        _globalMissilesSpawner.StopWork();
-
-        OnLevelFinished?.Invoke();
-    }
-
     private IEnumerator BreakBeforeNextWave()
     {
         _globalMissilesSpawner.StopWork();
@@ -89,7 +72,6 @@ public class Level : MonoBehaviour
     private void IncreaseWaveNumber()
     {
         _globalMissilesSpawner.SetWave(_waveNumber);
-        _globalMissilesSpawner.StartWork();
 
         _waveNumber++;
     }

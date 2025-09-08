@@ -1,5 +1,6 @@
 using System;
 using Zenject;
+using YG;
 
 public class VictoryPanelMediator : IDisposable
 {
@@ -32,6 +33,8 @@ public class VictoryPanelMediator : IDisposable
 
     private void UnPause()
     {
+        YG2.InterstitialAdvShow();
+
         _pauseManager.SetPaused(false);
     }
 
