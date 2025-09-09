@@ -1,0 +1,15 @@
+{
+    "intExample": 5,
+    "strExample": "Hello!",
+    "boolExample": [
+        false,
+        false,
+        false,
+        false
+    ],
+    "idSave": 1,
+    "EasyLevelCompleted": true,
+    "NormalLevelCompleted": false,
+    "HighLevelCompleted": false,
+    "ImplossibleLevelCompleted": false
+}

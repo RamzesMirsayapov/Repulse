@@ -62,32 +62,6 @@ public class Timer : MonoBehaviour, IPauseHandler
         }
     }
 
-    //private IEnumerator RunTimerCoroutine()
-    //{
-    //    while (true)
-    //    {
-    //        if (_isPaused)
-    //        {
-    //            yield return null;
-    //            continue;
-    //        }
-
-    //        _secondsElapsed++;
-
-    //        if (_secondsElapsed >= 60) //_secondsElapsed % 60 == 0
-    //        {
-    //            _secondsElapsed = 0;
-    //            _minutesElapsed++;
-
-    //            OnWaveCompleted?.Invoke();
-    //        }
-
-    //        _timerText.text = _minutesElapsed.ToString("D2") + ":" + _secondsElapsed.ToString("D2");
-
-    //        yield return new WaitForSeconds(1);
-    //    }
-    //}
-
     private IEnumerator RunTimerCoroutine()
     {
         _minutesElapsed = 4;

@@ -44,12 +44,18 @@ public class UIPausePanel : MonoBehaviour
     {
         OnRestartButtonClicked?.Invoke();
 
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         SceneLoader.LoadGameScene();
     }
 
     private void ExitButtonClick()
     {
         OnExitButtonClicked?.Invoke();
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
 
         SceneLoader.LoadMainMenu();
     }

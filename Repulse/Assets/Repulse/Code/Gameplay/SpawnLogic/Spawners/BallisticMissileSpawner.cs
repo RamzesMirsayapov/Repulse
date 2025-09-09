@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
@@ -8,14 +7,6 @@ public class BallisticMissileSpawner : MissilesSpawner
     private void Construct(BallisticMissileCreator ballisticMissileCreator)
     {
         _missileCreator = ballisticMissileCreator;
-    }
-
-    private void Update()
-    {
-        if(Input.GetKeyUp(KeyCode.V))
-        {
-            SpawnMissile(40);
-        }
     }
 
     protected override void InitializeSpawner()

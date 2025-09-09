@@ -38,14 +38,6 @@ public class TrackableObject : MonoBehaviour
         }
     }
 
-    //private void Start()
-    //{
-    //    if (_registerOnStart)
-    //    {
-    //        Register();
-    //    }
-    //}
-
     public void Register()
     {
         _indicatorSystem.RegisterObject(transform, _indicatorIcon);
@@ -55,12 +47,4 @@ public class TrackableObject : MonoBehaviour
     {
         _indicatorSystem.UnregisterObject(transform);
     }
-
-    //private void OnDestroy()
-    //{
-    //    if (_indicatorSystem != null)
-    //    {
-    //        Unregister();
-    //    }
-    //}
 }

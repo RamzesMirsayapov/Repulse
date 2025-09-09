@@ -3,11 +3,9 @@ using Zenject;
 
 public class PlayerInstaller : MonoInstaller
 {
-    //[SerializeField] private PlayerMovement _playerPrefab;
     [SerializeField] private Player _playerPrefab;
     [SerializeField] private Transform _playerSpawnPoint;
 
-    //private PlayerMovement _playerMovement;
     private Player _player;
 
     private Camera _camera;
@@ -17,6 +15,8 @@ public class PlayerInstaller : MonoInstaller
         CreatePlayer();
         BindPlayer();
         BindPlayerCamera();
+
+        LockCursor();
     }
 
     private void CreatePlayer()
@@ -45,4 +45,9 @@ public class PlayerInstaller : MonoInstaller
             AsSingle();
     }
 
+    private void LockCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
 }

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ae972dc7ea3d69409d34c43bb9c9522, type: 3}
   m_Name: NormalDifficultyLevelConfig
   m_EditorClassIdentifier: 
+  _configId: normal
   _levelDifficultySettings:
   - _cooldownSpawn: 1.4
     _spawnObjectsSettings:

@@ -1,6 +1,7 @@
 using System;
 using Zenject;
 using YG;
+using UnityEngine;
 
 public class VictoryPanelMediator : IDisposable
 {
@@ -34,7 +35,7 @@ public class VictoryPanelMediator : IDisposable
     private void UnPause()
     {
         YG2.InterstitialAdvShow();
-
+        
         _pauseManager.SetPaused(false);
     }
 
@@ -43,8 +44,37 @@ public class VictoryPanelMediator : IDisposable
         if (_pausePanel.IsActive)
             _pausePanel.SetActive(false);
 
+        SetLevelCompleted();
+
         _pauseManager.SetPaused(true);
 
         _victoryPanel.SetActive(true);
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+
+    private void SetLevelCompleted()
+    {
+        switch (SelectedConfigHolder.SelectedConfig.ConfigId)
+        {
+            case "easy":
+                YG2.saves.EasyLevelCompleted = true;
+                break;
+
+            case "normal":
+                YG2.saves.NormalLevelCompleted = true;
+                break;
+
+            case "high":
+                YG2.saves.HighLevelCompleted = true;
+                break;
+
+            case "impossible":
+                YG2.saves.ImplossibleLevelCompleted = true;
+                break;
+        }
+
+        YG2.SaveProgress();
     }
 }

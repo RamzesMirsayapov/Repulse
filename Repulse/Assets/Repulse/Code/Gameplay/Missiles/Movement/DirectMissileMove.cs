@@ -1,5 +1,4 @@
 using UnityEngine;
-using Zenject;
 
 [RequireComponent(typeof(Rigidbody))]
 public class DirectMissileMove : Missile

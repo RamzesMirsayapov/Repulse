@@ -478,8 +478,8 @@ MonoBehaviour:
   _audioSource: {fileID: 5615287201530046857}
   _shotSound: {fileID: 8300000, guid: b58130229de3b6342959c5e781f16b47, type: 3}
   _volume: 0.2
-  _minPitch: 0.9
-  _maxPitch: 1.1
+  _minPitch: 0.85
+  _maxPitch: 0.95
 --- !u!82 &5615287201530046857
 AudioSource:
   m_ObjectHideFlags: 0
@@ -493,7 +493,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
-  m_Pitch: 1
+  m_Pitch: 0.85
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -501,7 +501,7 @@ AudioSource:
   Priority: 1
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 50
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -876,17 +876,17 @@ PrefabInstance:
     - target: {fileID: 6073002657793723218, guid: 255906cc5187f694caca658be533d79b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.382
+      value: 0.428
       objectReference: {fileID: 0}
     - target: {fileID: 6073002657793723218, guid: 255906cc5187f694caca658be533d79b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.582
+      value: 0.497
       objectReference: {fileID: 0}
     - target: {fileID: 6073002657793723218, guid: 255906cc5187f694caca658be533d79b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.098
+      value: 1.066
       objectReference: {fileID: 0}
     - target: {fileID: 6073002657793723218, guid: 255906cc5187f694caca658be533d79b,
         type: 3}

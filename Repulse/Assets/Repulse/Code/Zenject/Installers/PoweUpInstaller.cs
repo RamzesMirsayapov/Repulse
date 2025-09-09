@@ -7,14 +7,7 @@ public class PoweUpInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
-        //BindPowerUp();
-
         BindPowerUpSpawner();
-    }
-
-    private void BindPowerUp()
-    {
-        Container.Bind<PowerUp>().AsSingle();
     }
 
     private void BindPowerUpSpawner()

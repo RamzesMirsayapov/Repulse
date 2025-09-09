@@ -28,7 +28,7 @@ public class WeaponAudio : MonoBehaviour
     private void PlayShotSound()
     {
         _audioSource.volume = _volume;
-        //_audioSource.pitch = Random.Range(_minPitch, _maxPitch);
+        _audioSource.pitch = Random.Range(_minPitch, _maxPitch);
         _audioSource.PlayOneShot(_shotSound);
     }
 }

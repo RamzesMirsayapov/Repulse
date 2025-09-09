@@ -11,6 +11,8 @@ public class GlobalInstaller : MonoInstaller
         BindInput();
 
         BindSoundManager();
+
+        ActivateStickyADV();
     }
 
     private void BindInput()

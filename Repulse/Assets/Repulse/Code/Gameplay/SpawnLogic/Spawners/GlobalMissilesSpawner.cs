@@ -39,19 +39,6 @@ public class GlobalMissilesSpawner : MonoBehaviour, IPauseHandler
         UpdateSpawnerSettings();
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.R))
-        {
-            Cursor.lockState = CursorLockMode.Locked; ////убрать
-        }
-
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            Cursor.lockState = CursorLockMode.Confined; ////убрать
-        }
-    }
-
     public void StartWork()
     {
         StopWork();
@@ -84,7 +71,6 @@ public class GlobalMissilesSpawner : MonoBehaviour, IPauseHandler
 
         _spawnObjectsSettings = waveSettings.SpawnObjectsSettings;
         _spawnCooldown = waveSettings.CoolDownSpawn;
-        //_missileSpeed = waveSettings.SpeedMissiles;
 
         InitializeSpawner();
     }
@@ -120,21 +106,6 @@ public class GlobalMissilesSpawner : MonoBehaviour, IPauseHandler
             SpawnMissile();
 
             yield return new WaitForSeconds(_spawnCooldown);
-
-            //yield return StartCoroutine(PausableWaitForSeconds(_spawnCooldown));
-        }
-    }
-
-    private IEnumerator PausableWaitForSeconds(float duration)
-    {
-        float timer = 0f;
-        while (timer < duration)
-        {
-            if (!_isPaused)
-            {
-                timer += Time.deltaTime;
-            }
-            yield return null;
         }
     }
 

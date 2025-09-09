@@ -1,6 +1,7 @@
 using System;
 using Zenject;
 using YG;
+using UnityEngine;
 
 public class PausePanelMediator : IDisposable
 {
@@ -54,5 +55,16 @@ public class PausePanelMediator : IDisposable
         _pauseManager.SetPaused(_isOn);
 
         _pausePanel.SetActive(_isOn);
+
+        if (_isOn)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 }

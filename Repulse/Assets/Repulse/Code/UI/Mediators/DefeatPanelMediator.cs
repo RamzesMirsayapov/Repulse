@@ -1,6 +1,7 @@
 using System;
 using Zenject;
 using YG;
+using UnityEngine;
 
 public class DefeatPanelMediator : IDisposable
 {
@@ -46,5 +47,8 @@ public class DefeatPanelMediator : IDisposable
         _pauseManager.SetPaused(true);
 
         _defeatPanel.SetActive(true);
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 }

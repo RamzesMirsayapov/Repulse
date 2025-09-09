@@ -25,8 +25,6 @@ public class HealthBar : MonoBehaviour
 
     private void HealthBarChanchge(float valueAsPercentage)
     {
-        Debug.Log("тут HealthBar UI");
-
         _healthBarFilling.fillAmount = valueAsPercentage;
 
         _healthBarFilling.color = _gradientHealthFilling.Evaluate(valueAsPercentage);

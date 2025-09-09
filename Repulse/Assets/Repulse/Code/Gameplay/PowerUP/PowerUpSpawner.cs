@@ -58,7 +58,6 @@ public class PowerUpSpawner : MonoBehaviour
 
             if (!gameobject.TryGetComponent(out PowerUp PowerUpComponent))
             {
-                Debug.LogError("Не найден компонент PowerUp!");
                 return;
             }
 

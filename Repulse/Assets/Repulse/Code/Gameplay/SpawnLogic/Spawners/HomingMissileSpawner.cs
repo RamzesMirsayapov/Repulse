@@ -23,14 +23,6 @@ public class HomingMissileSpawner : MissilesSpawner
         InitializeSpawner();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.C))
-        {
-            SpawnMissile(40);
-        }
-    }
-
     protected override void InitializeSpawner()
     {
         _missileCreators = new List<ISpawnable>() { _homingMissileCreator, _decoyHomingMissileCreator };

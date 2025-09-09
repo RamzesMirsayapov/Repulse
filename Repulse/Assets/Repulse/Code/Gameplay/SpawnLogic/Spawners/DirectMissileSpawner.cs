@@ -24,14 +24,6 @@ public class DirectMissileSpawner : MissilesSpawner
         InitializeSpawner();
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyUp(KeyCode.B))
-        {
-            SpawnMissile(40);
-        }
-    }
-
     protected override void InitializeSpawner()
     {
         _missileCreators = new List<ISpawnable>() { _directMissileCreator, _decoyDirectMissileCreator };
