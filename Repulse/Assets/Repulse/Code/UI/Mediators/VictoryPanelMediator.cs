@@ -34,9 +34,9 @@ public class VictoryPanelMediator : IDisposable
 
     private void UnPause()
     {
-        YG2.InterstitialAdvShow();
-        
         _pauseManager.SetPaused(false);
+
+        YG2.InterstitialAdvShow();
     }
 
     private void CallVictoryPanel()

@@ -7,9 +7,9 @@
         false,
         false
     ],
-    "idSave": 1,
+    "idSave": 12,
     "EasyLevelCompleted": true,
-    "NormalLevelCompleted": false,
-    "HighLevelCompleted": false,
-    "ImplossibleLevelCompleted": false
+    "NormalLevelCompleted": true,
+    "HighLevelCompleted": true,
+    "ImplossibleLevelCompleted": true
 }

@@ -34,9 +34,9 @@ public class DefeatPanelMediator : IDisposable
 
     private void UnPause()
     {
-        YG2.InterstitialAdvShow();
-
         _pauseManager.SetPaused(false);
+
+        YG2.InterstitialAdvShow();
     }
 
     private void CallDefeatPanel()

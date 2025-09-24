@@ -11,8 +11,6 @@ public class ScreenEffectMediator : IDisposable
     [Inject]
     private void Construct(Player player, ScreenEffectController edgeGlowController)
     {
-        Debug.Log(player == null);
-
         _player = player;
         _edgeGlowController = edgeGlowController;
 

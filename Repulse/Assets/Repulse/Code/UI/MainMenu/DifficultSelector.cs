@@ -13,11 +13,6 @@ public class DifficultSelector : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("Easy -  " + YG2.saves.EasyLevelCompleted);
-        Debug.Log("Normal -  " + YG2.saves.NormalLevelCompleted);
-        Debug.Log("Hard -  " + YG2.saves.HighLevelCompleted);
-        Debug.Log("Impossible -  " + YG2.saves.ImplossibleLevelCompleted);
-
         SubscribeButtonsToLevels();
 
         UpdateLevelCompletedInfo();
@@ -34,13 +29,13 @@ public class DifficultSelector : MonoBehaviour
             _levelCompletedInfo[0].SetActive(true);
 
         if (YG2.saves.NormalLevelCompleted)
-            _levelCompletedInfo[0].SetActive(true);
+            _levelCompletedInfo[1].SetActive(true);
 
         if (YG2.saves.HighLevelCompleted)
-            _levelCompletedInfo[0].SetActive(true);
+            _levelCompletedInfo[2].SetActive(true);
 
         if (YG2.saves.ImplossibleLevelCompleted)
-            _levelCompletedInfo[0].SetActive(true);
+            _levelCompletedInfo[3].SetActive(true);
     }
 
     private void SubscribeButtonsToLevels()

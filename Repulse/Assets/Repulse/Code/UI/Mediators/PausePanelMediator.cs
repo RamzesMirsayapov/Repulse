@@ -2,6 +2,7 @@ using System;
 using Zenject;
 using YG;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PausePanelMediator : IDisposable
 {
@@ -27,6 +28,11 @@ public class PausePanelMediator : IDisposable
 
         _pausePanel.OnRestartButtonClicked += UnPause;
         _pausePanel.OnExitButtonClicked += UnPause;
+
+        if(YG2.nowInterAdv == false)
+        {
+            _pauseManager.SetPaused(false);
+        }
     }
 
     public void Dispose()
@@ -40,14 +46,18 @@ public class PausePanelMediator : IDisposable
 
     private void UnPause()
     {
-        YG2.InterstitialAdvShow();
-
         _pauseManager.SetPaused(false);
+
+        YG2.InterstitialAdvShow();
     }
+
 
     private void CallPause()
     {
         if (_defeatPanel.IsActive || _victoryPanel.IsActive)
+            return;
+
+        if (YG2.nowInterAdv)
             return;
 
         _isOn = !_isOn;

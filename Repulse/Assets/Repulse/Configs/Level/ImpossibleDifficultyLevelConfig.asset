@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _configId: impossible
   _levelDifficultySettings:
-  - _cooldownSpawn: 1.2
+  - _cooldownSpawn: 1.35
     _spawnObjectsSettings:
     - _nameObject: HomingLaunchers
       _chanceSpawn: 50
-      _missleSpeed: 33
+      _missleSpeed: 30
       Weight: 50
     - _nameObject: DirectLaunchers
       _chanceSpawn: 20
@@ -28,39 +28,39 @@ MonoBehaviour:
       _chanceSpawn: 30
       _missleSpeed: 45
       Weight: 100
+  - _cooldownSpawn: 1.35
+    _spawnObjectsSettings:
+    - _nameObject: HomingLaunchers
+      _chanceSpawn: 60
+      _missleSpeed: 31
+      Weight: 60
+    - _nameObject: DirectLaunchers
+      _chanceSpawn: 30
+      _missleSpeed: 45
+      Weight: 90
+    - _nameObject: BallisticLaunchers
+      _chanceSpawn: 20
+      _missleSpeed: 45
+      Weight: 110
+  - _cooldownSpawn: 1.25
+    _spawnObjectsSettings:
+    - _nameObject: HomingLaunchers
+      _chanceSpawn: 60
+      _missleSpeed: 33
+      Weight: 60
+    - _nameObject: DirectLaunchers
+      _chanceSpawn: 30
+      _missleSpeed: 45
+      Weight: 90
+    - _nameObject: BallisticLaunchers
+      _chanceSpawn: 20
+      _missleSpeed: 45
+      Weight: 110
   - _cooldownSpawn: 1.2
     _spawnObjectsSettings:
     - _nameObject: HomingLaunchers
       _chanceSpawn: 60
       _missleSpeed: 35
-      Weight: 60
-    - _nameObject: DirectLaunchers
-      _chanceSpawn: 30
-      _missleSpeed: 45
-      Weight: 90
-    - _nameObject: BallisticLaunchers
-      _chanceSpawn: 20
-      _missleSpeed: 45
-      Weight: 110
-  - _cooldownSpawn: 1
-    _spawnObjectsSettings:
-    - _nameObject: HomingLaunchers
-      _chanceSpawn: 60
-      _missleSpeed: 37
-      Weight: 60
-    - _nameObject: DirectLaunchers
-      _chanceSpawn: 30
-      _missleSpeed: 45
-      Weight: 90
-    - _nameObject: BallisticLaunchers
-      _chanceSpawn: 20
-      _missleSpeed: 45
-      Weight: 110
-  - _cooldownSpawn: 1
-    _spawnObjectsSettings:
-    - _nameObject: HomingLaunchers
-      _chanceSpawn: 60
-      _missleSpeed: 40
       Weight: 60
     - _nameObject: DirectLaunchers
       _chanceSpawn: 30

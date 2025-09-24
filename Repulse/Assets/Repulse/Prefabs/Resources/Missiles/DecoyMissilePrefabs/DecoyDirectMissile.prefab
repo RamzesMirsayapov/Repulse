@@ -370,6 +370,16 @@ PrefabInstance:
       propertyPath: cullingMode
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1658085546937547071, guid: fbc883dfc1d950341b168235fee1fedd,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.a
+      value: 0.78431374
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658085546937547071, guid: fbc883dfc1d950341b168235fee1fedd,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.a
+      value: 0.078431375
+      objectReference: {fileID: 0}
     - target: {fileID: 4201399124200026992, guid: fbc883dfc1d950341b168235fee1fedd,
         type: 3}
       propertyPath: m_LocalPosition.x

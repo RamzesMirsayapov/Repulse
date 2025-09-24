@@ -31,8 +31,6 @@ public class GlobalMissilesSpawner : MonoBehaviour, IPauseHandler
             _difficultyLevelConfig = Resources.Load<DifficultyLevelConfig>("LevelConfig/NormalDifficultyLevelConfig");
         }
 
-        Debug.Log(_difficultyLevelConfig.name);
-
         _pauseManager = pauseManager;
         _isPaused = _pauseManager.IsPaused;
 
@@ -57,8 +55,6 @@ public class GlobalMissilesSpawner : MonoBehaviour, IPauseHandler
     public void SetWave(int wave)
     {
         _currentWave = wave;
-
-        Debug.Log(_currentWave);
 
         UpdateSpawnerSettings();
 

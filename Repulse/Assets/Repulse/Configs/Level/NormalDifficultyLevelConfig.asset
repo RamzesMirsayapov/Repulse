@@ -14,53 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _configId: normal
   _levelDifficultySettings:
-  - _cooldownSpawn: 1.4
+  - _cooldownSpawn: 1.55
     _spawnObjectsSettings:
     - _nameObject: HomingLaunchers
       _chanceSpawn: 30
-      _missleSpeed: 28
-      Weight: 30
-    - _nameObject: DirectLaunchers
-      _chanceSpawn: 40
-      _missleSpeed: 40
-      Weight: 70
-    - _nameObject: BallisticLaunchers
-      _chanceSpawn: 30
-      _missleSpeed: 45
-      Weight: 100
-  - _cooldownSpawn: 1.35
-    _spawnObjectsSettings:
-    - _nameObject: HomingLaunchers
-      _chanceSpawn: 30
-      _missleSpeed: 28
-      Weight: 30
-    - _nameObject: DirectLaunchers
-      _chanceSpawn: 40
-      _missleSpeed: 40
-      Weight: 70
-    - _nameObject: BallisticLaunchers
-      _chanceSpawn: 30
-      _missleSpeed: 45
-      Weight: 100
-  - _cooldownSpawn: 1.3
-    _spawnObjectsSettings:
-    - _nameObject: HomingLaunchers
-      _chanceSpawn: 30
-      _missleSpeed: 28
-      Weight: 30
-    - _nameObject: DirectLaunchers
-      _chanceSpawn: 40
-      _missleSpeed: 40
-      Weight: 70
-    - _nameObject: BallisticLaunchers
-      _chanceSpawn: 30
-      _missleSpeed: 45
-      Weight: 100
-  - _cooldownSpawn: 1.3
-    _spawnObjectsSettings:
-    - _nameObject: HomingLaunchers
-      _chanceSpawn: 30
-      _missleSpeed: 30
+      _missleSpeed: 25
       Weight: 30
     - _nameObject: DirectLaunchers
       _chanceSpawn: 50
@@ -68,5 +26,47 @@ MonoBehaviour:
       Weight: 80
     - _nameObject: BallisticLaunchers
       _chanceSpawn: 20
+      _missleSpeed: 45
+      Weight: 100
+  - _cooldownSpawn: 1.55
+    _spawnObjectsSettings:
+    - _nameObject: HomingLaunchers
+      _chanceSpawn: 30
+      _missleSpeed: 25
+      Weight: 30
+    - _nameObject: DirectLaunchers
+      _chanceSpawn: 50
+      _missleSpeed: 40
+      Weight: 80
+    - _nameObject: BallisticLaunchers
+      _chanceSpawn: 20
+      _missleSpeed: 45
+      Weight: 100
+  - _cooldownSpawn: 1.5
+    _spawnObjectsSettings:
+    - _nameObject: HomingLaunchers
+      _chanceSpawn: 30
+      _missleSpeed: 25
+      Weight: 20
+    - _nameObject: DirectLaunchers
+      _chanceSpawn: 40
+      _missleSpeed: 40
+      Weight: 70
+    - _nameObject: BallisticLaunchers
+      _chanceSpawn: 30
+      _missleSpeed: 45
+      Weight: 100
+  - _cooldownSpawn: 1.5
+    _spawnObjectsSettings:
+    - _nameObject: HomingLaunchers
+      _chanceSpawn: 30
+      _missleSpeed: 25
+      Weight: 30
+    - _nameObject: DirectLaunchers
+      _chanceSpawn: 40
+      _missleSpeed: 40
+      Weight: 80
+    - _nameObject: BallisticLaunchers
+      _chanceSpawn: 30
       _missleSpeed: 45
       Weight: 100

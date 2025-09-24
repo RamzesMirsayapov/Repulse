@@ -181,7 +181,7 @@ MonoBehaviour:
     _overlapPoint: {fileID: 1583713801625449143}
     _overlapType: 1
     _boxSize: {x: 1, y: 1, z: 1}
-    _sphereRadius: 10
+    _sphereRadius: 30
     _positionOffset: {x: 0, y: 0, z: 0}
     _considerObstacles: 1
     _obstacleMask:

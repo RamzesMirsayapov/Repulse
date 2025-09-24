@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using YG;
 using Zenject;
 
 public class DesktopInput : IInput, ITickable
@@ -17,7 +18,6 @@ public class DesktopInput : IInput, ITickable
     
     private float inputX;
     private float inputY;
-
 
     public void Tick()
     {

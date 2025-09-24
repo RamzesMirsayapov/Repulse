@@ -22,6 +22,7 @@ public class PlayerRotation : MonoBehaviour, IPauseHandler
         _pausedManager = pauseManager;
 
         _input.OnRotate += Rotate;
+
         _pausedManager.Register(this);
     }
 
